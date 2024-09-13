@@ -90,15 +90,15 @@ const CategoryButtons = () => {
   }, []);
 
   const handleCategoryClick = async (categoryId) => {
-    setSelectedCategory(categoryId); // ست کردن دسته انتخاب شده
+    setSelectedCategory(categoryId);
 
     try {
       const fetchedSubcategories = await fetchSubcategories(categoryId);
-      if (fetchedSubcategories?.data?.subcategories) {
+      if (fetchedSubcategories && fetchedSubcategories.data && fetchedSubcategories.data.subcategories) {
         setSubcategories(fetchedSubcategories.data.subcategories);
       } else {
         setSubcategories([]);
-        console.log("No subcategories found");
+        console.log("No subcategories found for category:", categoryId);
       }
     } catch (error) {
       console.error("Error fetching subcategories:", error);
@@ -124,7 +124,7 @@ const CategoryButtons = () => {
         <div className="mt-4">
           <h2 className="text-lg font-semibold">Subcategories for {selectedCategory}</h2>
           {subcategories.length > 0 ? (
-            <div className="flex space-x-2">
+            <div className="flex flex-wrap space-x-2">
               {subcategories.map((subcategory) => (
                 <button
                   key={subcategory._id}
