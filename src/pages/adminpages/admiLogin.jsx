@@ -1,13 +1,15 @@
 // adminLogin.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../services/authServices';
+import { login } from '../../services/authServices'; 
+
 
 
 export default function AdminLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+
 
   const handleLogin = async () => {
     const result = await login(username, password);
@@ -67,7 +69,9 @@ export default function AdminLogin() {
         <div className='mt-5'>
         <button onClick={handleLogin} className='bg-blue-500 w-96 h-10 rounded-xl text-xl text-white hover:bg-blue-600'>Login</button> 
         </div>
-      </div >
+      </div > 
+
+      <div className='flex justify-center items-center mt-5'> <button className='text-blue-500 font-bold hover:text-blue-600' onClick={() => navigate('/')}>بازگشت به سایت </button></div>
 
     </>
   );
