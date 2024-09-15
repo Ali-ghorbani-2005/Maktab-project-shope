@@ -5,7 +5,8 @@ import { login } from '../../services/authServices';
 
 
 
-export default function AdminLogin() {
+export default function AdminLogin() { 
+  const [mode , setMode] = useState('admin')
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); 
@@ -14,7 +15,7 @@ export default function AdminLogin() {
   const handleLogin = async () => {
     const result = await login(username, password);
 
-    if (result.success) {
+    if (result.success && mode==='admin') {
       // انتقال به صفحه Admin
       navigate('/Admin');
     } else {

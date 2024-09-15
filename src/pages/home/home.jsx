@@ -3,17 +3,22 @@ import CategoryButtons from "../../components/component-home/categoriesnav/categ
 import AdminCartButtons from "../../components/component-home/header/adminCartButtons";
 import HeaderHome from "../../components/component-home/header/headerHome";
 import Logo from "../../components/component-home/header/logo";
+import SearchBox from "../../components/component-home/header/searchBox";
 
 
 export default function Home() {
   return (
     <div>
       <div>
+           <div className="flex">
+       
+           
+          <SearchBox   />
+          
+          <Logo />
 
-        <Logo />
-
-
-        <AdminCartButtons />
+        </div> 
+        <AdminCartButtons /> 
 
          <CategoryButtons /> 
 

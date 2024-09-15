@@ -15,7 +15,7 @@ export default function AdminCartButtons() {
                     </div>
 
                     <div className='mt-1'>
-                        <Link to='/AdmiLogin'>  <button className='text-blue-500 font-bold'>مدیریت</button> </Link>
+                        <Link to='/admin-login'>  <button className='text-blue-500 font-bold'>ورود</button> </Link>
                     </div>
 
                 </div>
