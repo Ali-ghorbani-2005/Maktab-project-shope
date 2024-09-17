@@ -4,7 +4,8 @@ import Home from '../pages/home/home';
 import Admin from '../pages/adminpages/admin';
 import Orders from '../pages/ordersPages/orders';
 import Product from '../pages/productPages/product'; 
-import AdmiLogin from '../pages/adminpages/admiLogin';
+import AdmiLogin from '../pages/adminpages/admiLogin'; 
+import SubcategoryProduct from '../pages/productPages/subcategoryProduct';
 
 export default function Index() {
     return (
@@ -18,7 +19,8 @@ export default function Index() {
                     <Route path='/Admin' element={<Admin />} />
                     <Route path='/Orders' element={<Orders />} />
                     <Route path='/Product' element={<Product />} />
-                    <Route path='/admin-login' element={<AdmiLogin />} />
+                    <Route path='/admin-login' element={<AdmiLogin />} /> 
+                    <Route path='/subcategoryProduct/:subcategoryId' element={<SubcategoryProduct />} />
 
                 </Routes>
 

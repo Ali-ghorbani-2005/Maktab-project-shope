@@ -6,7 +6,8 @@ import axios from "axios";
 
 // Fetch categories
 export const fetchCategories = async () => {
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDk5MGQ3NTIwMjhiZDM3ZjUwYzVjMiIsImlhdCI6MTcyNjQyNzQyMiwiZXhwIjoxNzI2NTM1NDIyfQ.zYSwsI9W5EXTHOGhA-qR-yRLrWLlnt5w8CYfXYPc7kU";
+  // const token = ""; 
+  const token = localStorage.getItem('token')
   try {
     const response = await axios.get("http://localhost:8000/api/categories", {
       headers: {
@@ -21,7 +22,8 @@ export const fetchCategories = async () => {
 };
 // Fetch subcategories based on category ID
 export const fetchSubcategories = async (categoryId) => {
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDk5MGQ3NTIwMjhiZDM3ZjUwYzVjMiIsImlhdCI6MTcyNjQyNzQyMiwiZXhwIjoxNzI2NTM1NDIyfQ.zYSwsI9W5EXTHOGhA-qR-yRLrWLlnt5w8CYfXYPc7kU";
+  // const token = ""; 
+  const token = localStorage.getItem('token')
   try {
     const response = await axios.get(`http://localhost:8000/api/subcategories?category=${categoryId}`, {
       headers: {
