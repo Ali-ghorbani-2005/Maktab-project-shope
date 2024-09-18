@@ -1,9 +1,10 @@
 
+const Admin = () => {
+    return (
+        <div>
+           
+        </div>
+    );
+};
 
-export default function Admin() {
-  return (
-    <div>
-      <p>admin</p>
-    </div>
-  )
-}
+export default Admin;

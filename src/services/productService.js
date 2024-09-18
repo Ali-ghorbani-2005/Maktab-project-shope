@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const fetchProductsBySubcategory = async (subcategoryId, page = 1) => {
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZDk5MGQ3NTIwMjhiZDM3ZjUwYzVjMiIsImlhdCI6MTcyNjU2MjQ2MSwiZXhwIjoxNzI2NjcwNDYxfQ.-0ISLMd33FtTQEv8OTLMlAwCqvs59_1xszhOrVOYsKs";
+  const token = localStorage.getItem('token')
   try {
     const response = await axios.get(`http://localhost:8000/api/products?subcategory=${subcategoryId}`, {
       headers: {

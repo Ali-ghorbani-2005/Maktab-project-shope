@@ -29,7 +29,8 @@ const SubcategoryProduct = () => {
             <div key={product._id} className="border p-4 rounded">
               <h2 className="text-lg font-bold">{product.name}</h2>
               <p className="text-sm">{product.description}</p>
-              <p className="text-green-500 font-semibold">${product.price}</p>
+              <p className="text-green-500 font-semibold">${product.price}</p> 
+              <img src={product.thumbnail} alt="" />
             </div>
           ))}
         </div>
