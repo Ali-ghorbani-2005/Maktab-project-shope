@@ -16,7 +16,7 @@ export default function AdminLogin() {
       localStorage.setItem('token', result.token);
 
       if (mode === 'admin') {
-        navigate('/Admin'); // هدایت به صفحه Admin
+        navigate('/admin-order'); // هدایت به صفحه Admin
       } else {
         navigate('/'); // هدایت به صفحه Home
       }
