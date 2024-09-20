@@ -3,8 +3,11 @@ import './admin.css'
 
 export default function AdminLayout() {
   return (
-    <>
-      
+    <>    
+    <div className='bg-slate-100'>
+      <div className='flex justify-center items-center '>
+            <p className='text-3xl font-bold text-blue-400 '>پنل مدیریت فروشگاه</p>
+          </div>
        <div className='flex gap-32 justify-center items-center mt-4 border ml-64 border-slate-400  w-[900px] h-16 rounded-xl'>  
 
        
@@ -40,12 +43,15 @@ export default function AdminLayout() {
 
           </div>  
 
-          </div>
+          </div> 
+
+          
 
       <main style={{ marginTop: '60px' }}>
        
         <Outlet />
-      </main>
+      </main> 
+      </div>
     </>
   );
 }
