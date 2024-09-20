@@ -4,7 +4,7 @@ import './admin.css'
 export default function AdminLayout() {
   return (
     <>    
-    <div className='bg-slate-100'>
+    <div className='bg-slate-200 h-[800px]'>
       <div className='flex justify-center items-center '>
             <p className='text-3xl font-bold text-blue-400 '>پنل مدیریت فروشگاه</p>
           </div>
@@ -47,7 +47,7 @@ export default function AdminLayout() {
 
           
 
-      <main style={{ marginTop: '60px' }}>
+      <main className='mt-5 ml-16'>
        
         <Outlet />
       </main> 
