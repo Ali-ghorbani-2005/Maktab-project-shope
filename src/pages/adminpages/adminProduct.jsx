@@ -46,9 +46,9 @@ export default function AdminProduct() {
         <tbody>
           {products.map((product) => (
             <tr key={product._id}>
-              <td className="text-center border-b border-gray-400 h-12"><button>حذف</button> / <button>ویرایش</button></td> 
-              <td className="text-center border-b border-gray-400 h-12">{product.category.name}/{product.subcategory.name}</td>
-              <td className="text-center border-b border-gray-400 h-12">{product.name}</td>
+              <td className="text-center border-b border-gray-400"><button>حذف</button> / <button>ویرایش</button></td> 
+              <td className="text-center border-b border-gray-400 ">{product.category.name}/{product.subcategory.name}</td>
+              <td className="text-center border-b border-gray-400 ">{product.name}</td>
             </tr>
           ))}
         </tbody>
@@ -59,7 +59,7 @@ export default function AdminProduct() {
           <button
             key={index + 1}
             onClick={() => setCurrentPage(index + 1)}
-            className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
+            className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
           >
             {index + 1}
           </button>

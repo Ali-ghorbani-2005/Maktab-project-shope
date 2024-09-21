@@ -49,8 +49,8 @@ export default function AdminOrder() {
           {orders && orders.length > 0 ? (
             orders.map((order) => (
               <tr key={order._id}>
-                  <td className=" text-center border-b border-gray-400 h-12"><button className="border-2 border-neutral-400 w-36 h-8 rounded-xl bg-red-500 text-white hover:text-slate-500  ">برسی سفارش</button></td> 
-                <td className=" text-center border-b border-gray-400 h-10">{order.totalPrice}</td> 
+                  <td className=" text-center border-b border-gray-400"><button className="border-2 border-neutral-400 w-36 h-8 rounded-xl bg-red-500 text-white hover:text-slate-500  ">برسی سفارش</button></td> 
+                <td className=" text-center border-b border-gray-400 ">{order.totalPrice}</td> 
                 <td className=" text-right text-xl border-b border-gray-400">
                   {order.user?.username || "بدون نام کاربری"}
                 </td> 
@@ -70,7 +70,7 @@ export default function AdminOrder() {
           <button
             key={index + 1}
             onClick={() => setCurrentPage(index + 1)}
-            className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400 `}
+            className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400 `}
           >
             {index + 1}
           </button>

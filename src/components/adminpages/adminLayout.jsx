@@ -5,13 +5,11 @@ export default function AdminLayout() {
   return (
     <>    
     <div className='bg-slate-200 h-[800px]'>
-      <div className='flex justify-center items-center '>
-            <p className='text-3xl font-bold text-blue-400 '>پنل مدیریت فروشگاه</p>
-          </div>
-       <div className='flex gap-32 justify-center items-center mt-4 border ml-64 border-slate-400  w-[900px] h-16 rounded-xl'>  
+      
+       <div className='flex gap-32 justify-center items-center  bg-slate-300 h-14'>  
 
        
-
+        
 
           <div>
           <NavLink to="/admin-order"  >
@@ -29,19 +27,25 @@ export default function AdminLayout() {
           </div>  
 
 
-          <div>
+          <div >
           <NavLink to="/admin-product"  >
            <button className='text-slate-600 '>کالا ها </button>
           </NavLink>    
 
           </div>   
 
-          <div>
+          <div  >
           <NavLink to="/Admin"  >
            <button className='text-slate-600 '> پروفایل </button>
           </NavLink>    
 
-          </div>  
+          </div>    
+
+          
+
+          <div className='flex justify-end '>
+            <p className=' font-bold text-blue-400 '>پنل مدیریت فروشگاه</p>
+          </div> 
 
           </div> 
 

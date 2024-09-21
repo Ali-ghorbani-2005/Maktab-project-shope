@@ -48,9 +48,9 @@ export default function AdminInventory() {
         <tbody>
           {products.map((product) => (
             <tr key={product._id}>
-              <td className="text-center border-b border-gray-400 h-12">{product.quantity}</td> 
-              <td className="text-center border-b border-gray-400 h-12 ">{product.price}</td>
-              <td className="text-right border-b border-gray-400 h-12 text-xl">{product.name}</td>
+              <td className="text-center border-b border-gray-400 ">{product.quantity}</td> 
+              <td className="text-center border-b border-gray-400  ">{product.price}</td>
+              <td className="text-right border-b border-gray-400 text-xl">{product.name}</td>
             </tr>
           ))}
         </tbody>
@@ -61,7 +61,7 @@ export default function AdminInventory() {
           <button
             key={index + 1}
             onClick={() => setCurrentPage(index + 1)}
-            className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? "bg-blue-500  rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
+            className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500  rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
           >
             {index + 1}
           </button>
