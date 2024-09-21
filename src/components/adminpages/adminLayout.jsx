@@ -44,7 +44,7 @@ export default function AdminLayout() {
           
 
           <div className='flex justify-end '>
-            <p className=' font-bold text-blue-400 '>پنل مدیریت فروشگاه</p>
+            <p className=' font-bold text-blue-400 text-xl '>پنل مدیریت فروشگاه</p>
           </div> 
 
           </div> 
