@@ -1,12 +1,12 @@
- import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchCategories, fetchSubcategories } from "../../../services/CategoriesServices";
 import { useNavigate } from "react-router-dom"; 
 
 const CategoryButtons = () => {
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [subcategories, setSubcategories] = useState([]);
-  const navigate = useNavigate(); 
+  const [subcategories, setSubcategories] = useState({});
+  const [isHovered, setIsHovered] = useState(null); // To track hovered category
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCategories = async () => {
@@ -21,63 +21,57 @@ const CategoryButtons = () => {
     getCategories();
   }, []);
 
-  const handleCategoryClick = async (categoryId) => {
-    setSelectedCategory(categoryId);
-
+  const handleCategoryHover = async (categoryId) => {
     try {
       const fetchedSubcategories = await fetchSubcategories(categoryId);
-      if (fetchedSubcategories && fetchedSubcategories.data && fetchedSubcategories.data.subcategories) {
-        setSubcategories(fetchedSubcategories.data.subcategories);
-      } else {
-        setSubcategories([]);
-        console.log("No subcategories found for category:", categoryId);
-      }
+      setSubcategories((prevState) => ({
+        ...prevState,
+        [categoryId]: fetchedSubcategories.data.subcategories || [],
+      }));
     } catch (error) {
       console.error("Error fetching subcategories:", error);
     }
+    setIsHovered(categoryId); // Set hovered category
   };
 
-  // Handle clicking on a subcategory to navigate to subcategoryProduct page
   const handleSubcategoryClick = (subcategoryId) => {
-    navigate(`/subcategoryProduct/${subcategoryId}`); // Navigate to subcategoryProduct page with subcategoryId
+    navigate(`/subcategoryProduct/${subcategoryId}`);
   };
 
   return (
-    <div>
-      <div className="flex space-x-2 mt-5">
-        {categories.map((category) => (
-          <button
-            key={category._id}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={() => handleCategoryClick(category._id)}
-          >
+    <div className="flex flex-wrap justify-center mt-5">
+      {categories.map((category) => (
+        <div 
+          key={category._id} 
+          className="relative mx-4" 
+          onMouseEnter={() => handleCategoryHover(category._id)}
+          onMouseLeave={() => setIsHovered(null)}
+        >
+          <button className="bg-blue-500 text-white px-4 py-2 rounded">
             {category.name}
           </button>
-        ))}
-      </div>
-
-      {selectedCategory && (
-        <div className="mt-4">
-          {subcategories.length > 0 ? (
-            <div className="flex flex-wrap space-x-2">
-              {subcategories.map((subcategory) => (
-                <button
-                  key={subcategory._id}
-                  className="bg-green-500 text-white px-3 py-1 rounded"
-                  onClick={() => handleSubcategoryClick(subcategory._id)} // Call handleSubcategoryClick on click
-                >
-                  {subcategory.name}
-                </button>
-              ))}
+          
+          {isHovered === category._id && (
+            <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-10">
+              {subcategories[category._id]?.length > 0 ? (
+                subcategories[category._id].map((subcategory) => (
+                  <button 
+                    key={subcategory._id}
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                    onClick={() => handleSubcategoryClick(subcategory._id)}
+                  >
+                    {subcategory.name}
+                  </button>
+                ))
+              ) : (
+                <p className="px-4 py-2">No subcategories</p>
+              )}
             </div>
-          ) : (
-            <p>No subcategories available</p>
           )}
         </div>
-      )}
+      ))}
     </div>
   );
 };
 
 export default CategoryButtons;
-
