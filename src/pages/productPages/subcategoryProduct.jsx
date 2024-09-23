@@ -67,9 +67,10 @@ const SubcategoryProduct = () => {
       }
     };
 
-    getProducts();
+    getProducts(); 
+    
   }, [subcategoryId]);
-
+  console.log(products);
   return (
     <div className="mt-4">
       {products.length > 0 ? (
@@ -81,7 +82,7 @@ const SubcategoryProduct = () => {
               <p className="text-green-500 font-semibold">${product.price}</p>
              
               <img
-                src={`http://localhost:8000/images/${product.images[0]}`}
+                src={`http://${product.images[0]}`}
                 alt={product.name}
                 className="w-full h-auto mt-2"
               />  
