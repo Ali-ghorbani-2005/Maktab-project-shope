@@ -10,34 +10,37 @@ import AdminProduct from '../pages/adminpages/adminProduct';
 import AdminLayout from '../components/adminpages/adminLayout'; 
 import AdminInventory from '../pages/adminpages/adminInventory'; 
 import AdminOrder from '../pages/adminpages/adminOrder'; 
-import Loding from '../pages/lodingPages/loding';
-
-
-
+import Loding from '../pages/lodingPages/loding'; 
+import HomeLayout from '../components/component-home/HomeLayout/homeLayout';
 
 export default function Index() {
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                  
                     <Route path='/' element={<Navigate to="/Loding" />} />
                     <Route path='/Loding' element={<Loding />} />
-                    <Route path='/home' element={<Home />} />
+                    
 
+                    {/* Admin Routes */}
                     <Route element={<AdminLayout />}>
                         <Route path='/Admin' element={<Admin />} />  
                         <Route path='/admin-product' element={<AdminProduct />} /> 
                         <Route path='/admin-inventory' element={<AdminInventory />} />  
-                        <Route path='/admin-order' element={<AdminOrder />} /> 
+                        <Route path='/admin-order' element={<AdminOrder />} />  
+                    </Route> 
+
+                    {/* Home Routes */}
+                    <Route element={<HomeLayout />}>  
+                    <Route path='/home' element={<Home />} /> 
+                    <Route path='/subcategoryProduct/:subcategoryId' element={<SubcategoryProduct />} /> 
+                        <Route path='/Orders' element={<Orders />} />
+                        <Route path='/Product' element={<Product />} />
+                        
                     </Route>
 
-                    <Route path='/Orders' element={<Orders />} />
-                    <Route path='/Product' element={<Product />} />
+                    {/* Admin Login */}
                     <Route path='/admin-login' element={<AdmiLogin />} />
-                    <Route path='/subcategoryProduct/:subcategoryId' element={<SubcategoryProduct />} />  
-                   
-
                 </Routes>
             </BrowserRouter>
         </>
