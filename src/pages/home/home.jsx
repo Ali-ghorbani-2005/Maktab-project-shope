@@ -1,7 +1,4 @@
-
-
 import HeaderHome from "../../components/component-home/header/headerHome";
-
 
 export default function Home() {
   return (
