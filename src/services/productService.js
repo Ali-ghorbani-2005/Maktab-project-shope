@@ -23,4 +23,34 @@ export const fetchProductsBySubcategory = async (subcategoryId, page = 1) => {
     console.error("Error fetching products:", error);
     throw error;
   }
+};  
+
+
+
+
+
+export const fetchProductsByIds = async (productIds) => { 
+  const token = localStorage.getItem('token');
+  try {
+      const promises = productIds.map(async (id) => {
+          const response = await axios.get(`http://localhost:8000/api/products/${id}`, {
+              headers: {
+                  Authorization: `Bearer ${token}`,
+              },
+          });
+          return response.data; // returning the full data structure
+      });
+
+      const results = await Promise.all(promises);
+      return results;
+  } catch (error) {
+      console.error('Error fetching products:', error);
+      throw error;
+  }
 };
+
+
+
+
+
+
