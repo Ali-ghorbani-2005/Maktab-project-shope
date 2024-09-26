@@ -1,60 +1,10 @@
-
-
-// import React, { useState, useEffect } from "react";
-// import { fetchProductsBySubcategory } from "../../services/productService"; // Fetch products by subcategory
-// import { useParams } from "react-router-dom"; // Get subcategoryId from the URL
-
-// const SubcategoryProduct = () => {
-//   const { subcategoryId } = useParams(); // Get subcategoryId from the route params
-//   const [products, setProducts] = useState([]);
-
-//   useEffect(() => {
-//     const getProducts = async () => {
-//       try {
-//         const fetchedProducts = await fetchProductsBySubcategory(subcategoryId);
-//         setProducts(fetchedProducts);
-//       } catch (error) {
-//         console.error("Error fetching products:", error);
-//       }
-//     };
-
-//     getProducts();
-//   }, [subcategoryId]);
-
-//   return (
-//     <div className="mt-4">
-//       {products.length > 0 ? (
-//         <div className="grid grid-cols-3 gap-4">
-//           {products.map((product) => (
-//             <div key={product._id} className="border p-4 rounded">
-//               <h2 className="text-lg font-bold">{product.name}</h2>
-//               <p className="text-sm">{product.description}</p>
-//               <p className="text-green-500 font-semibold">${product.price}</p> 
-//               <img src={product.thumbnail} alt="" />
-//             </div>
-//           ))}
-//         </div>
-//       ) : (
-//         <p>No products available for this subcategory</p>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default SubcategoryProduct; 
-
-
-
-
-
-
-
 import React, { useState, useEffect } from "react";
-import { fetchProductsBySubcategory } from "../../services/productService"; // Fetch products by subcategory
-import { useParams } from "react-router-dom"; // Get subcategoryId from the URL
+import { fetchProductsBySubcategory } from "../../services/productService";
+import { useParams } from "react-router-dom";  
+import { Link } from 'react-router-dom';
 
 const SubcategoryProduct = () => {
-  const { subcategoryId } = useParams(); // Get subcategoryId from the route params
+  const { subcategoryId } = useParams(); 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -67,36 +17,37 @@ const SubcategoryProduct = () => {
       }
     };
 
-    getProducts(); 
-    
+    getProducts();
+
   }, [subcategoryId]);
   console.log(products);
   return (
     <div className="mt-4">
       {products.length > 0 ? (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-4 mt-20 ">
           {products.map((product) => (
-            <div key={product._id} className="border p-4 rounded">
-              <h2 className="text-lg font-bold">{product.name}</h2>
-              <p className="text-sm">{product.description}</p>
-              <p className="text-green-500 font-semibold">${product.price}</p>
-             
-              <img
-                src={`http://${product.images[0]}`}
-                alt={product.name}
-                className="w-full h-auto mt-2"
-              />  
-             
-            </div> 
-            
-          ))} 
-        
+            <div key={product._id} className="flex flex-wrap  p-4 ml-10"> 
+            <Link to={`/product/${product._id}`}>
+              <div className=' border h-96 w-72 border-zinc-400 shadow-sm rounded-lg shadow-black ml-6 hover:shadow-lg hover:shadow-black '>
+                <img src={`http://${product.images[0]}`} className='w-52' alt="" />
+                <p className='text-2xl mt-3 font-bold'>{product.brand}</p>
+                <p className='mt-2 text-slate-600 text-lg'>مدل{product.name}</p>
+                <p className='flex mt-5 text-xl'><p>تومان</p>{product.price}</p>
+
+              </div> 
+              </Link>
+
+            </div>
+
+          ))}
+
         </div>
       ) : (
         <p>No products available for this subcategory</p>
       )}
     </div>
   );
+
 };
 
 export default SubcategoryProduct;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchProductsByIds } from '../../services/productService'; 
-
+import { Link } from 'react-router-dom';
 
 export default function PopularProducts() { 
 
@@ -47,7 +47,7 @@ export default function PopularProducts() {
                     products.map(product => (
                         product && product ? ( 
                             <div key={product._id} className='flex flex-wrap gap-4 p-4 ml-10'>   
-                         
+                         <Link to={`/product/${product._id}`}>
                             <div className=' border-2 h-96 border-zinc-400 shadow-md shadow-black ml-6 hover:shadow-lg hover:shadow-black '>
                                 
                             
@@ -55,8 +55,9 @@ export default function PopularProducts() {
                                <p className='text-2xl mt-3 font-bold'>{product.brand}</p>
                                 <p className='mt-2 text-slate-600 text-lg'>مدل{product.name}</p>
                                 <p className='flex mt-5 text-xl'><p>تومان</p>{product.price}</p>  
-                                
-                                </div> 
+                               
+                                </div>  
+                                </Link>
                               
                             </div>
                         ) : (
