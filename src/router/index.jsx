@@ -35,7 +35,7 @@ export default function Index() {
                     <Route path='/home' element={<Home />} /> 
                     <Route path='/subcategoryProduct/:subcategoryId' element={<SubcategoryProduct />} /> 
                         <Route path='/Orders' element={<Orders />} />
-                        <Route path='/Product' element={<Product />} />
+                        <Route path='/Product/:id' element={<Product />} />
                         
                     </Route>
 
