@@ -42,13 +42,29 @@ export default function AdminOrder() {
       setFilters({
         allOrders: true,
         delivered: false,
-        pending: false,
+        pending: false ,
       });
     } else {
       setFilters((prevFilters) => ({
         ...prevFilters,
         [name]: checked,
-        allOrders: false,
+        allOrders: false, 
+        
+      }));
+    } 
+
+    if (name === "delivered" && checked) {
+      setFilters({
+        allOrders: false ,
+        delivered: true,
+        pending: false ,
+      });
+    } else {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        [name]: checked,
+        delivered: false, 
+        
       }));
     }
   };
@@ -80,22 +96,22 @@ export default function AdminOrder() {
       <div className="flex space-x-4 mb-4">
         <label className="flex items-center space-x-2">
           <input
-            type="checkbox"
+            type="radio"
             name="allOrders"
             checked={filters.allOrders}
             onChange={handleFilterChange}
-            className="form-checkbox h-5 w-5 text-blue-600"
+            className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
           />
           <span>همه سفارش‌ها</span>
         </label>
 
         <label className="flex items-center space-x-2">
           <input
-            type="checkbox"
+            type="radio"
             name="delivered"
             checked={filters.delivered}
             onChange={handleFilterChange}
-            className="form-checkbox h-5 w-5 text-green-600 "
+            className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 "
           />
           <span>سفارش‌های تحویل داده شده</span>
         </label>
@@ -104,11 +120,11 @@ export default function AdminOrder() {
 
         <label className="flex items-center space-x-2">
           <input
-            type="checkbox"
+            type="radio"
             name="pending"
             checked={filters.pending}
             onChange={handleFilterChange}
-            className="h-5 w-5"
+            className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
           />
           <span>سفارش‌های در انتظار تحویل</span>
         </label> 
