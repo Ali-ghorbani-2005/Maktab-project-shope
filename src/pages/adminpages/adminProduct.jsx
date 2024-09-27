@@ -53,7 +53,7 @@ export default function AdminProduct() {
           <tbody>
             {products.map((product) => (
               <tr key={product._id}>
-                <td className="text-center border-b border-gray-400"><button className="bg-red-600 w-10 rounded-lg text-white -ml-5 hover:bg-red-700">حذف</button> / <button className="bg-blue-500 w-14 rounded-lg text-white hover:bg-blue-600">ویرایش</button></td>
+                <td className="text-center border-b border-gray-400"><button className=" w-7 rounded-lg text-white -ml-5 hover:bg-red-500"><img src="imgs/site-icons/remove.png"  alt="" className="w-7" /></button> / <button className=" w-7 rounded-lg text-white hover:bg-blue-300"><img src="imgs/site-icons/edit.png" alt="" className="w-7" /></button></td>
                 <td className="text-center border-b border-gray-400 ">{product.category.name}/{product.subcategory.name}</td>
                 <td className="text-center border-b border-gray-400 ">{product.name}</td>
               </tr>

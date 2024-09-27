@@ -22,7 +22,7 @@ export default function HeaderHome() {
 
      
 
-<div className="relative  h-64 overflow-hidden">
+<div className="relative mt-40  h-64 overflow-hidden">
       {images.map((image, index) => (
         <div
           key={index}
