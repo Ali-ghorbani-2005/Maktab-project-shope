@@ -197,9 +197,9 @@ export default function AdminOrder() {
             {selectedOrder ? (
               <div className="text-right  ">
                 <div className="border-2 border-amber-400 rounded-xl h-36">
-                  <p className="mt-2 mr-2 text-[18px]" >مجموع مبلغ:   {selectedOrder.totalPrice}</p>
+                  {/* <p className="mt-2 mr-2 text-[18px]" >مجموع مبلغ:   {selectedOrder.totalPrice}</p> */}
                   <p className="mt-2 mr-2 text-[18px]">نام کاربری: {selectedOrder.user.username}</p>
-                  <p className="mt-2 mr-2 text-[18px]">تاریخ تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
+                  <p className="mt-2 mr-2 text-[18px]">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
                   <p className="flex justify-end mt-2 mr-2 text-[18px]"> {selectedOrder.deliveryStatus ? <div><img src="imgs/site-icons/Ampeross.png" alt="" className="w-6" /></div> : <div><img src="imgs/site-icons/Custom.png" alt="" className="w-6" /></div>}:وضعیت تحویل</p>
 
                 </div>
