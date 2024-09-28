@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchProductsByIds } from '../../services/productService'; 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
+import './product.css'
  
 const ProductByIds = () => {
     const [products, setProducts] = useState([]);
@@ -30,10 +31,12 @@ const ProductByIds = () => {
             <div className='bg-slate-100 border-[5px] border-red-600 w-[1300px] rounded-2xl h-[500px]'>  
                 <div className='flex justify-center items-center'>
                 <div className='bg-red-500 mt-3 h-14 w-[1260px] flex justify-center items-center rounded-xl '> 
-                    
+                       
+                       <div className='pulse-effect'>
                       <div className='border-2  w-24 h-8 border-white flex justify-center items-center rounded-[3px]'>
                         <p className='flex text-2xl text-white mt-0.5'> <p className='text-yellow-300 text-3xl'>%</p>OFF</p>
-                      </div> 
+                      </div>  
+                      </div>
                      
                 </div>  
                 

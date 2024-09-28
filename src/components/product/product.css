@@ -1,0 +1,22 @@
+.pulse-effect {
+    width: 100px;
+    height: 100px;
+    /* background-color: #ff6347;  */
+    border-radius: 20px; /* گوشه‌های گرد */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5); /* کمی بزرگتر در وسط انیمیشن */
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
