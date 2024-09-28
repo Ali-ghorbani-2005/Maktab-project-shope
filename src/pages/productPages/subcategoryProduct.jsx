@@ -22,11 +22,11 @@ const SubcategoryProduct = () => {
   }, [subcategoryId]);
   console.log(products);
   return (
-    <div className="mt-4">
+    <div className="mt-44 mr-14">
       {products.length > 0 ? (
         <div className="grid grid-cols-4 mt-20 ">
           {products.map((product) => (
-            <div key={product._id} className="flex flex-wrap  p-4 ml-10"> 
+            <div key={product._id} className="flex flex-wrap  p-4 ml-5"> 
             <Link to={`/product/${product._id}`}>
               <div className=' border h-96 w-72 border-zinc-400 shadow-sm rounded-lg shadow-black ml-6 hover:shadow-lg hover:shadow-black '>
                 <img src={`http://${product.images[0]}`} className='w-52' alt="" />

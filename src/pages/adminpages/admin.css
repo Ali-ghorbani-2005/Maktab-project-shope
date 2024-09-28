@@ -1,0 +1,33 @@
+ .colorful-border {
+    width: 510px;
+    height: 436px;
+      /* padding: 20px;   */
+    border-radius: 10px;
+    border: 5px solid;
+    border-image-slice: 1;
+    animation: borderColorCycle 4s linear infinite; 
+    border-radius: 20px;
+  } 
+  
+  
+  @keyframes borderColorCycle {
+    0% {
+      border-image-source: linear-gradient(90deg, red, yellow);
+    }
+    25% {
+      border-image-source: linear-gradient(90deg, yellow, green);
+    }
+    50% {
+      border-image-source: linear-gradient(90deg, green, blue);
+    }
+    75% {
+      border-image-source: linear-gradient(90deg, blue, purple);
+    }
+    100% {
+      border-image-source: linear-gradient(90deg, purple, red);
+    }
+  } 
+
+
+
+ 

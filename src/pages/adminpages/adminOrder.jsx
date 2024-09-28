@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchOrders, fetchOrderDetails } from "../../services/adminProduct"; // تابع دریافت سفارش‌ها و جزئیات سفارش
 import Lod from "../../components/loding/lod"; // کامپوننت بارگذاری
-
+import './admin.css'
 
 export default function AdminOrder() {
   const [orders, setOrders] = useState([]); // ذخیره سفارش‌ها
@@ -190,15 +190,16 @@ export default function AdminOrder() {
 
       {/* مودال نمایش جزئیات سفارش */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"> 
+        <div className="colorful-border">
           <div className="bg-white rounded-lg p-6 w-[500px]">
             <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
             {selectedOrder ? (
               <div className="text-right  ">
                 <div className="border-2 border-amber-400 rounded-xl h-36">
-                  <p className="mt-2 mr-2 text-[18px]" >مجموع مبلغ:   {selectedOrder.totalPrice}</p>
+                  {/* <p className="mt-2 mr-2 text-[18px]" >مجموع مبلغ:   {selectedOrder.totalPrice}</p> */}
                   <p className="mt-2 mr-2 text-[18px]">نام کاربری: {selectedOrder.user.username}</p>
-                  <p className="mt-2 mr-2 text-[18px]">تاریخ تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
+                  <p className="mt-2 mr-2 text-[18px]">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
                   <p className="flex justify-end mt-2 mr-2 text-[18px]"> {selectedOrder.deliveryStatus ? <div><img src="imgs/site-icons/Ampeross.png" alt="" className="w-6" /></div> : <div><img src="imgs/site-icons/Custom.png" alt="" className="w-6" /></div>}:وضعیت تحویل</p>
 
                 </div>
@@ -252,6 +253,7 @@ export default function AdminOrder() {
             >
               بستن
             </button>
+          </div> 
           </div>
         </div>
       )}
