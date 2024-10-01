@@ -9,7 +9,6 @@ export default function AdminInventory() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(5);
   const [editProductId, setEditProductId] = useState(null); // شناسه محصول در حال ویرایش
-  const [editField, setEditField] = useState(null); // فیلدی که در حال ویرایش است
   const [editedValues, setEditedValues] = useState({ quantity: '', price: '' }); // مقادیر ویرایش‌شده
 
   useEffect(() => {
@@ -29,25 +28,24 @@ export default function AdminInventory() {
     getProducts();
   }, [currentPage]);
 
-  // شروع ویرایش موجودی یا قیمت
-  const handleEditClick = (productId, field) => {
+  // شروع ویرایش موجودی و قیمت همزمان
+  const handleEditClick = (productId) => {
     setEditProductId(productId); // ذخیره شناسه محصول در حال ویرایش
-    setEditField(field); // مشخص کردن اینکه کدام فیلد در حال ویرایش است (quantity یا price)
     const product = products.find((product) => product._id === productId);
     setEditedValues({ quantity: product.quantity, price: product.price }); // مقادیر اولیه برای ویرایش
   };
 
   // ذخیره مقادیر ورودی جدید
   const handleInputChange = (e) => {
-    setEditedValues({ ...editedValues, [editField]: e.target.value });
+    setEditedValues({ ...editedValues, [e.target.name]: e.target.value });
   };
 
   // ذخیره تغییرات
   const handleSave = async () => {
     const updatedProduct = {
       ...products.find((product) => product._id === editProductId),
-      [editField]: editedValues[editField],
-    };
+      ...editedValues,
+    }; 
     try {
       await updateProduct(editProductId, updatedProduct);
       setProducts((prevProducts) =>
@@ -56,7 +54,6 @@ export default function AdminInventory() {
         )
       );
       setEditProductId(null);
-      setEditField(null);
     } catch (error) {
       console.error("خطا در ذخیره تغییرات:", error);
     }
@@ -83,29 +80,31 @@ export default function AdminInventory() {
             {products.map((product) => (
               <tr key={product._id}>
                 <td className="text-center border-b border-gray-400 ">
-                  {editProductId === product._id && editField === "quantity" ? (
+                  {editProductId === product._id ? (
                     <input
                       type="text"
+                      name="quantity"
                       value={editedValues.quantity}
                       onChange={handleInputChange}
                       className="border border-gray-300 rounded p-1"
                     />
                   ) : (
-                    <span onClick={() => handleEditClick(product._id, "quantity")}>
+                    <span onClick={() => handleEditClick(product._id)}>
                       {product.quantity}
                     </span>
                   )}
                 </td>
                 <td className="text-center border-b border-gray-400 ">
-                  {editProductId === product._id && editField === "price" ? (
+                  {editProductId === product._id ? (
                     <input
                       type="text"
-                      value={editedValues.price}
+                      name="price"
+                      value={editedValues.price} 
                       onChange={handleInputChange}
                       className="border border-gray-300 rounded p-1"
                     />
                   ) : (
-                    <span onClick={() => handleEditClick(product._id, "price")}>
+                    <span onClick={() => handleEditClick(product._id)}>
                       {product.price}
                     </span>
                   )}
@@ -113,8 +112,6 @@ export default function AdminInventory() {
                 <td className="text-right border-b border-gray-400 text-xl">{product.name}</td>
               </tr>
             ))}
-
-            
           </tbody>
         </table> 
         <div className="flex mt-4 justify-center items-center">
@@ -127,10 +124,10 @@ export default function AdminInventory() {
                   {index + 1}
                 </button>
               ))}
-            </div>
+        </div>
       </div>
 
-      {/* دکمه ذخیره که بیرون از جدول نمایش داده می‌شود */}
+     
       {editProductId && (
         <div className="mt-4">
           <button
@@ -144,3 +141,13 @@ export default function AdminInventory() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
