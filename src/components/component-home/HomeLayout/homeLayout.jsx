@@ -4,6 +4,7 @@ import SearchBox from '../header/searchBox';
 import Logo from '../header/logo';
 import AdminCartButtons from '../header/adminCartButtons';
 import CategoryButtons from '../categoriesnav/categoriesButtons';
+import HomeFooter from '../footer/homeFooter';
 
 export default function HomeLayout() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,13 +33,21 @@ export default function HomeLayout() {
           <div className={`${isScrolled ? 'hidden' : 'block'}`}>
             
             <CategoryButtons />
-          </div>
+          </div> 
         </header> 
       </div>
       <main>
         {/* Outlet برای رندر کردن محتوای صفحات داخلی استفاده می‌شود */}
         <Outlet />
-      </main>
+      </main> 
+
+      <div className='mt-10'>
+        <HomeFooter/>
+      </div> 
+
+      <div className="mt-10">
+
+</div>
     </>
   );
 }
