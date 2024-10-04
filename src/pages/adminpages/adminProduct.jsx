@@ -93,7 +93,8 @@ export default function AdminProduct() {
         <div className="flex border-b-2 border-gray-400">
           <p className="text-3xl ml-2 font-bold">Products</p>
           <div className="ml-[700px] mt-1">
-            <button className=" bg-blue-400 w-10 h-7 rounded-lg hover:bg-blue-500">
+            <button className=" bg-blue-400 w-10 h-7 rounded-lg hover:bg-blue-500"> 
+              
               <img src="imgs/site-icons/addProduct.png" className="w-7 ml-1" alt="" />
             </button>
           </div> 
@@ -218,7 +219,21 @@ export default function AdminProduct() {
     </div>
   </div>
 )}
-      </div>
+      </div> 
+      <div className="flex mt-4 justify-center items-center">
+              {[...Array(totalPages)].map((_, index) => (
+                <button
+                  key={index + 1}
+                  onClick={() => setCurrentPage(index + 1)}
+                  className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
+                >
+                  {index + 1}
+                </button>
+              ))}
+        </div>
     </div>
   );
-}
+} 
+
+
+

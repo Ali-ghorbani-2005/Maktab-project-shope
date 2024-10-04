@@ -1,5 +1,4 @@
 import AdvertisingProduct from "../../components/component-home/Advertising poster/AdvertisingPhone";
-import HomeFooter from "../../components/component-home/footer/homeFooter";
 import HeaderHome from "../../components/component-home/header/headerHome";
 import PopularProducts from "../../components/product/popularProducts";
 import ProductByIds from "../../components/product/productsOnSale";
@@ -27,11 +26,9 @@ export default function Home() {
         <PopularProducts/>
       </div> 
 
-      {/* <div className="mt-20">
-        <HomeFooter />
-      </div> */}
+      
        
-     
+       
       
 
     </div>
