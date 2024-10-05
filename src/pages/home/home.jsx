@@ -2,6 +2,7 @@ import AdvertisingProduct from "../../components/component-home/Advertising post
 import HeaderHome from "../../components/component-home/header/headerHome";
 import PopularProducts from "../../components/product/popularProducts";
 import ProductByIds from "../../components/product/productsOnSale";
+import LaptopsPreview from "../productPages/laptopsPreview";
 
 export default function Home() {
   return (
@@ -27,7 +28,9 @@ export default function Home() {
       </div> 
 
       
-       
+       <div>
+       <LaptopsPreview/>
+       </div>
        
       
 

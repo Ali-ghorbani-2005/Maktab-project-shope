@@ -12,6 +12,7 @@ import AdminInventory from '../pages/adminpages/adminInventory';
 import AdminOrder from '../pages/adminpages/adminOrder'; 
 import Loding from '../pages/lodingPages/loding'; 
 import HomeLayout from '../components/component-home/HomeLayout/homeLayout';
+import AllLaptops from '../pages/productPages/allLaptops';
 
 export default function Index() {
     return (
@@ -35,7 +36,8 @@ export default function Index() {
                     <Route path='/home' element={<Home />} /> 
                     <Route path='/subcategoryProduct/:subcategoryId' element={<SubcategoryProduct />} /> 
                         <Route path='/Orders' element={<Orders />} />
-                        <Route path='/Product/:id' element={<Product />} />
+                        <Route path='/Product/:id' element={<Product />} /> 
+                        <Route path='/all-laptops' element={<AllLaptops />} />
                         
                     </Route>
 
