@@ -78,10 +78,83 @@ export const fetchProductById = async (productId) => {
     console.error('Error fetching product data:', error);
     throw new Error('Failed to fetch product data');
   }
+}; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const addProduct = async (productData) => {
+  const formData = new FormData();
+  formData.append('category', productData.category);
+  formData.append('subcategory', productData.subcategory);
+  formData.append('name', productData.name);
+  formData.append('price', productData.price);
+  formData.append('quantity', productData.quantity);
+  formData.append('brand', productData.brand);
+  formData.append('discount', productData.discount);
+  formData.append('description', productData.description);
+  formData.append('images', productData.images); // ارسال فایل تصویر
+
+  const token = localStorage.getItem('token');
+
+  try {
+    const response = await axios.post('http://localhost:8000/api/products', formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error adding product:', error);
+    throw error;
+  }
+}; 
+
+
+
+
+
+export const createFormData = (values) => {
+  const formData = new FormData();
+  formData.append('categoryId', values.categoryId);
+  formData.append('subcategoryId', values.subcategoryId);
+  formData.append('name', values.name);
+  formData.append('price', values.price);
+  formData.append('quantity', values.quantity);
+  formData.append('brand', values.brand);
+  formData.append('discount', values.discount);
+  formData.append('description', values.description);
+  formData.append('thumbnail', values.thumbnail);
+
+  values.images.forEach((image, index) => {
+    formData.append(`images[${index}], image`);
+  });
+
+  return formData;
 };
 
-
-
+export const submitProductData = async (formData) => { 
+  const token = localStorage.getItem('token');
+  try {
+    const response = await axios.post('http://localhost:8000/api/products', formData, {
+      headers: {
+                 Authorization: `Bearer ${token}`,
+               },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to submit product data');
+  }
+};
 
 
 
