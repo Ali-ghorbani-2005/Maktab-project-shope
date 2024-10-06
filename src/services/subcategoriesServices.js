@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchLaptops = async (categorySlug = 'laptop') => {
+export const fetchLaptops = async (categorySlug = '66dc7710225ac943fb1693f3') => {
   const token = localStorage.getItem('token');
   try {
     const response = await axios.get(`http://localhost:8000/api/products?category=${categorySlug}`, {
@@ -15,7 +15,7 @@ export const fetchLaptops = async (categorySlug = 'laptop') => {
   }
 };
 
-export const fetchAllLaptops = async (categorySlug = 'laptop') => {
+export const fetchAllLaptops = async (categorySlug = '66dc7710225ac943fb1693f3') => {
   const token = localStorage.getItem('token');
   try {
     const response = await axios.get(`http://localhost:8000/api/products?category=${categorySlug}`, {

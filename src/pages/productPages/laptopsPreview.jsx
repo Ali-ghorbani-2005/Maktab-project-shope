@@ -9,7 +9,7 @@ const LaptopsPreview = () => {
   useEffect(() => {
     const loadLaptops = async () => {
       try {
-        const data = await fetchLaptops('laptop');  // دریافت ۴ لپ‌تاپ بر اساس slugname
+        const data = await fetchLaptops('66dc7710225ac943fb1693f3');  // دریافت ۴ لپ‌تاپ بر اساس slugname
         setLaptops(data);
       } catch (error) {
         console.error("Error loading laptops:", error);
