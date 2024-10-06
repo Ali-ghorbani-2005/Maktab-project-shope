@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function PopularProducts() { 
 
     const [products, setProducts] = useState([]);
-    const productIds = ['66e19e85ff9ccc40ffa0951a', '66e73e59f1027ded62f5a08a', '66ec3543236b3b7bc84b5ccb' , '66e94995778f8357565b66a3'];
+    const productIds = ['', '66e73e59f1027ded62f5a08a', '66ec3543236b3b7bc84b5ccb' , '66e94995778f8357565b66a3'];
 
     useEffect(() => {
         const loadProducts = async () => {

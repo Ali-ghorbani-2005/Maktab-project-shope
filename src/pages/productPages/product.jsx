@@ -49,61 +49,125 @@ const Product = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 mt-36">
+    <div className="  mt-48">
       {/* اطلاعات محصول */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 "> 
+        
+          
+      <div className='mt-5 w-[400px] h-[410px] rounded-xl shadow-md shadow-gray-700'>
+                
+                <div className='flex justify-center items-center '>
+            <div className=' bg-white w-[350px] mt-5 rounded-lg shadow-sm shadow-gray-700  h-28 '> 
+              <div>
+              <p className='flex justify-end text-sm font-semibold text-gray-700 '> خرید بیمه برای محصول</p> 
+              <div className='flex justify-end mt-5 mr-4'>   
+              <button className=' w-32 h-8 rounded-lg border-2 border-blue-500 text-blue-500 text-sm flex'><p className='text-[30px] ml-3'>+</p><p className='ml-3'> بیمه میخواهم </p></button> 
+              </div>
+                <p className='flex text-sm text-gray-700 font-semibold ml-5 '><p className='text-xs mt-0.5'>تومان</p>  170000 </p> 
+                </div>
+            </div> 
+  
+            </div> 
+  
+            <div className='flex justify-center items-center '>
+                
+               
+  
+             <div className=' bg-white w-[350px] mt-5 rounded-lg shadow-sm shadow-gray-700  h-32'> 
+             <div >
+                  <p className='text-end mt-2 text-sm text-darkGold font-semibold mr-5'>موجود در انبار فروشنده ارسال 1 روز کاری</p>
+                </div>
+            <p className='text-sm flex justify-end font-semibold mt-5 mr-5'>  <p className='text-green-500'>عالی</p>:<p className='text-gray-700'>ارزیابی عملکرد</p>  </p> 
+            <div className='flex justify-end mt-5'>
+              <p className='flex font-semibold text-sm mr-5 text-gray-700'> ماه گارانتی شرکتی  <p>18</p></p>
+             </div>
+             </div> 
+            
+  
+            </div>
+  
+            <div className=' flex mt-5 ml-4'>
+            <p className=" mb-2 flex"> <p className=' text-gray-700 font-semibold mt-1'>تومان</p> <p className=' font-semibold text-[22px]'>{product.price} </p> </p> 
+            <p className="text-red-500 font-semibold text-sm flex ml-20">     عدد در انبار باقی مانده <p> {product.quantity} </p> </p>
+            </div> 
+  
+  
+            <div className=" flex justify-center">
+          <button className="bg-lightGreen font-semibold  text-white py-3 px-28 rounded-lg hover:bg-green-500 transition duration-300">
+            افزودن به سبد خرید
+          </button>
+        </div>
+              
+             
+            </div>
+
+
+
+
         {/* اسلایدر تصاویر */}
-        <div className="relative">
-          <div className="relative w-full h-96 rounded-lg overflow-hidden">
+         <div className="relative "> 
+        <h1 className="text-3xl font-bold flex justify-end mr-5 text-gray-900 mb-4">{product.name} مدل<p> {product.brand}</p></h1> 
+        
+          <div className="relative  h-96 rounded-lg  mr-72  ">
             <img
               src={`http://${product.images[currentImageIndex]}`}
               alt={`${product.name} - تصویر ${currentImageIndex + 1}`}
-              className=" w-96 ml-28 object-cover"
+              className=" w-72   object-cover"
             />
+          
           </div>
-          {/* دکمه‌های قبلی و بعدی */}
+          
           <button
             onClick={prevImage}
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+            className="absolute top-1/2 -left-12 bg-gray-800  text-white p-2 rounded-full hover:bg-opacity-75"
           >
             ◀
           </button>
           <button
             onClick={nextImage}
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75"
+            className="absolute top-1/2 right-80  bg-gray-800  text-white p-2 rounded-full hover:bg-opacity-75"
           >
             ▶
           </button>
-          {/* نشانگرها */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+         
+          <div className=" bottom-4 left-1/2 ml-32 -mt-10 flex space-x-2 ">
             {product.images.map((_, index) => (
               <span
                 key={index}
-                className={`w-3 h-3 rounded-full ${
-                  currentImageIndex === index ? 'bg-slate-400' : 'bg-gray-500'
-                }`}
+                className={`w-3 h-3 rounded-full ${currentImageIndex === index ? 'bg-slate-400' : 'bg-gray-500'
+                  }`}
               ></span>
             ))}
           </div>
+        </div> 
+        
+        <div>
+          .
         </div>
 
-       
-        <div className="flex flex-col justify-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
-          <p className="text-gray-700 mb-2"><span className="font-semibold text-xl">برند:</span> {product.brand}</p>
-          <p className="text-gray-700 mb-2 flex"><p className="font-semibold">قیمت:</p> <p className='text-lg font-mono'>تومان</p> {product.price} </p>
-          <p className="text-gray-700 mb-2"><span className="font-semibold">تعداد موجود:</span> {product.quantity}</p>
-          <p className="text-gray-700 mb-4 flex"><p className="font-semibold">توضیحات:</p> {product.description}</p>
-       
+        <div className=" rounded-xl  border-2 border-darkGold   h-48"> 
+
+          <p className="text-gray-700 mb-4 flex justify-end text-lg font-bold">:توضیحات</p>  
+
+          <p className="font-semibold flex justify-end  ">{product.description}</p>
+
+          
+
+          </div> 
+
+
+        <div>
+
+          
+
+         
         </div>
+
+
       </div>
 
-     
-      <div className="mt-8 flex justify-center">
-        <button className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
-          افزودن به سبد خرید
-        </button>
-      </div>
+
+      
     </div>
   );
 };
