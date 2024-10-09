@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchOrders, fetchOrderDetails } from "../../services/adminProduct"; // تابع دریافت سفارش‌ها و جزئیات سفارش
-import Lod from "../../components/loding/lod"; // کامپوننت بارگذاری
+import Lod from "../../components/loding/lod"; // کامپوننت بارگذاری 
+import { updateDeliveryStatus } from '../../services/adminProduct';
 import './admin.css'
+
 
 export default function AdminOrder() {
   const [orders, setOrders] = useState([]); // ذخیره سفارش‌ها
@@ -42,29 +44,29 @@ export default function AdminOrder() {
       setFilters({
         allOrders: true,
         delivered: false,
-        pending: false ,
+        pending: false,
       });
     } else {
       setFilters((prevFilters) => ({
         ...prevFilters,
         [name]: checked,
-        allOrders: false, 
-        
+        allOrders: false,
+
       }));
-    } 
+    }
 
     if (name === "delivered" && checked) {
       setFilters({
-        allOrders: false ,
+        allOrders: false,
         delivered: true,
-        pending: false ,
+        pending: false,
       });
     } else {
       setFilters((prevFilters) => ({
         ...prevFilters,
         [name]: checked,
-        delivered: false, 
-        
+        delivered: false,
+
       }));
     }
   };
@@ -86,6 +88,27 @@ export default function AdminOrder() {
   const handleCloseModal = () => {
     setShowModal(false); // بستن مودال
     setSelectedOrder(null); // پاک کردن جزئیات سفارش انتخاب‌شده
+  };
+
+
+
+
+
+  // تابع برای به‌روزرسانی وضعیت تحویل
+  const handleMarkAsDelivered = async (orderId) => {
+    try {
+      // به‌روزرسانی وضعیت تحویل سفارش
+      await updateDeliveryStatus(orderId);
+      // در صورت موفقیت، وضعیت سفارش را به‌روزرسانی کنید (مثلاً بارگذاری مجدد داده‌ها یا بستن مودال)
+      alert('وضعیت تحویل به روز شد.');
+      // برای بارگذاری مجدد سفارش‌ها می‌توانید تابعی را فراخوانی کنید
+      // fetchOrders();  
+      window.location.reload()
+      handleCloseModal(); // بستن مودال بعد از به‌روزرسانی
+    } catch (error) {
+      console.error("خطا در به‌روزرسانی وضعیت تحویل:", error);
+      alert('خطا در به‌روزرسانی وضعیت تحویل. لطفاً دوباره تلاش کنید.');
+    }
   };
 
   if (loading) return <Lod />; // نمایش حالت بارگذاری
@@ -127,7 +150,7 @@ export default function AdminOrder() {
             className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
           />
           <span>سفارش‌های در انتظار تحویل</span>
-        </label> 
+        </label>
 
 
 
@@ -189,7 +212,7 @@ export default function AdminOrder() {
       </div>
 
       {/* مودال نمایش جزئیات سفارش */}
-      {showModal && (
+      {/* {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"> 
         <div className="colorful-border">
           <div className="bg-white rounded-lg p-6 w-[500px]">
@@ -197,7 +220,7 @@ export default function AdminOrder() {
             {selectedOrder ? (
               <div className="text-right  ">
                 <div className="border-2 border-amber-400 rounded-xl h-36">
-                  {/* <p className="mt-2 mr-2 text-[18px]" >مجموع مبلغ:   {selectedOrder.totalPrice}</p> */}
+                
                   <p className="mt-2 mr-2 text-[18px]">نام کاربری: {selectedOrder.user.username}</p>
                   <p className="mt-2 mr-2 text-[18px]">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
                   <p className="flex justify-end mt-2 mr-2 text-[18px]"> {selectedOrder.deliveryStatus ? <div><img src="imgs/site-icons/Ampeross.png" alt="" className="w-6" /></div> : <div><img src="imgs/site-icons/Custom.png" alt="" className="w-6" /></div>}:وضعیت تحویل</p>
@@ -256,7 +279,82 @@ export default function AdminOrder() {
           </div> 
           </div>
         </div>
+      )} */}
+
+
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+          <div className="colorful-border">
+            <div className="bg-white rounded-lg p-6 w-[500px]">
+              <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
+              {selectedOrder ? (
+                <div className="text-right">
+                  <div className="border-2 border-amber-400 rounded-xl h-36">
+                    <p className="mt-2 mr-2 text-[18px]">نام کاربری: {selectedOrder.user.username}</p>
+                    <p className="mt-2 mr-2 text-[18px]">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
+                    <p className="flex justify-end mt-2 mr-2 text-[18px]">
+                      {selectedOrder.deliveryStatus ? (
+                        <div><img src="imgs/site-icons/Ampeross.png" alt="" className="w-6" /></div>
+                      ) : (
+                        <div><img src="imgs/site-icons/Custom.png" alt="" className="w-6" /></div>
+                      )}
+                      :وضعیت تحویل
+                    </p>
+                  </div>
+
+
+                  {!selectedOrder.deliveryStatus && (
+                    <button
+                      className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"
+                      onClick={() => handleMarkAsDelivered(selectedOrder._id)}
+                    >
+                      تحویل داده شد
+                    </button>
+                  )}
+
+                  <h3 className="mt-4 font-sans text-xl">محصولات</h3>
+                  <table className="min-w-full bg-white border border-gray-300">
+                    <thead>
+                      <tr className="bg-gray-200">
+                        <th className="py-2 px-4 border-b font-sans text-lg text-center">تعداد</th>
+                        <th className="py-2 px-4 border-b text-center font-sans text-lg">قیمت</th>
+                        <th className="py-2 px-4 border-b text-center font-sans text-lg">نام محصول</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {selectedOrder.products.map((item) => (
+                        <tr key={item._id} className="hover:bg-gray-100">
+                          {item.product ? (
+                            <>
+                              <td className="py-2 px-4 border-b flex justify-center items-center ">{item.count}</td>
+                              <td className="py-2 px-4 border-b border border-neutral-300 text-center ">{item.product.price}</td>
+                              <td className="py-2 px-4 border-b border border-neutral-300 text-center ">{item.product.name}</td>
+                            </>
+                          ) : (
+                            <td colSpan="3" className="py-2 px-4 border-b text-red-500 text-center">
+                              محصول در دسترس نیست
+                            </td>
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <p>در حال بارگذاری جزئیات سفارش...</p>
+              )}
+              <button
+                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
+                onClick={handleCloseModal}
+              >
+                بستن
+              </button>
+            </div>
+          </div>
+        </div>
       )}
+
+
     </div>
   );
 }
