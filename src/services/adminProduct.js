@@ -124,6 +124,30 @@ export const fetchOrderDetails = async (orderId) => {
   } catch (error) {
     throw error; // در صورت بروز خطا
   }
+}; 
+
+
+
+
+const UPDATE_ORDER_URL = "http://localhost:8000/api/orders";
+
+// تابع به‌روزرسانی وضعیت تحویل سفارش
+export const updateDeliveryStatus = async (orderId) => {
+  const token = localStorage.getItem('token');
+  try {
+    const response = await axios.patch(`${UPDATE_ORDER_URL}/${orderId}` , 
+      { deliveryStatus: true }, // به‌روزرسانی وضعیت به تحویل داده شده
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data; // بازگشت داده‌های به‌روز شده
+  } catch (error) {
+    console.error("خطا در به‌روزرسانی وضعیت تحویل:", error);
+    throw error;
+  }
 };
 
 
