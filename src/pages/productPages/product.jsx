@@ -279,8 +279,8 @@ const handleConfirmOrder = () => {
 
 
           <div className="flex justify-center mt-10">
-            <button onClick={handleAddToCart} className="bg-lightGreen font-semibold text-white py-3 px-28 rounded-lg hover:bg-green-500 transition duration-300">
-              افزودن به سبد خرید
+            <button onClick={handleAddToCart} className="bg-lightGreen font-semibold text-xl text-white py-3 px-28 rounded-lg hover:bg-green-500 transition duration-300">
+                 <p>  خرید </p>
             </button>
           </div>
 
