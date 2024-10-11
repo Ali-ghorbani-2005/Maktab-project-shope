@@ -15,6 +15,8 @@ import HomeLayout from '../components/component-home/HomeLayout/homeLayout';
 import AllLaptops from '../pages/productPages/allLaptops';
 import { CartProvider } from '../services/cartContext';
 import FinalizeOrderPage from '../components/orderComponents/FinalizeOrderPage';
+import AllPhone from '../pages/productPages/allPhone';
+
 
 export default function Index() {
     return (
@@ -43,8 +45,9 @@ export default function Index() {
                             <Route path='/Orders' element={<Orders />} />
                             <Route path='/Product/:id' element={<Product />} />
                         
-                        <Route path='/all-laptops' element={<AllLaptops />} />
-
+                        <Route path='/all-laptops' element={<AllLaptops />} /> 
+                        <Route path='/all-phone' element={<AllPhone />} />
+                       
                     </Route>
 
                     {/* Admin Login */}
