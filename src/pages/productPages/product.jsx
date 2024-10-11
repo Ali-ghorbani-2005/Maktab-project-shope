@@ -239,7 +239,7 @@ const handleConfirmOrder = () => {
   return (
     <div className="mt-48">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="mt-5 w-[400px] h-[410px] rounded-xl shadow-md shadow-gray-700">
+        <div className="mt-5 w-[400px] h-[430px] rounded-xl shadow-sm border shadow-gray-700 ml-5">
           <div className="flex justify-center items-center">
             <div className="bg-white w-[350px] mt-5 rounded-lg shadow-sm shadow-gray-700 h-28">
               <div>
@@ -277,15 +277,23 @@ const handleConfirmOrder = () => {
             </div>
           </div>
 
+          <div className='mt-5 flex ml-8'> 
+        <p className='text-gray-600 font-semibold mt-1'>تومان</p>
+         <p className="text-2xl  mb-6 ml-1"> {product.price}</p>
+         </div>
 
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center ">
             <button onClick={handleAddToCart} className="bg-lightGreen font-semibold text-xl text-white py-3 px-28 rounded-lg hover:bg-green-500 transition duration-300">
                  <p>  خرید </p>
             </button>
           </div>
 
+        
 
-        </div>
+        </div> 
+
+
+        
 
         {/* اسلایدر تصاویر */}
         <div className="relative">
@@ -320,14 +328,17 @@ const handleConfirmOrder = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> 
+
+      
 
       {/* توضیحات محصول */}
       <div className="rounded-xl border-2 border-darkGold h-48 mt-6">
         <p className="text-gray-700 mb-4 flex justify-end text-lg font-bold">توضیحات:</p>
         <p className="font-semibold flex justify-end">{product.description}</p>
       </div>
-
+          
+     
       {/* مودال انتخاب تعداد */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">

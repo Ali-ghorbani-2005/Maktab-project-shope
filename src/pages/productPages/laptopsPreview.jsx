@@ -25,27 +25,20 @@ const LaptopsPreview = () => {
   };
 
   return (
-    <div className="p-4">
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold">Laptops</h2>
+    <div className="p-4"> 
+  <div className='border-2 rounded-lg'> 
+  <div className="flex justify-between items-center">
+      
         <button
           onClick={handleViewAll}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className=" ml-10 mt-5 flex text-white px-4 py-2 rounded"
         >
-         مشاهده همه 
-        </button>
-      </div>
-      {/* <div className="grid grid-cols-4 gap-4 mt-4">
-        {laptops.map((laptop) => (
-          <div key={laptop._id} className="border p-4 rounded-lg">
-            <img src={laptop.thumbnail} alt={laptop.name} className="w-full h-48 object-cover" />
-            <h3 className="mt-2 text-lg font-semibold">{laptop.name}</h3>
-            <p>{laptop.price} USD</p>
-          </div>
-        ))}
-      </div> */} 
+           <img src="imgs/site-icons/icons-arrow.png" className='w-10' alt="" /> 
+        </button>  
+        <h2 className="text-2xl mr-10 font-semibold">لپ‌تاپ‌ها </h2>
 
-<div className="-mt-20 mr-14">
+      </div>
+<div className="-mt-10  mr-10">
       {laptops.length > 0 ? (
         <div className="grid grid-cols-4 mt-20 ">
           {laptops.map((laptop) => (
@@ -68,6 +61,7 @@ const LaptopsPreview = () => {
       ) : (
         <p>No products available for this subcategory</p>
       )}
+    </div> 
     </div>
     </div>
   );

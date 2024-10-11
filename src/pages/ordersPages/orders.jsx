@@ -222,11 +222,13 @@ const Cart = () => {
         setShowModal(false);
       };
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber); 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);  
+
+  const totalPrice = currentItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className="container mx-auto mt-44">
-      <h1 className="text-3xl font-bold mb-6">سبد خرید</h1>
+      <h1 className="text-3xl font-semibold mb-6">سبد خرید شما</h1>
       {currentItems.length === 0 ? (
         <p className="text-gray-500">سبد خرید شما خالی است</p>
       ) : (
@@ -300,8 +302,10 @@ const Cart = () => {
                     </div>
                   </td>
                 </tr>
-              ))}
-            </tbody>
+              ))} 
+        
+            </tbody> 
+          
           </table>
           <div className="flex justify-center mt-4">
             {[...Array(Math.ceil(cartItems.length / itemsPerPage)).keys()].map((number) => (
@@ -315,13 +319,25 @@ const Cart = () => {
                 {number + 1}
               </button>
             ))}
-          </div>
+          </div>   
+          <div className='border shadow-sm shadow-gray-500 w-80 h-40 rounded-xl' > 
+
+          <div className='flex ' > 
+
+            <p className='mt-5 ml-1 text-gray-600 font-semibold '>تومان</p>
+         
+          <p className="mt-5  font-semibold ml-2">{totalPrice} </p>  
+          <p colSpan="3" className=" font-semibold text-lg ml-32 mt-5">جمع کل</p>
+          </div> 
           <button
             onClick={handleFinalizeOrder}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4"
+            className="bg-lightGreen flex justify-center items-center text-white px-4 py-2 rounded-lg mt-8 ml-20"
           > 
           نهایی کردن سبد خرید
-          </button>
+          </button>  
+
+          </div>
+       
         </div>
       )}
 

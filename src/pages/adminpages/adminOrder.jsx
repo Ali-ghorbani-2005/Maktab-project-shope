@@ -168,7 +168,7 @@ export default function AdminOrder() {
             </tr>
           </thead>
           <tbody>
-            {orders && orders.length > 0 ? (
+             {orders && orders.length > 0 ? (
               orders.map((order) => (
                 <tr key={order._id}>
                   <td className="text-center border-b border-gray-400">
@@ -193,7 +193,10 @@ export default function AdminOrder() {
                   هیچ سفارشی موجود نیست
                 </td>
               </tr>
-            )}
+            )} 
+
+
+
           </tbody>
         </table>
 
@@ -285,7 +288,7 @@ export default function AdminOrder() {
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="colorful-border">
-            <div className="bg-white rounded-lg p-6 w-[500px]">
+            <div className="bg-white h-[520px] rounded-lg p-6 w-[500px]">
               <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
               {selectedOrder ? (
                 <div className="text-right">
@@ -303,14 +306,6 @@ export default function AdminOrder() {
                   </div>
 
 
-                  {!selectedOrder.deliveryStatus && (
-                    <button
-                      className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"
-                      onClick={() => handleMarkAsDelivered(selectedOrder._id)}
-                    >
-                      تحویل داده شد
-                    </button>
-                  )}
 
                   <h3 className="mt-4 font-sans text-xl">محصولات</h3>
                   <table className="min-w-full bg-white border border-gray-300">
@@ -349,6 +344,19 @@ export default function AdminOrder() {
               >
                 بستن
               </button>
+
+              {!selectedOrder.deliveryStatus && (
+
+                <button
+                  className="mt-4 bg-green-500 ml-10 text-white px-4 py-2 rounded-lg"
+                  onClick={() => handleMarkAsDelivered(selectedOrder._id)}
+                >
+                  تحویل داده شد
+                </button>
+
+              )}
+
+
             </div>
           </div>
         </div>
