@@ -27,15 +27,17 @@ const SubcategoryProduct = () => {
         <div className="grid grid-cols-4 mt-20 ">
           {products.map((product) => (
             <div key={product._id} className="flex flex-wrap  p-4 ml-5"> 
-            <Link to={`/product/${product._id}`}>
-              <div className=' border h-96 w-72 border-zinc-400 shadow-sm rounded-lg shadow-black ml-6 hover:shadow-lg hover:shadow-black '>
+          
+              <div className=' border h-96 w-72 border-zinc-400 shadow-sm rounded-lg shadow-black ml-6 hover:shadow-lg hover:shadow-black '> 
+              <Link to={`/product/${product._id}`}>
                 <img src={`http://${product.images[0]}`} className='w-52' alt="" />
                 <p className='text-2xl mt-3 font-bold'>{product.brand}</p>
-                <p className='mt-2 text-slate-600 text-lg'>مدل{product.name}</p>
+                <p className='mt-2 text-slate-600 text-lg'>مدل{product.name}</p> 
+                </Link>
                 <p className='flex mt-5 text-xl'><p>تومان</p>{product.price}</p>
 
               </div> 
-              </Link>
+              
 
             </div>
 

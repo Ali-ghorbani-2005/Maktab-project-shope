@@ -26,15 +26,17 @@ const AllPhone = () => {
     
                 {phone.map((laptop) => (
                     <div key={laptop._id} className="flex flex-wrap  p-4 ml-5">
-                        <Link to={`/product/${laptop._id}`}>
-                            <div className=' border h-96 w-72 border-zinc-200  rounded-lg  ml-6 hover:shadow-sm hover:shadow-black '>
+                       
+                            <div className=' border h-96 w-72 border-zinc-200  rounded-lg  ml-6 hover:shadow-sm hover:shadow-black '> 
+                            <Link to={`/product/${laptop._id}`}>
                                 <img src={`http://${laptop.images[0]}`} className='w-52' alt="" />
                                 <p className='text-2xl mt-3 font-bold'>{laptop.brand}</p>
-                                <p className='mt-2 text-slate-600 text-lg'>مدل{laptop.name}</p>
+                                <p className='mt-2 text-slate-600 text-lg'>مدل{laptop.name}</p> 
+                                </Link>
                                 <p className='flex mt-5 text-xl'><p>تومان</p>{laptop.price}</p>
 
                             </div>
-                        </Link>
+                        
 
                     </div>
 
