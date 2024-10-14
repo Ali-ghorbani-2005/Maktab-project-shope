@@ -167,9 +167,9 @@
 
 
 
-import React, { useState, useEffect , useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchProductById } from '../../services/productService'; 
+import { fetchProductById } from '../../services/productService';
 import { CartContext } from '../../services/cartContext';
 
 const Product = () => {
@@ -179,12 +179,12 @@ const Product = () => {
   const [error, setError] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-//   // حالت‌های مربوط به سبد خرید و مودال
+  //   // حالت‌های مربوط به سبد خرید و مودال
   const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
-const { addToCart } = useContext(CartContext); // استفاده از تابع addToCart از CartContext
+  const { addToCart } = useContext(CartContext); // استفاده از تابع addToCart از CartContext
 
- 
+
 
   useEffect(() => {
     const getProduct = async () => {
@@ -230,11 +230,11 @@ const { addToCart } = useContext(CartContext); // استفاده از تابع a
     setShowModal(true); // نمایش مودال
   };
 
-//   // عملکرد تایید سفارش و ذخیره در سبد خرید
-const handleConfirmOrder = () => {
-  addToCart(product, quantity); // استفاده از addToCart برای افزودن محصول
-  setShowModal(false); // بستن مودال
-};
+  //   // عملکرد تایید سفارش و ذخیره در سبد خرید
+  const handleConfirmOrder = () => {
+    addToCart(product, quantity); // استفاده از addToCart برای افزودن محصول
+    setShowModal(false); // بستن مودال
+  };
 
   return (
     <div className="mt-48">
@@ -288,12 +288,12 @@ const handleConfirmOrder = () => {
             </button>
           </div>
 
-        
+
 
         </div> 
 
 
-        
+
 
         {/* اسلایدر تصاویر */}
         <div className="relative">
@@ -330,15 +330,15 @@ const handleConfirmOrder = () => {
         </div>
       </div> 
 
-      
+
 
       {/* توضیحات محصول */}
       <div className="rounded-xl border-2 border-darkGold h-48 mt-6">
         <p className="text-gray-700 mb-4 flex justify-end text-lg font-bold">توضیحات:</p>
         <p className="font-semibold flex justify-end">{product.description}</p>
       </div>
-          
-     
+
+
       {/* مودال انتخاب تعداد */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -371,11 +371,107 @@ const handleConfirmOrder = () => {
           </div>
         </div>
       )}
-    </div>
+    </div> 
+
+
+//     <div className="mt-48">
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+//         {/* Product Details */}
+//         <div className="bg-white rounded-xl shadow-lg p-6">
+//           {/* Insurance Section */}
+//           <div className="mb-6">
+//             <p className="text-sm font-semibold text-gray-700 text-right">خرید بیمه برای محصول</p>
+//             <div className="flex justify-end mt-3">
+//               <button className="flex items-center w-32 h-10 border-2 border-blue-500 text-blue-500 text-sm rounded-lg hover:bg-blue-500 hover:text-white transition">
+//                 <span className="text-2xl">+</span>
+//                 <span className="ml-2">بیمه میخواهم</span>
+//               </button>
+//             </div>
+//             <p className="text-sm text-gray-700 font-semibold text-right mt-2">
+//               <span className="text-xs">تومان</span> 170000
+//             </p>
+//           </div>
+
+//           {/* Stock and Warranty Info */}
+//           <div className="bg-gray-100 rounded-lg p-4 mb-6">
+//             <p className="text-sm text-darkGold font-semibold text-right">موجود در انبار فروشنده ارسال 1 روز کاری</p>
+//             <p className="text-sm font-semibold text-right mt-2">
+//               <span className="text-green-500">عالی</span>: <span className="text-gray-700">ارزیابی عملکرد</span>
+//             </p>
+//             <p className="text-sm font-semibold text-gray-700 text-right mt-2">ماه گارانتی شرکتی: <span className="font-bold">18</span></p>
+//           </div>
+
+//           {/* Product Price */}
+//           <div className="flex items-center mb-6">
+//             <p className="text-gray-600 font-semibold">تومان</p>
+//             <p className="text-2xl ml-1">{product.price}</p>
+//           </div>
+
+//           {/* Add to Cart Button */}
+//           <div className="flex justify-center">
+//             <button onClick={handleAddToCart} className="bg-lightGreen font-semibold text-xl text-white py-3 px-10 rounded-lg hover:bg-green-500 transition duration-300">
+//               خرید
+//             </button>
+//           </div>
+//         </div>
+
+//         {/* Image Slider */}
+//         <div className="relative">
+//           <h1 className="text-3xl font-bold text-gray-900 mb-4">
+//             {product.name} مدل <span className="font-normal">{product.brand}</span>
+//           </h1>
+//           <div className="relative h-72 rounded-lg overflow-hidden">
+//             <img
+//               src={`http://${product.images[currentImageIndex]}`}
+//               alt={`${product.name} - تصویر ${currentImageIndex + 1}`}
+//               className="w-full h-full object-cover"
+//             />
+//             <button onClick={prevImage} className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75">
+//               ◀
+//             </button>
+//             <button onClick={nextImage} className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75">
+//               ▶
+//             </button>
+//             <div className="flex justify-center mt-2">
+//               {product.images.map((_, index) => (
+//                 <span key={index} className= {`w-3 h-3 rounded-full ${`last:currentImageIndex === index ? 'bg-slate-400' : 'bg-gray-500' `} mx-1 `}></span>
+//           ))}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+
+//   {/* Product Description */ }
+//   <div className="rounded-xl border-2 border-darkGold h-48 mt-6 p-4">
+//     <p className="text-gray-700 mb-4 text-lg font-bold">توضیحات:</p>
+//     <p className="font-semibold">{product.description}</p>
+//   </div>
+
+//   {/* Quantity Selection Modal */ }
+//   {
+//     showModal && (
+//       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+//         <div className="bg-white p-6 rounded-lg shadow-lg w-80">
+//           <button onClick={() => setShowModal(false)} className="absolute top-2 right-2 text-gray-600">✖</button>
+//           <h2 className="text-lg font-bold mb-4">انتخاب تعداد</h2>
+//           <div className="flex items-center justify-between mb-4">
+//             <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)} className="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400">-</button>
+//             <span className="text-lg font-semibold">{quantity}</span>
+//             <button onClick={() => setQuantity(quantity + 1)} className="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400">+</button>
+//           </div>
+//           <button onClick={handleConfirmOrder} className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">افزودن به سبد خرید</button>
+//         </div>
+//       </div>
+//     )
+//   }
+// </div >
+
+
+
   );
 };
 
-export default Product; 
+export default Product;
 
 
 
@@ -389,7 +485,7 @@ export default Product;
 // import React, { useState, useEffect, useContext } from 'react';
 // import { useParams } from 'react-router-dom';
 // import { fetchProductById } from '../../services/productService'; // فرض بر این که تابع fetchProductById برای دریافت محصول وجود دارد
-// import { CartContext } from '../../services/cartContext';  // استفاده از CartContext 
+// import { CartContext } from '../../services/cartContext';  // استفاده از CartContext
 
 
 // const Product = () => {
@@ -496,7 +592,7 @@ export default Product;
 //             </button>
 //           </div>
 //         </div>
-//       </div> 
+//       </div>
 //       {/* مودال افزودن به سبد خرید */}
 //       {showModal && (
 //         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">

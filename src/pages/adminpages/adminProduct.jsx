@@ -114,173 +114,488 @@ export default function AdminProduct() {
 
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="bg-white w-[900px] rounded-2xl">
-        <div className="flex border-b-2 border-gray-400">
-          <p className="text-3xl ml-2 font-bold">Products</p>
-          <div className="ml-[700px] mt-1">
-           
+    // <div className="flex flex-col justify-center items-center">
+    //   <div className="bg-white w-[900px] rounded-2xl">
+    //     <div className="flex border-b-2 border-gray-400">
+    //       <p className="text-3xl ml-2 font-bold">Products</p>
+    //       <div className="ml-[700px] mt-1">
 
-            {/* دکمه اضافه کردن محصول */}
 
-            <div className="product-page">
-              <div className="header">
+    //         {/* دکمه اضافه کردن محصول */}
 
-                
+    //         <div className="product-page">
+    //           <div className="header">
 
-                <button onClick={() => setIsModalOpen(true)}  className=" bg-blue-400 w-10 h-7 rounded-lg hover:bg-blue-500"> 
-                   
-              <img src="imgs/site-icons/addProduct.png" className="w-7 ml-1" alt="" />
-            </button>
-              </div>
 
-              {/* لیست محصولات */}
 
-              {/* مودال برای اضافه کردن محصول */}
-              <AddProductModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onSubmit={handleAddProduct}
-              />
-            </div>
+    //             <button onClick={() => setIsModalOpen(true)}  className=" bg-blue-400 w-10 h-7 rounded-lg hover:bg-blue-500"> 
 
-           
+    //           <img src="imgs/site-icons/addProduct.png" className="w-7 ml-1" alt="" />
+    //         </button>
+    //           </div>
 
-          </div>
-        </div>
-        <table className="w-[870px] ml-3">
-          <thead className="h-10">
-            <tr className="border-b border-gray-400">
-              <th className="border-b border-gray-400"></th>
-              <th className="text-gray-300 text-xl border-b border-gray-400">دسته بندی</th>
-              <th className="text-gray-300 text-xl border-b border-gray-400">نام محصول</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product._id}>
-                <td className="text-center border-b border-gray-400">
-                  <button
-                    className="w-7 rounded-lg text-white -ml-5 hover:bg-red-500"
-                    onClick={() => handleDeleteClick(product._id)} // اضافه کردن فراخوانی حذف
-                  >
-                    <img src="imgs/site-icons/remove.png" alt="" className="w-7" />
-                  </button>
-                  /
-                  <button
-                    className=" w-7 rounded-lg text-white hover:bg-blue-300"
-                    onClick={() => handleEditClick(product)} // اضافه کردن فراخوانی ادیت
-                  >
+    //           {/* لیست محصولات */}
 
-                    <img src="imgs/site-icons/edit.png" alt="" className="w-7" />
-                  </button>
-                </td>
-                <td className="text-center border-b border-gray-400">
-                  {product.category.name}/{product.subcategory.name}
-                </td>
-                <td className="text-center border-b border-gray-400">{product.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    //           {/* مودال برای اضافه کردن محصول */}
+    //           <AddProductModal
+    //             isOpen={isModalOpen}
+    //             onClose={() => setIsModalOpen(false)}
+    //             onSubmit={handleAddProduct}
+    //           />
+    //         </div>
 
-        {/* پنجره تأیید حذف */}
-        {showConfirm && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <p>آیا از حذف این کالا مطمئن هستید؟</p>
-              <div className="flex justify-between mt-4">
-                <button
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg"
-                  onClick={confirmDelete} // تأیید حذف
-                >
-                  بله
-                </button>
-                <button
-                  className="bg-gray-300 px-4 py-2 rounded-lg"
-                  onClick={cancelDelete} // لغو حذف
-                >
-                  خیر
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
 
-        {/* کادر ادیت */}
-        {/* کادر ادیت */}
-        {isEditModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative">
-              {/* دکمه بستن */}
-              <button
-                className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
-                onClick={() => setIsEditModalOpen(false)} // بستن پنجره
-              >
-                X
-              </button>
 
-              <h3 className="text-xl font-bold mb-4">ویرایش محصول</h3>
-              <input
-                type="text"
-                name="name"
-                value={editForm.name}
-                onChange={handleInputChange}
-                placeholder="نام محصول"
-                className="w-full p-2 mb-4 border rounded-lg"
-              />
-              <input
-                type="text"
-                name="image"
-                value={editForm.image}
-                onChange={handleInputChange}
-                placeholder="آدرس عکس"
-                className="w-full p-2 mb-4 border rounded-lg"
-              />
-              <select
-                name="category"
-                value={editForm.category}
-                onChange={handleInputChange}
-                className="w-full p-2 mb-4 border rounded-lg"
-              >
-                <option value="">انتخاب دسته‌بندی</option>
-                <option value="category1">دسته ۱</option>
-                <option value="category2">دسته ۲</option>
-                {/* دیگر دسته‌بندی‌ها */}
-              </select>
-              <textarea
-                name="description"
-                value={editForm.description}
-                onChange={handleInputChange}
-                placeholder="توضیحات"
-                className="w-full p-2 mb-4 border rounded-lg"
-              />
+    //       </div>
+    //     </div>
+    //     <table className="w-[870px] ml-3">
+    //       <thead className="h-10">
+    //         <tr className="border-b border-gray-400">
+    //           <th className="border-b border-gray-400"></th>
+    //           <th className="text-gray-300 text-xl border-b border-gray-400">دسته بندی</th>
+    //           <th className="text-gray-300 text-xl border-b border-gray-400">نام محصول</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {products.map((product) => (
+    //           <tr key={product._id}>
+    //             <td className="text-center border-b border-gray-400">
+    //               <button
+    //                 className="w-7 rounded-lg text-white -ml-5 hover:bg-red-500"
+    //                 onClick={() => handleDeleteClick(product._id)} // اضافه کردن فراخوانی حذف
+    //               >
+    //                 <img src="imgs/site-icons/remove.png" alt="" className="w-7" />
+    //               </button>
+    //               /
+    //               <button
+    //                 className=" w-7 rounded-lg text-white hover:bg-blue-300"
+    //                 onClick={() => handleEditClick(product)} // اضافه کردن فراخوانی ادیت
+    //               >
 
-              <div className="flex justify-end">
-                <button
-                  className={`px-4 py-2 rounded-lg text-white ${isSaveButtonEnabled ? 'bg-green-500' : 'bg-gray-300'}`}
-                  disabled={!isSaveButtonEnabled}
-                  onClick={handleSaveEdit}
-                >
-                  ذخیره
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-      <div className="flex mt-4 justify-center items-center">
-        {[...Array(totalPages)].map((_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => setCurrentPage(index + 1)}
-            className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
-          >
-            {index + 1}
-          </button>
-        ))}
+    //                 <img src="imgs/site-icons/edit.png" alt="" className="w-7" />
+    //               </button>
+    //             </td>
+    //             <td className="text-center border-b border-gray-400">
+    //               {product.category.name}/{product.subcategory.name}
+    //             </td>
+    //             <td className="text-center border-b border-gray-400">{product.name}</td>
+    //           </tr>
+    //         ))}
+    //       </tbody>
+    //     </table>
+
+    //     {/* پنجره تأیید حذف */}
+    //     {showConfirm && (
+    //       <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
+    //         <div className="bg-white p-6 rounded-lg shadow-lg">
+    //           <p>آیا از حذف این کالا مطمئن هستید؟</p>
+    //           <div className="flex justify-between mt-4">
+    //             <button
+    //               className="bg-red-500 text-white px-4 py-2 rounded-lg"
+    //               onClick={confirmDelete} // تأیید حذف
+    //             >
+    //               بله
+    //             </button>
+    //             <button
+    //               className="bg-gray-300 px-4 py-2 rounded-lg"
+    //               onClick={cancelDelete} // لغو حذف
+    //             >
+    //               خیر
+    //             </button>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )}
+
+    //     {/* کادر ادیت */}
+    //     {/* کادر ادیت */}
+    //     {isEditModalOpen && (
+    //       <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
+    //         <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+    //           {/* دکمه بستن */}
+    //           <button
+    //             className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
+    //             onClick={() => setIsEditModalOpen(false)} // بستن پنجره
+    //           >
+    //             X
+    //           </button>
+
+    //           <h3 className="text-xl font-bold mb-4">ویرایش محصول</h3>
+    //           <input
+    //             type="text"
+    //             name="name"
+    //             value={editForm.name}
+    //             onChange={handleInputChange}
+    //             placeholder="نام محصول"
+    //             className="w-full p-2 mb-4 border rounded-lg"
+    //           />
+    //           <input
+    //             type="text"
+    //             name="image"
+    //             value={editForm.image}
+    //             onChange={handleInputChange}
+    //             placeholder="آدرس عکس"
+    //             className="w-full p-2 mb-4 border rounded-lg"
+    //           />
+    //           <select
+    //             name="category"
+    //             value={editForm.category}
+    //             onChange={handleInputChange}
+    //             className="w-full p-2 mb-4 border rounded-lg"
+    //           >
+    //             <option value="">انتخاب دسته‌بندی</option>
+    //             <option value="category1">دسته ۱</option>
+    //             <option value="category2">دسته ۲</option>
+    //             {/* دیگر دسته‌بندی‌ها */}
+    //           </select>
+    //           <textarea
+    //             name="description"
+    //             value={editForm.description}
+    //             onChange={handleInputChange}
+    //             placeholder="توضیحات"
+    //             className="w-full p-2 mb-4 border rounded-lg"
+    //           />
+
+    //           <div className="flex justify-end">
+    //             <button
+    //               className={`px-4 py-2 rounded-lg text-white ${isSaveButtonEnabled ? 'bg-green-500' : 'bg-gray-300'}`}
+    //               disabled={!isSaveButtonEnabled}
+    //               onClick={handleSaveEdit}
+    //             >
+    //               ذخیره
+    //             </button>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )}
+    //   </div>
+    //   <div className="flex mt-4 justify-center items-center">
+    //     {[...Array(totalPages)].map((_, index) => (
+    //       <button
+    //         key={index + 1}
+    //         onClick={() => setCurrentPage(index + 1)}
+    //         className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
+    //       >
+    //         {index + 1}
+    //       </button>
+    //     ))}
+    //   </div>
+    // </div> 
+
+
+
+    // <div className="flex flex-col justify-center items-center p-4">
+    //   <div className="bg-white w-full max-w-3xl rounded-2xl shadow-lg p-6">
+    //     <div className="flex border-b-2 border-gray-400 mb-4">
+    //       <p className="text-3xl font-bold">محصولات</p>
+    //       <div className="ml-auto mt-1">
+    //         <button
+    //           onClick={() => setIsModalOpen(true)}
+    //           className="bg-blue-400 w-10 h-10 rounded-lg hover:bg-blue-500 flex items-center justify-center"
+    //         >
+    //           <img src="imgs/site-icons/addProduct.png" className="w-7" alt="Add Product" />
+    //         </button>
+
+    //         {/* مودال برای اضافه کردن محصول */}
+    //         <AddProductModal
+    //           isOpen={isModalOpen}
+    //           onClose={() => setIsModalOpen(false)}
+    //           onSubmit={handleAddProduct}
+    //         />
+    //       </div>
+    //     </div>
+
+    //     <table className="w-full">
+    //       <thead className="bg-gray-200">
+    //         <tr className="border-b border-gray-400">
+    //           <th className="border-b border-gray-400"></th>
+    //           <th className="text-gray-600 text-xl border-b border-gray-400">دسته بندی</th>
+    //           <th className="text-gray-600 text-xl border-b border-gray-400">نام محصول</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {products.map((product) => (
+    //           <tr key={product._id} className="hover:bg-gray-100 transition-colors">
+    //             <td className="text-center border-b border-gray-400 flex justify-center">
+    //               <button
+    //                 className="w-7 rounded-lg text-white bg-red-500 hover:bg-red-600 mx-1"
+    //                 onClick={() => handleDeleteClick(product._id)}
+    //               >
+    //                 <img src="imgs/site-icons/remove.png" alt="Delete" className="w-7" />
+    //               </button>
+    //               <button
+    //                 className="w-7 rounded-lg text-white bg-blue-300 hover:bg-blue-400 mx-1"
+    //                 onClick={() => handleEditClick(product)}
+    //               >
+    //                 <img src="imgs/site-icons/edit.png" alt="Edit" className="w-7" />
+    //               </button>
+    //             </td>
+    //             <td className="text-center border-b border-gray-400">
+    //               {product.category.name}/{product.subcategory.name}
+    //             </td>
+    //             <td className="text-center border-b border-gray-400">{product.name}</td>
+    //           </tr>
+    //         ))}
+    //       </tbody>
+    //     </table>
+
+    //     {/* پنجره تأیید حذف */}
+    //     {showConfirm && (
+    //       <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
+    //         <div className="bg-white p-6 rounded-lg shadow-lg">
+    //           <p>آیا از حذف این کالا مطمئن هستید؟</p>
+    //           <div className="flex justify-between mt-4">
+    //             <button
+    //               className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+    //               onClick={confirmDelete}
+    //             >
+    //               بله
+    //             </button>
+    //             <button
+    //               className="bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400"
+    //               onClick={cancelDelete}
+    //             >
+    //               خیر
+    //             </button>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )}
+
+    //     {/* کادر ادیت */}
+    //     {isEditModalOpen && (
+    //       <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
+    //         <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+    //           <button
+    //             className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
+    //             onClick={() => setIsEditModalOpen(false)}
+    //           >
+    //             X
+    //           </button>
+
+    //           <h3 className="text-xl font-bold mb-4">ویرایش محصول</h3>
+    //           <input
+    //             type="text"
+    //             name="name"
+    //             value={editForm.name}
+    //             onChange={handleInputChange}
+    //             placeholder="نام محصول"
+    //             className="w-full p-2 mb-4 border rounded-lg"
+    //           />
+    //           <input
+    //             type="text"
+    //             name="image"
+    //             value={editForm.image}
+    //             onChange={handleInputChange}
+    //             placeholder="آدرس عکس"
+    //             className="w-full p-2 mb-4 border rounded-lg"
+    //           />
+    //           <select
+    //             name="category"
+    //             value={editForm.category}
+    //             onChange={handleInputChange}
+    //             className="w-full p-2 mb-4 border rounded-lg"
+    //           >
+    //             <option value="">انتخاب دسته‌بندی</option>
+    //             <option value="category1">دسته ۱</option>
+    //             <option value="category2">دسته ۲</option>
+    //             {/* دیگر دسته‌بندی‌ها */}
+    //           </select>
+    //           <textarea
+    //             name="description"
+    //             value={editForm.description}
+    //             onChange={handleInputChange}
+    //             placeholder="توضیحات"
+    //             className="w-full p-2 mb-4 border rounded-lg"
+    //           />
+
+    //           <div className="flex justify-end">
+    //             <button
+    //               className={`px-4 py-2 rounded-lg text-white ${isSaveButtonEnabled ? 'bg-green-500' : 'bg-gray-300'} hover:bg-green-600`}
+    //               disabled={!isSaveButtonEnabled}
+    //               onClick={handleSaveEdit}
+    //             >
+    //               ذخیره
+    //             </button>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )}
+    //   </div>
+
+    //   <div className="flex mt-4 justify-center items-center">
+    //     {[...Array(totalPages)].map((_, index) => (
+    //       <button
+    //         key={index + 1}
+    //         onClick={() => setCurrentPage(index + 1)}
+    //         className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
+    //       >
+    //         {index + 1}
+    //       </button>
+    //     ))}
+    //   </div>
+    // </div> 
+
+
+    <div className="flex flex-col justify-center items-center p-4">
+  <div className="bg-white w-full max-w-3xl rounded-2xl shadow-lg p-6">
+    <div className="flex border-b-2 border-gray-400 mb-4">
+      <p className="text-3xl font-bold">محصولات</p>
+      <div className="ml-auto mt-1">
+        <button 
+          onClick={() => setIsModalOpen(true)}  
+          className="bg-blue-400 w-10 h-10 rounded-lg hover:bg-blue-500 flex items-center justify-center"
+        >
+          <img src="imgs/site-icons/addProduct.png" className="w-7" alt="Add Product" />
+        </button>
+
+        {/* مودال برای اضافه کردن محصول */}
+        <AddProductModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={handleAddProduct}
+        />
       </div>
     </div>
+
+    <table className="w-full">
+      <thead className="bg-gray-200">
+        <tr className="border-b border-gray-400">
+          <th className="border-b border-gray-400"></th>
+          <th className="text-gray-600 text-xl border-b border-gray-400">دسته بندی</th>
+          <th className="text-gray-600 text-xl border-b border-gray-400">نام محصول</th>
+          <th className="text-gray-600 text-xl border-b border-gray-400">تصویر محصول</th> {/* ستون جدید برای تصویر */}
+        </tr>
+      </thead>
+      <tbody>
+        {products.map((product) => (
+          <tr key={product._id} className="hover:bg-gray-100 transition-colors">
+            <td className="text-center border-b mt-20 border-gray-400 flex justify-center"> 
+              <div className="-mt-14">
+              <button
+                className="w-7 rounded-lg  text-white bg-red-500 hover:bg-red-600 mx-1"
+                onClick={() => handleDeleteClick(product._id)}
+              >
+                <img src="imgs/site-icons/remove.png" alt="Delete" className="w-7" />
+              </button>
+              <button
+                className="w-7 rounded-lg text-white bg-blue-300 hover:bg-blue-400 mx-1"
+                onClick={() => handleEditClick(product)}
+              >
+                <img src="imgs/site-icons/edit.png" alt="Edit" className="w-7" />
+              </button> 
+              </div>
+            </td>
+            <td className="text-center border-b border-gray-400">
+              {product.category.name}/{product.subcategory.name}
+            </td>
+            <td className="text-center border-b border-gray-400">{product.name}</td>
+            <td className="text-center border-b border-gray-400">
+              <img src={`http://${product.images[0]}`} alt={product.name} className="w-16 h-16 object-cover mx-auto" /> {/* نمایش تصویر محصول */}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    {/* پنجره تأیید حذف */}
+    {showConfirm && (
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <p>آیا از حذف این کالا مطمئن هستید؟</p>
+          <div className="flex justify-between mt-4">
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+              onClick={confirmDelete}
+            >
+              بله
+            </button>
+            <button
+              className="bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400"
+              onClick={cancelDelete}
+            >
+              خیر
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {/* کادر ادیت */}
+    {isEditModalOpen && (
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+          <button
+            className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
+            onClick={() => setIsEditModalOpen(false)}
+          >
+            X
+          </button>
+
+          <h3 className="text-xl font-bold mb-4">ویرایش محصول</h3>
+          <input
+            type="text"
+            name="name"
+            value={editForm.name}
+            onChange={handleInputChange}
+            placeholder="نام محصول"
+            className="w-full p-2 mb-4 border rounded-lg"
+          />
+          <input
+            type="text"
+            name="image"
+            value={editForm.image}
+            onChange={handleInputChange}
+            placeholder="آدرس عکس"
+            className="w-full p-2 mb-4 border rounded-lg"
+          />
+          <select
+            name="category"
+            value={editForm.category}
+            onChange={handleInputChange}
+            className="w-full p-2 mb-4 border rounded-lg"
+          >
+            <option value="">انتخاب دسته‌بندی</option>
+            <option value="category1">دسته ۱</option>
+            <option value="category2">دسته ۲</option>
+            {/* دیگر دسته‌بندی‌ها */}
+          </select>
+          <textarea
+            name="description"
+            value={editForm.description}
+            onChange={handleInputChange}
+            placeholder="توضیحات"
+            className="w-full p-2 mb-4 border rounded-lg"
+          />
+
+          <div className="flex justify-end">
+            <button
+              className={`px-4 py-2 rounded-lg text-white ${isSaveButtonEnabled ? 'bg-green-500' : 'bg-gray-300'} hover:bg-green-600`}
+              disabled={!isSaveButtonEnabled}
+              onClick={handleSaveEdit}
+            >
+              ذخیره
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <div className="flex mt-4 justify-center items-center">
+    {[...Array(totalPages)].map((_, index) => (
+      <button
+        key={index + 1}
+        onClick={() => setCurrentPage(index + 1)}
+        className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
+      >
+        {index + 1}
+      </button>
+    ))}
+  </div>
+</div>
+
+
   );
 }
 
