@@ -1,5 +1,13 @@
 
-export default function HomeFooter() {
+export default function HomeFooter() { 
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // برای انیمیشن نرم
+    });
+  };
+
   return (
     <>
       {/* <div className="flex justify-center items-center">
@@ -75,7 +83,7 @@ export default function HomeFooter() {
           <div className="border-b border-white pb-5 mb-5">
             <div className="flex justify-between items-center">
               <img src="imgs/logo/logo.jpg" className="w-20 rounded-2xl" alt="logo" />
-              <button className="bg-white w-48 h-10 rounded-lg font-bold text-xl">بازگشت به بالا</button>
+              <button onClick={scrollToTop} className="bg-white w-48 h-10 rounded-lg font-bold text-xl">بازگشت به بالا</button>
             </div>
           </div>
 

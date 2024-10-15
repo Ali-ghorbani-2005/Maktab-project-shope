@@ -16,6 +16,7 @@ import AllLaptops from '../pages/productPages/allLaptops';
 import { CartProvider } from '../services/cartContext';
 import FinalizeOrderPage from '../components/orderComponents/FinalizeOrderPage';
 import AllPhone from '../pages/productPages/allPhone';
+import UserInfo from '../components/orderComponents/UserInfo';
 
 
 export default function Index() {
@@ -51,7 +52,8 @@ export default function Index() {
                     </Route>
 
                     {/* Admin Login */}
-                    <Route path='/admin-login' element={<AdmiLogin />} />
+                    <Route path='/admin-login' element={<AdmiLogin />} /> 
+                    <Route path='/user-info' element={<UserInfo />} /> 
                 </Routes>
             </BrowserRouter>  
             

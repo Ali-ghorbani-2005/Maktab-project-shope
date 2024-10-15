@@ -2,9 +2,9 @@
 
 export default function SearchBox() {
   return (
-   <>
-   
-   <div>
+    <>
+
+      <div>
 
     <div className="ml-[460px] flex mt-4 bg-slate-100 w-[650px] h-14 rounded-xl">
 
@@ -18,8 +18,10 @@ export default function SearchBox() {
 
     
    </div>
-   
-   
-   </>
+
+      
+
+
+    </>
   )
 }

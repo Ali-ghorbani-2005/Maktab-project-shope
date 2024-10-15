@@ -231,136 +231,21 @@ const Cart = () => {
     <div className="container mx-auto mt-44">
       <h1 className="text-3xl font-semibold mb-6">سبد خرید شما</h1>
       {currentItems.length === 0 ? (
-        <p className="text-gray-500">سبد خرید شما خالی است</p>
+        //    
+        <div  className='flex justify-center items-center -mt-10'> 
+        <div>  
+        <div>
+        <img src="imgs/site-icons/order.webp" className='w-96' alt="" />   
+        </div>
+        <div className=''> 
+        <p className="text-gray-500 mt-10 ml-10 text-2xl font-semibold">سبد خرید شما خالی است</p> 
+        </div>
+        </div>  
+        </div>
+     
       ) : (
         <div>
-          {/* <div className='flex justify-end'>
-            <div className='border-2  border-black w-[820px] h-[450px]'>
-              {currentItems.map((item) => (
-                <div key={item._id}>
-
-                  <div className='flex'>
-
-                    <img src={`http://${item.images[0]}`} className='w-60 mt-4' alt="" />
-                    <div className='flex ml-[300px]'>
-
-                      <p className="font-semibold text-4xl"> {item.name}</p>
-                      <p className='font-semibold text-4xl '>مدل{item.brand}</p>
-
-                    </div>
-                  </div>
-
-                  <p className="">{item.price} تومان</p>
-
-                  {editingItemId === item._id ? (
-                    <div>
-                      <div className="flex items-center">
-                        <button
-                          onClick={() => setEditedQuantity((prevQuantity) => Math.max(1, prevQuantity - 1))}
-                          className="bg-red-500 text-white px-2 py-1 rounded-lg"
-                        >
-                          -
-                        </button>
-                        <input
-                          type="number"
-                          value={editedQuantity}
-                          onChange={(e) => setEditedQuantity(Math.max(1, Number(e.target.value)))}
-                          className="border p-1 w-16 text-center mx-2"
-                        />
-                        <button
-                          onClick={() => setEditedQuantity((prevQuantity) => prevQuantity + 1)}
-                          className="bg-green-500 text-white px-2 py-1 rounded-lg"
-                        >
-                          +
-                        </button>
-                      </div>
-                      <button
-                        onClick={() => handleSaveEdit(item)}
-                        className="bg-green-500 text-white px-3 py-1 rounded-lg ml-2"
-                      >
-                        ذخیره
-                      </button>
-                      <button
-                        onClick={handleCancelEdit}
-                        className="bg-gray-500 text-white px-3 py-1 rounded-lg ml-2"
-                      >
-                        لغو
-                      </button>
-                    </div>
-                  ) :
-
-
-
-                    (
-                      <div>
-                        {item.quantity}
-                      </div>
-                    )
-                  }
-
-                  <p className="">{item.price * item.quantity} تومان</p>
-                  <div className="">
-                    <div className='flex justify-center items-center'>
-                      <button
-                        onClick={() => handleDeleteClick(item)}
-                        className=" text-white  rounded-lg "
-                      >
-                        <img src="imgs/site-icons/remove.png" className='w-8 hover:w-9' alt="" />
-                      </button>
-
-                      <div>
-
-                        <button
-                          onClick={() => handleEditClick(item)}
-                          className=" text-white px-2 py-1 rounded-lg ml-2"
-                        >
-
-                          <img src="imgs/site-icons/edit.png" className='w-8 hover:w-9' alt="" />
-                        </button>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-            </div>
-          </div> */}
-
-          {/* <div className="flex justify-center mt-4">
-            {[...Array(Math.ceil(cartItems.length / itemsPerPage)).keys()].map((number) => (
-              <button
-                key={number + 1}
-                onClick={() => paginate(number + 1)}
-                className={`mx-1 px-3 py-2 rounded-lg ${
-                  currentPage === number + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'
-                }`}
-              >
-                {number + 1}
-              </button>
-            ))}
-          </div>   
-          <div className='border shadow-sm shadow-gray-500 w-80 h-40 rounded-xl' > 
-
-          <div className='flex ' > 
-
-            <p className='mt-5 ml-1 text-gray-600 font-semibold '>تومان</p>
-         
-          <p className="mt-5  font-semibold ml-2">{totalPrice} </p>  
-          <p colSpan="3" className=" font-semibold text-lg ml-32 mt-5">جمع کل</p>
-          </div> 
-          <button
-            onClick={handleFinalizeOrder}
-            className="bg-lightGreen flex justify-center items-center text-white px-4 py-2 rounded-lg mt-8 ml-20"
-          > 
-          نهایی کردن سبد خرید
-          </button>  
-
-          </div> */}
-
-
-
-
+        
           <div className="flex justify-end">
             <div className="border-2 border-gray-300 w-full max-w-3xl h-auto rounded-lg shadow-lg p-4 bg-white">
               {currentItems.map((item) => (
@@ -531,4 +416,142 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Cart; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {/* <div className='flex justify-end'>
+            <div className='border-2  border-black w-[820px] h-[450px]'>
+              {currentItems.map((item) => (
+                <div key={item._id}>
+
+                  <div className='flex'>
+
+                    <img src={`http://${item.images[0]}`} className='w-60 mt-4' alt="" />
+                    <div className='flex ml-[300px]'>
+
+                      <p className="font-semibold text-4xl"> {item.name}</p>
+                      <p className='font-semibold text-4xl '>مدل{item.brand}</p>
+
+                    </div>
+                  </div>
+
+                  <p className="">{item.price} تومان</p>
+
+                  {editingItemId === item._id ? (
+                    <div>
+                      <div className="flex items-center">
+                        <button
+                          onClick={() => setEditedQuantity((prevQuantity) => Math.max(1, prevQuantity - 1))}
+                          className="bg-red-500 text-white px-2 py-1 rounded-lg"
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          value={editedQuantity}
+                          onChange={(e) => setEditedQuantity(Math.max(1, Number(e.target.value)))}
+                          className="border p-1 w-16 text-center mx-2"
+                        />
+                        <button
+                          onClick={() => setEditedQuantity((prevQuantity) => prevQuantity + 1)}
+                          className="bg-green-500 text-white px-2 py-1 rounded-lg"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <button
+                        onClick={() => handleSaveEdit(item)}
+                        className="bg-green-500 text-white px-3 py-1 rounded-lg ml-2"
+                      >
+                        ذخیره
+                      </button>
+                      <button
+                        onClick={handleCancelEdit}
+                        className="bg-gray-500 text-white px-3 py-1 rounded-lg ml-2"
+                      >
+                        لغو
+                      </button>
+                    </div>
+                  ) :
+
+
+
+                    (
+                      <div>
+                        {item.quantity}
+                      </div>
+                    )
+                  }
+
+                  <p className="">{item.price * item.quantity} تومان</p>
+                  <div className="">
+                    <div className='flex justify-center items-center'>
+                      <button
+                        onClick={() => handleDeleteClick(item)}
+                        className=" text-white  rounded-lg "
+                      >
+                        <img src="imgs/site-icons/remove.png" className='w-8 hover:w-9' alt="" />
+                      </button>
+
+                      <div>
+
+                        <button
+                          onClick={() => handleEditClick(item)}
+                          className=" text-white px-2 py-1 rounded-lg ml-2"
+                        >
+
+                          <img src="imgs/site-icons/edit.png" className='w-8 hover:w-9' alt="" />
+                        </button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+            </div>
+          </div> */}
+
+          {/* <div className="flex justify-center mt-4">
+            {[...Array(Math.ceil(cartItems.length / itemsPerPage)).keys()].map((number) => (
+              <button
+                key={number + 1}
+                onClick={() => paginate(number + 1)}
+                className={`mx-1 px-3 py-2 rounded-lg ${
+                  currentPage === number + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                }`}
+              >
+                {number + 1}
+              </button>
+            ))}
+          </div>   
+          <div className='border shadow-sm shadow-gray-500 w-80 h-40 rounded-xl' > 
+
+          <div className='flex ' > 
+
+            <p className='mt-5 ml-1 text-gray-600 font-semibold '>تومان</p>
+         
+          <p className="mt-5  font-semibold ml-2">{totalPrice} </p>  
+          <p colSpan="3" className=" font-semibold text-lg ml-32 mt-5">جمع کل</p>
+          </div> 
+          <button
+            onClick={handleFinalizeOrder}
+            className="bg-lightGreen flex justify-center items-center text-white px-4 py-2 rounded-lg mt-8 ml-20"
+          > 
+          نهایی کردن سبد خرید
+          </button>  
+
+          </div> */}
