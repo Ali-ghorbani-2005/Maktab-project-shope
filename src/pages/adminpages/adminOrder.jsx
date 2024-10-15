@@ -115,247 +115,658 @@ export default function AdminOrder() {
   if (error) return <p>{error}</p>; // نمایش خطاها
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex space-x-4 mb-4">
-        <label className="flex items-center space-x-2">
-          <input
-            type="radio"
-            name="allOrders"
-            checked={filters.allOrders}
-            onChange={handleFilterChange}
-            className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
-          />
-          <span>همه سفارش‌ها</span>
-        </label>
+    // <div className="flex flex-col justify-center items-center">
+    //   <div className="flex space-x-4 mb-4">
+    //     <label className="flex items-center space-x-2">
+    //       <input
+    //         type="radio"
+    //         name="allOrders"
+    //         checked={filters.allOrders}
+    //         onChange={handleFilterChange}
+    //         className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
+    //       />
+    //       <span>همه سفارش‌ها</span>
+    //     </label>
 
-        <label className="flex items-center space-x-2">
-          <input
-            type="radio"
-            name="delivered"
-            checked={filters.delivered}
-            onChange={handleFilterChange}
-            className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 "
-          />
-          <span>سفارش‌های تحویل داده شده</span>
-        </label>
-
-
-
-        <label className="flex items-center space-x-2">
-          <input
-            type="radio"
-            name="pending"
-            checked={filters.pending}
-            onChange={handleFilterChange}
-            className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
-          />
-          <span>سفارش‌های در انتظار تحویل</span>
-        </label>
+    //     <label className="flex items-center space-x-2">
+    //       <input
+    //         type="radio"
+    //         name="delivered"
+    //         checked={filters.delivered}
+    //         onChange={handleFilterChange}
+    //         className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500 "
+    //       />
+    //       <span>سفارش‌های تحویل داده شده</span>
+    //     </label>
 
 
 
-      </div>
-      <div className="bg-white w-[900px] rounded-2xl">
-        <div>
-          <p className="text-3xl ml-2 font-bold border-b-2 border-gray-400">Orders</p>
-        </div>
-        <table className="w-[870px] ml-3">
-          <thead className="h-10">
-            <tr className="border-b border-gray-400">
-              <th className="border-b border-gray-400"></th>
-              <th className="text-gray-300 text-xl border-b border-gray-400">مجموع مبلغ</th>
-              <th className="text-gray-300 text-xl border-b border-gray-400">نام کاربری</th>
+    //     <label className="flex items-center space-x-2">
+    //       <input
+    //         type="radio"
+    //         name="pending"
+    //         checked={filters.pending}
+    //         onChange={handleFilterChange}
+    //         className="mr-2 h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
+    //       />
+    //       <span>سفارش‌های در انتظار تحویل</span>
+    //     </label>
+
+
+
+    //   </div>
+    //   <div className="bg-white w-[900px] rounded-2xl">
+    //     <div>
+    //       <p className="text-3xl ml-2 font-bold border-b-2 border-gray-400">Orders</p>
+    //     </div>
+    //     <table className="w-[870px] ml-3">
+    //       <thead className="h-10">
+    //         <tr className="border-b border-gray-400">
+    //           <th className="border-b border-gray-400"></th>
+    //           <th className="text-gray-300 text-xl border-b border-gray-400">مجموع مبلغ</th>
+    //           <th className="text-gray-300 text-xl border-b border-gray-400">نام کاربری</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //          {orders && orders.length > 0 ? (
+    //           orders.map((order) => (
+    //             <tr key={order._id}>
+    //               <td className="text-center border-b border-gray-400">
+    //                 <button
+    //                   className="border-2 border-neutral-400 w-36 h-8 rounded-xl bg-red-500 text-white hover:shadow-black hover:shadow-sm"
+    //                   onClick={() => handleOrderDetails(order._id)}
+    //                 >
+    //                   بررسی سفارش
+    //                 </button>
+    //               </td>
+    //               <td className="text-center border-b border-gray-400">
+    //                 {order.totalPrice}
+    //               </td>
+    //               <td className="text-right text-xl border-b border-gray-400">
+    //                 {order.user?.username || "بدون نام کاربری"}
+    //               </td>
+    //             </tr>
+    //           ))
+    //         ) : (
+    //           <tr>
+    //             <td colSpan="3" className="text-center">
+    //               هیچ سفارشی موجود نیست
+    //             </td>
+    //           </tr>
+    //         )} 
+
+
+
+    //       </tbody>
+    //     </table>
+
+    //     <div className="flex justify-center mt-4">
+    //       {[...Array(totalPages)].map((_, index) => (
+    //         <button
+    //           key={index}
+    //           onClick={() => handlePageChange(index + 1)}
+    //           className={`mx-1 px-3 py-1 rounded-lg ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-300 text-black"
+    //             }`}
+    //         >
+    //           {index + 1}
+    //         </button>
+    //       ))}
+    //     </div>
+    //   </div>
+
+    //   {/* مودال نمایش جزئیات سفارش */}
+    //   {/* {showModal && (
+    //     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"> 
+    //     <div className="colorful-border">
+    //       <div className="bg-white rounded-lg p-6 w-[500px]">
+    //         <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
+    //         {selectedOrder ? (
+    //           <div className="text-right  ">
+    //             <div className="border-2 border-amber-400 rounded-xl h-36">
+
+    //               <p className="mt-2 mr-2 text-[18px]">نام کاربری: {selectedOrder.user.username}</p>
+    //               <p className="mt-2 mr-2 text-[18px]">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
+    //               <p className="flex justify-end mt-2 mr-2 text-[18px]"> {selectedOrder.deliveryStatus ? <div><img src="imgs/site-icons/Ampeross.png" alt="" className="w-6" /></div> : <div><img src="imgs/site-icons/Custom.png" alt="" className="w-6" /></div>}:وضعیت تحویل</p>
+
+    //             </div>
+    //             <h3 className="mt-4 font-sans text-xl">محصولات</h3>
+    //             <table className="min-w-full bg-white border border-gray-300">
+    //               <thead>
+    //                 <tr className="bg-gray-200">
+
+
+    //                   <th className="py-2 px-4 border-b font-sans text-lg text-center">تعداد</th>
+
+    //                   <th className="py-2 px-4 border-b text-center font-sans text-lg">قیمت</th>
+    //                   <th className="py-2 px-4 border-b text-center font-sans text-lg">نام محصول</th>
+    //                 </tr>
+    //               </thead>
+    //               <tbody>
+    //                 {selectedOrder.products.map((item) => {
+    //                   console.log("Product item:", item); // چاپ کردن اطلاعات محصول در کنسول
+
+    //                   return (
+    //                     <tr key={item._id} className="hover:bg-gray-100">
+    //                       {item.product ? (
+    //                         <>
+
+
+
+    //                           <td className="py-2 px-4 border-b flex justify-center items-center ">{item.count}</td>
+    //                           <td className="py-2 px-4 border-b border border-neutral-300 text-center ">{item.product.price}</td>
+    //                           <td className="py-2 px-4 border-b border border-neutral-300   text-center ">{item.product.name}</td>
+
+    //                         </>
+    //                       ) : (
+    //                         <td colSpan="3" className="py-2 px-4 border-b text-red-500 text-center">
+    //                           محصول در دسترس نیست
+    //                         </td>
+    //                       )}
+    //                     </tr>
+    //                   );
+    //                 })}
+    //               </tbody>
+    //             </table>
+
+
+    //           </div>
+    //         ) : (
+    //           <p>در حال بارگذاری جزئیات سفارش...</p>
+    //         )}
+    //         <button
+    //           className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
+    //           onClick={handleCloseModal}
+    //         >
+    //           بستن
+    //         </button>
+    //       </div> 
+    //       </div>
+    //     </div>
+    //   )} */}
+
+
+    //   {showModal && (
+    //     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    //       <div className="colorful-border">
+    //         <div className="bg-white h-[520px] rounded-lg p-6 w-[500px]">
+    //           <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
+    //           {selectedOrder ? (
+    //             <div className="text-right">
+    //               <div className="border-2 border-amber-400 rounded-xl h-36">
+    //                 <p className="mt-2 mr-2 text-[18px]">نام کاربری: {selectedOrder.user.username}</p>
+    //                 <p className="mt-2 mr-2 text-[18px]">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
+    //                 <p className="flex justify-end mt-2 mr-2 text-[18px]">
+    //                   {selectedOrder.deliveryStatus ? (
+    //                     <div><img src="imgs/site-icons/Ampeross.png" alt="" className="w-6" /></div>
+    //                   ) : (
+    //                     <div><img src="imgs/site-icons/Custom.png" alt="" className="w-6" /></div>
+    //                   )}
+    //                   :وضعیت تحویل
+    //                 </p>
+    //               </div>
+
+
+
+    //               <h3 className="mt-4 font-sans text-xl">محصولات</h3>
+    //               <table className="min-w-full bg-white border border-gray-300">
+    //                 <thead>
+    //                   <tr className="bg-gray-200">
+    //                     <th className="py-2 px-4 border-b font-sans text-lg text-center">تعداد</th>
+    //                     <th className="py-2 px-4 border-b text-center font-sans text-lg">قیمت</th>
+    //                     <th className="py-2 px-4 border-b text-center font-sans text-lg">نام محصول</th>
+    //                   </tr>
+    //                 </thead>
+    //                 <tbody>
+    //                   {selectedOrder.products.map((item) => (
+    //                     <tr key={item._id} className="hover:bg-gray-100">
+    //                       {item.product ? (
+    //                         <>
+    //                           <td className="py-2 px-4 border-b flex justify-center items-center ">{item.count}</td>
+    //                           <td className="py-2 px-4 border-b border border-neutral-300 text-center ">{item.product.price}</td>
+    //                           <td className="py-2 px-4 border-b border border-neutral-300 text-center ">{item.product.name}</td>
+    //                         </>
+    //                       ) : (
+    //                         <td colSpan="3" className="py-2 px-4 border-b text-red-500 text-center">
+    //                           محصول در دسترس نیست
+    //                         </td>
+    //                       )}
+    //                     </tr>
+    //                   ))}
+    //                 </tbody>
+    //               </table>
+    //             </div>
+    //           ) : (
+    //             <p>در حال بارگذاری جزئیات سفارش...</p>
+    //           )}
+    //           <button
+    //             className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
+    //             onClick={handleCloseModal}
+    //           >
+    //             بستن
+    //           </button>
+
+    //           {!selectedOrder.deliveryStatus && (
+
+    //             <button
+    //               className="mt-4 bg-green-500 ml-10 text-white px-4 py-2 rounded-lg"
+    //               onClick={() => handleMarkAsDelivered(selectedOrder._id)}
+    //             >
+    //               تحویل داده شد
+    //             </button>
+
+    //           )}
+
+
+    //         </div>
+    //       </div>
+    //     </div>
+    //   )}
+
+
+    // </div> 
+
+    // <div className="flex flex-col items-center">
+    //   <div className="flex space-x-6 mb-6">
+    //     <label className="flex items-center space-x-2">
+    //       <input
+    //         type="radio"
+    //         name="allOrders"
+    //         checked={filters.allOrders}
+    //         onChange={handleFilterChange}
+    //         className="h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
+    //       />
+    //       <span>همه سفارش‌ها</span>
+    //     </label>
+
+    //     <label className="flex items-center space-x-2">
+    //       <input
+    //         type="radio"
+    //         name="delivered"
+    //         checked={filters.delivered}
+    //         onChange={handleFilterChange}
+    //         className="h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
+    //       />
+    //       <span>سفارش‌های تحویل داده شده</span>
+    //     </label>
+
+    //     <label className="flex items-center space-x-2">
+    //       <input
+    //         type="radio"
+    //         name="pending"
+    //         checked={filters.pending}
+    //         onChange={handleFilterChange}
+    //         className="h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
+    //       />
+    //       <span>سفارش‌های در انتظار تحویل</span>
+    //     </label>
+    //   </div>
+
+    //   <div className="bg-white w-full max-w-3xl rounded-2xl shadow-md p-4">
+    //     <p className="text-3xl font-bold border-b-2 border-gray-400 pb-2">Orders</p>
+
+    //     <table className="w-full mt-4">
+    //       <thead className="bg-gray-200">
+    //         <tr>
+    //           <th className="border-b border-gray-400 text-center">عملیات</th>
+    //           <th className="border-b border-gray-400 text-center">مجموع مبلغ</th>
+    //           <th className="border-b border-gray-400 text-center">نام کاربری</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {orders && orders.length > 0 ? (
+    //           orders.map((order) => (
+    //             <tr key={order._id} className="hover:bg-gray-100">
+    //               <td className="text-center border-b border-gray-400">
+    //                 <button
+    //                   className="border-2 border-neutral-400 w-28 h-10 rounded-xl bg-red-500 text-white hover:shadow-lg transition-shadow"
+    //                   onClick={() => handleOrderDetails(order._id)}
+    //                 >
+    //                   بررسی سفارش
+    //                 </button>
+    //               </td>
+    //               <td className="text-center border-b border-gray-400">{order.totalPrice} تومان</td>
+    //               <td className="text-right border-b border-gray-400">{order.user?.username || "بدون نام کاربری"}</td>
+    //             </tr>
+    //           ))
+    //         ) : (
+    //           <tr>
+    //             <td colSpan="3" className="text-center py-4 text-red-500">هیچ سفارشی موجود نیست</td>
+    //           </tr>
+    //         )}
+    //       </tbody>
+    //     </table>
+
+    //     <div className="flex justify-center mt-4">
+    //       {[...Array(totalPages)].map((_, index) => (
+    //         <button
+    //           key={index}
+    //           onClick={() => handlePageChange(index + 1)}
+    //           className={`mx - 1 px-3 py-1 rounded-lg ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-300 text-black"}`}
+    //         >
+    //           {index + 1}
+    //         </button>
+    //       ))}
+    //     </div>
+
+
+
+    //   </div >
+
+    //   {/* Order Details Modal */}
+    //   {
+    //     showModal && (
+    //       <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    //         <div className="bg-white rounded-lg p-6 w-[500px] shadow-lg">
+    //           <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
+    //           {selectedOrder ? (
+    //             <div className="text-right">
+    //               <div className="border-2 border-amber-400 rounded-xl mb-4 p-4">
+    //                 <p className="text-lg">نام کاربری: {selectedOrder.user.username}</p>
+    //                 <p className="text-lg">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
+    //                 <p className="flex justify-end mt-2 text-lg">
+    //                   {selectedOrder.deliveryStatus ? (
+    //                     <img src="imgs/site-icons/Ampeross.png" alt="Delivered" className="w-6" />
+    //                   ) : (
+    //                     <img src="imgs/site-icons/Custom.png" alt="Pending" className="w-6" />
+    //                   )}
+    //                   :وضعیت تحویل
+    //                 </p>
+    //               </div>
+    //               <h3 className="mt-4 font-sans text-xl">محصولات</h3>
+    //               <table className="min-w-full bg-white border border-gray-300 mt-2">
+    //                 <thead>
+    //                   <tr className="bg-gray-200">
+    //                     <th className="py-2 px-4 border-b font-sans text-lg text-center">تعداد</th>
+    //                     <th className="py-2 px-4 border-b text-center font-sans text-lg">قیمت</th>
+    //                     <th className="py-2 px-4 border-b text-center font-sans text-lg">نام محصول</th>
+    //                   </tr>
+    //                 </thead>
+    //                 <tbody>
+    //                   {selectedOrder.products.map((item) => (
+    //                     <tr key={item._id} className="hover:bg-gray-100">
+    //                       {item.product ? (
+    //                         <>
+    //                           <td className="py-2 px-4 border-b text-center">{item.count}</td>
+    //                           <td className="py-2 px-4 border-b text-center">{item.product.price} تومان</td>
+    //                           <td className="py-2 px-4 border-b text-center">{item.product.name}</td>
+    //                         </>
+    //                       ) : (
+    //                         <td colSpan="3" className="py-2 px-4 border-b text-red-500 text-center">محصول در دسترس نیست</td>
+    //                       )}
+    //                     </tr>
+    //                   ))}
+    //                 </tbody>
+    //               </table>
+    //             </div>
+    //           ) : (
+    //             <p>در حال بارگذاری جزئیات سفارش...</p>
+    //           )}
+    //           <div className="flex justify-end mt-4">
+    //             <button className="bg-blue-500 text-white px-4 py-2 rounded-lg" onClick={handleCloseModal}>بستن</button>
+    //             {!selectedOrder.deliveryStatus && (
+    //               <button className="ml-2 bg-green-500 text-white px-4 py-2 rounded-lg" onClick={() => handleMarkAsDelivered(selectedOrder._id)}>تحویل داده شد</button>
+    //             )}
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )
+    //   }
+    // </div > 
+
+
+
+    // <div className="flex flex-col items-center">
+    //   <div className="flex space-x-6 mb-6">
+    //     {['allOrders', 'delivered', 'pending'].map((filter) => (
+    //       <label className="flex items-center space-x-2" key={filter}>
+    //         <input
+    //           type="radio"
+    //           name={filter}
+    //           checked={filters[filter]}
+    //           onChange={handleFilterChange}
+    //           className="h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
+    //         />
+    //         <span className="text-lg">{filter === 'allOrders' ? 'همه سفارش‌ها' : filter === 'delivered' ? 'سفارش‌های تحویل داده شده' : 'سفارش‌های در انتظار تحویل'}</span>
+    //       </label>
+    //     ))}
+    //   </div>
+
+    //   <div className="bg-white w-full max-w-3xl rounded-2xl shadow-lg p-4">
+    //     <p className="text-3xl font-bold border-b-2 border-gray-400 pb-2">لیست سفارشات</p>
+
+    //     <table className="w-full mt-4">
+    //       <thead className="bg-gray-200">
+    //         <tr>
+    //           <th className="border-b border-gray-400 text-center py-2">عملیات</th>
+    //           <th className="border-b border-gray-400 text-center py-2">مجموع مبلغ</th>
+    //           <th className="border-b border-gray-400 text-center py-2">نام کاربری</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {orders && orders.length > 0 ? (
+    //           orders.map((order) => (
+    //             <tr key={order._id} className="hover:bg-gray-100 transition-colors">
+    //               <td className="text-center border-b border-gray-400">
+    //                 <button
+    //                   className="border-2 border-neutral-400 w-28 h-10 rounded-xl bg-red-500 text-white hover:bg-red-600 transition-colors"
+    //                   onClick={() => handleOrderDetails(order._id)}
+    //                 >
+    //                   بررسی سفارش
+    //                 </button>
+    //               </td>
+    //               <td className="text-center border-b border-gray-400">{order.totalPrice} تومان</td>
+    //               <td className="text-right border-b border-gray-400">{order.user?.username || "بدون نام کاربری"}</td>
+    //             </tr>
+    //           ))
+    //         ) : (
+    //           <tr>
+    //             <td colSpan="3" className="text-center py-4 text-red-500">هیچ سفارشی موجود نیست</td>
+    //           </tr>
+    //         )}
+    //       </tbody>
+    //     </table>
+
+    //     <div className="flex justify-center mt-4">
+    //       {[...Array(totalPages)].map((_, index) => (
+    //         <button
+    //           key={index}
+    //           onClick={() => handlePageChange(index + 1)}
+    //           className={`mx-1 px-3 py-1 rounded-lg ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-300 text-black"}`}
+    //         >
+    //           {index + 1}
+    //         </button>
+    //       ))}
+    //     </div>
+    //   </div>
+
+    //   {/* Order Details Modal */}
+    //   {showModal && (
+    //     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    //       <div className="bg-white rounded-lg p-6 w-[500px] shadow-lg">
+    //         <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
+    //         {selectedOrder ? (
+    //           <div className="text-right">
+    //             <div className="border-2 border-amber-400 rounded-xl mb-4 p-4">
+    //               <p className="text-lg">نام کاربری: {selectedOrder.user.username}</p>
+    //               <p className="text-lg">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
+    //               <p className="flex justify-end mt-2 text-lg">
+    //                 {selectedOrder.deliveryStatus ? (
+    //                   <img src="imgs/site-icons/Ampeross.png" alt="Delivered" className="w-6" />
+    //                 ) : (
+    //                   <img src="imgs/site-icons/Custom.png" alt="Pending" className="w-6" />
+    //                 )}
+    //                 :وضعیت تحویل
+    //               </p>
+    //             </div>
+    //             <h3 className="mt-4 font-sans text-xl">محصولات</h3>
+    //             <table className="min-w-full bg-white border border-gray-300 mt-2">
+    //               <thead>
+    //                 <tr className="bg-gray-200">
+    //                   <th className="py-2 px-4 border-b font-sans text-lg text-center">تعداد</th>
+    //                   <th className="py-2 px-4 border-b text-center font-sans text-lg">قیمت</th>
+    //                   <th className="py-2 px-4 border-b text-center font-sans text-lg">نام محصول</th>
+    //                 </tr>
+    //               </thead>
+    //               <tbody>
+    //                 {selectedOrder.products.map((item) => (
+    //                   <tr key={item._id} className="hover:bg-gray-100">
+    //                     {item.product ? (
+    //                       <>
+    //                         <td className="py-2 px-4 border-b text-center">{item.count}</td>
+    //                         <td className="py-2 px-4 border-b text-center">{item.product.price} تومان</td>
+    //                         <td className="py-2 px-4 border-b text-center">{item.product.name}</td>
+    //                       </>
+    //                     ) : (
+    //                       <td colSpan="3" className="py-2 px-4 border-b text-red-500 text-center">محصول در دسترس نیست</td>
+    //                     )}
+    //                   </tr>
+    //                 ))}
+    //               </tbody>
+    //             </table>
+    //           </div>
+    //         ) : (
+    //           <p>در حال بارگذاری جزئیات سفارش...</p>
+    //         )}
+    //         <div className="flex justify-end mt-4">
+    //           <button className="bg-blue-500 text-white px-4 py-2 rounded-lg" onClick={handleCloseModal}>بستن</button>
+    //           {!selectedOrder.deliveryStatus && (
+    //             <button className="ml-2 bg-green-500 text-white px-4 py-2 rounded-lg" onClick={() => handleMarkAsDelivered(selectedOrder._id)}>تحویل داده شد</button>
+    //           )}
+    //         </div>
+    //       </div>
+    //     </div>
+    //   )}
+    // </div> 
+
+
+
+    <div className="flex flex-col items-center p-4">
+  <div className="flex space-x-6 mb-6">
+    {['allOrders', 'delivered', 'pending'].map((filter) => (
+      <label className="flex items-center space-x-2" key={filter}>
+        <input
+          type="radio"
+          name={filter}
+          checked={filters[filter]}
+          onChange={handleFilterChange}
+          className="h-5 w-5 text-green-600 bg-gray-100 border-gray-300 rounded-full focus:ring-green-500"
+        />
+        <span className="text-lg font-semibold">{filter === 'allOrders' ? 'همه سفارش‌ها' : filter === 'delivered' ? 'سفارش‌های تحویل داده شده' : 'سفارش‌های در انتظار تحویل'}</span>
+      </label>
+    ))}
+  </div>
+
+  <div className="bg-white w-full max-w-3xl rounded-2xl shadow-lg p-6">
+    <p className="text-3xl font-bold border-b-2 border-gray-300 pb-2">لیست سفارشات</p>
+
+    <table className="w-full mt-4">
+      <thead className="bg-gray-200">
+        <tr>
+          <th className="border-b border-gray-400 text-center py-2">عملیات</th>
+          <th className="border-b border-gray-400 text-center py-2">مجموع مبلغ</th>
+          <th className="border-b border-gray-400 text-center py-2">نام کاربری</th>
+        </tr>
+      </thead>
+      <tbody>
+        {orders && orders.length > 0 ? (
+          orders.map((order) => (
+            <tr key={order._id} className="hover:bg-gray-100 transition-colors">
+              <td className="text-center border-b border-gray-400">
+                <button
+                  className="border-2 border-neutral-400 w-28 h-10 rounded-xl bg-red-500 text-white hover:bg-red-600 transition-colors duration-200"
+                  onClick={() => handleOrderDetails(order._id)}
+                >
+                  بررسی سفارش
+                </button>
+              </td>
+              <td className="text-center border-b border-gray-400">{order.totalPrice} تومان</td>
+              <td className="text-right border-b border-gray-400">{order.user?.username || "بدون نام کاربری"}</td>
             </tr>
-          </thead>
-          <tbody>
-            {orders && orders.length > 0 ? (
-              orders.map((order) => (
-                <tr key={order._id}>
-                  <td className="text-center border-b border-gray-400">
-                    <button
-                      className="border-2 border-neutral-400 w-36 h-8 rounded-xl bg-red-500 text-white hover:shadow-black hover:shadow-sm"
-                      onClick={() => handleOrderDetails(order._id)}
-                    >
-                      بررسی سفارش
-                    </button>
-                  </td>
-                  <td className="text-center border-b border-gray-400">
-                    {order.totalPrice}
-                  </td>
-                  <td className="text-right text-xl border-b border-gray-400">
-                    {order.user?.username || "بدون نام کاربری"}
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="3" className="text-center">
-                  هیچ سفارشی موجود نیست
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="3" className="text-center py-4 text-red-500 font-semibold">هیچ سفارشی موجود نیست</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
 
-        <div className="flex justify-center mt-4">
-          {[...Array(totalPages)].map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handlePageChange(index + 1)}
-              className={`mx-1 px-3 py-1 rounded-lg ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-300 text-black"
-                }`}
-            >
-              {index + 1}
-            </button>
-          ))}
+    <div className="flex justify-center mt-4">
+      {[...Array(totalPages)].map((_, index) => (
+        <button
+          key={index}
+          onClick={() => handlePageChange(index + 1)}
+          className={`mx-1 px-3 py-1 rounded-lg ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-300 text-black"}`}
+        >
+          {index + 1}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  {/* Order Details Modal */}
+  {showModal && (
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+      <div className="bg-white rounded-lg p-6 w-[500px] shadow-lg">
+        <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
+        {selectedOrder ? (
+          <div className="text-right">
+            <div className="border-2 border-amber-400 rounded-xl mb-4 p-4">
+              <p className="text-lg">نام کاربری: {selectedOrder.user.username}</p>
+              <p className="text-lg">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
+              <p className="flex justify-end mt-2 text-lg">
+                {selectedOrder.deliveryStatus ? (
+                  <img src="imgs/site-icons/Ampeross.png" alt="Delivered" className="w-6" />
+                ) : (
+                  <img src="imgs/site-icons/Custom.png" alt="Pending" className="w-6" />
+                )}
+                :وضعیت تحویل
+              </p>
+            </div>
+            <h3 className="mt-4 font-sans text-xl">محصولات</h3>
+            <table className="min-w-full bg-white border border-gray-300 mt-2">
+              <thead>
+                <tr className="bg-gray-200">
+                  <th className="py-2 px-4 border-b font-sans text-lg text-center">تعداد</th>
+                  <th className="py-2 px-4 border-b text-center font-sans text-lg">قیمت</th>
+                  <th className="py-2 px-4 border-b text-center font-sans text-lg">نام محصول</th>
+                </tr>
+              </thead>
+              <tbody>
+                {selectedOrder.products.map((item) => (
+                  <tr key={item._id} className="hover:bg-gray-100">
+                    {item.product ? (
+                      <>
+                        <td className="py-2 px-4 border-b text-center">{item.count}</td>
+                        <td className="py-2 px-4 border-b text-center">{item.product.price} تومان</td>
+                        <td className="py-2 px-4 border-b text-center">
+                       
+                          <p>{item.product.name}</p>
+                        </td>
+                      </>
+                    ) : (
+                      <td colSpan="3" className="py-2 px-4 border-b text-red-500 text-center">محصول در دسترس نیست</td>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p>در حال بارگذاری جزئیات سفارش...</p>
+        )}
+        <div className="flex justify-end mt-4">
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg" onClick={handleCloseModal}>بستن</button>
+          {!selectedOrder.deliveryStatus && (
+            <button className="ml-2 bg-green-500 text-white px-4 py-2 rounded-lg" onClick={() => handleMarkAsDelivered(selectedOrder._id)}>تحویل داده شد</button>
+          )}
         </div>
       </div>
-
-      {/* مودال نمایش جزئیات سفارش */}
-      {/* {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"> 
-        <div className="colorful-border">
-          <div className="bg-white rounded-lg p-6 w-[500px]">
-            <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
-            {selectedOrder ? (
-              <div className="text-right  ">
-                <div className="border-2 border-amber-400 rounded-xl h-36">
-                
-                  <p className="mt-2 mr-2 text-[18px]">نام کاربری: {selectedOrder.user.username}</p>
-                  <p className="mt-2 mr-2 text-[18px]">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
-                  <p className="flex justify-end mt-2 mr-2 text-[18px]"> {selectedOrder.deliveryStatus ? <div><img src="imgs/site-icons/Ampeross.png" alt="" className="w-6" /></div> : <div><img src="imgs/site-icons/Custom.png" alt="" className="w-6" /></div>}:وضعیت تحویل</p>
-
-                </div>
-                <h3 className="mt-4 font-sans text-xl">محصولات</h3>
-                <table className="min-w-full bg-white border border-gray-300">
-                  <thead>
-                    <tr className="bg-gray-200">
-
-
-                      <th className="py-2 px-4 border-b font-sans text-lg text-center">تعداد</th>
-
-                      <th className="py-2 px-4 border-b text-center font-sans text-lg">قیمت</th>
-                      <th className="py-2 px-4 border-b text-center font-sans text-lg">نام محصول</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {selectedOrder.products.map((item) => {
-                      console.log("Product item:", item); // چاپ کردن اطلاعات محصول در کنسول
-
-                      return (
-                        <tr key={item._id} className="hover:bg-gray-100">
-                          {item.product ? (
-                            <>
-
-
-
-                              <td className="py-2 px-4 border-b flex justify-center items-center ">{item.count}</td>
-                              <td className="py-2 px-4 border-b border border-neutral-300 text-center ">{item.product.price}</td>
-                              <td className="py-2 px-4 border-b border border-neutral-300   text-center ">{item.product.name}</td>
-
-                            </>
-                          ) : (
-                            <td colSpan="3" className="py-2 px-4 border-b text-red-500 text-center">
-                              محصول در دسترس نیست
-                            </td>
-                          )}
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-
-
-              </div>
-            ) : (
-              <p>در حال بارگذاری جزئیات سفارش...</p>
-            )}
-            <button
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
-              onClick={handleCloseModal}
-            >
-              بستن
-            </button>
-          </div> 
-          </div>
-        </div>
-      )} */}
-
-
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-          <div className="colorful-border">
-            <div className="bg-white rounded-lg p-6 w-[500px]">
-              <h2 className="text-xl font-bold mb-4">جزئیات سفارش</h2>
-              {selectedOrder ? (
-                <div className="text-right">
-                  <div className="border-2 border-amber-400 rounded-xl h-36">
-                    <p className="mt-2 mr-2 text-[18px]">نام کاربری: {selectedOrder.user.username}</p>
-                    <p className="mt-2 mr-2 text-[18px]">تاریخ و زمان تحویل: {new Date(selectedOrder.deliveryDate).toLocaleString()}</p>
-                    <p className="flex justify-end mt-2 mr-2 text-[18px]">
-                      {selectedOrder.deliveryStatus ? (
-                        <div><img src="imgs/site-icons/Ampeross.png" alt="" className="w-6" /></div>
-                      ) : (
-                        <div><img src="imgs/site-icons/Custom.png" alt="" className="w-6" /></div>
-                      )}
-                      :وضعیت تحویل
-                    </p>
-                  </div>
-
-
-                  {!selectedOrder.deliveryStatus && (
-                    <button
-                      className="mt-4 bg-green-500 text-white px-4 py-2 rounded-lg"
-                      onClick={() => handleMarkAsDelivered(selectedOrder._id)}
-                    >
-                      تحویل داده شد
-                    </button>
-                  )}
-
-                  <h3 className="mt-4 font-sans text-xl">محصولات</h3>
-                  <table className="min-w-full bg-white border border-gray-300">
-                    <thead>
-                      <tr className="bg-gray-200">
-                        <th className="py-2 px-4 border-b font-sans text-lg text-center">تعداد</th>
-                        <th className="py-2 px-4 border-b text-center font-sans text-lg">قیمت</th>
-                        <th className="py-2 px-4 border-b text-center font-sans text-lg">نام محصول</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {selectedOrder.products.map((item) => (
-                        <tr key={item._id} className="hover:bg-gray-100">
-                          {item.product ? (
-                            <>
-                              <td className="py-2 px-4 border-b flex justify-center items-center ">{item.count}</td>
-                              <td className="py-2 px-4 border-b border border-neutral-300 text-center ">{item.product.price}</td>
-                              <td className="py-2 px-4 border-b border border-neutral-300 text-center ">{item.product.name}</td>
-                            </>
-                          ) : (
-                            <td colSpan="3" className="py-2 px-4 border-b text-red-500 text-center">
-                              محصول در دسترس نیست
-                            </td>
-                          )}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <p>در حال بارگذاری جزئیات سفارش...</p>
-              )}
-              <button
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
-                onClick={handleCloseModal}
-              >
-                بستن
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-
     </div>
+  )}
+</div>
+
+
   );
 }
 

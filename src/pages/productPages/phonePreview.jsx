@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { fetchLaptops } from '../../services/subcategoriesServices';  // ایمپورت تابع
+import { fetchPhone } from '../../services/subcategoriesServices';  // ایمپورت تابع
 import { useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';
 
-const LaptopsPreview = () => {
-  const [laptops, setLaptops] = useState([]);
+const PhonePreview = () => {
+  const [phone, setPhone] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loadLaptops = async () => {
+    const phone = async () => {
       try {
-        const data = await fetchLaptops('66dc7710225ac943fb1693f3');  // دریافت ۴ لپ‌تاپ بر اساس slugname
-        setLaptops(data);
+        const data = await fetchPhone('66e1da1577b825705a3770f5');  // دریافت ۴ لپ‌تاپ بر اساس slugname
+        setPhone(data);
       } catch (error) {
-        console.error("Error loading laptops:", error);
+        console.error("Error loading phones:", error);
       }
     };
 
-    loadLaptops();
+    phone();
   }, []);
 
   const handleViewAll = () => {
-    navigate('/all-laptops');  // به صفحه همه لپ‌تاپ‌ها هدایت می‌کند
+    navigate('/all-phone');  // به صفحه همه لپ‌تاپ‌ها هدایت می‌کند
   };
 
   return (
@@ -39,9 +39,9 @@ const LaptopsPreview = () => {
 
       </div>
 <div className="-mt-10  mr-10">
-      {laptops.length > 0 ? (
+      {phone.length > 0 ? (
         <div className="grid grid-cols-4 mt-20 ">
-          {laptops.map((laptop) => (
+          {phone.map((laptop) => (
             <div key={laptop._id} className="flex flex-wrap  p-4 ml-5"> 
             <Link to={`/product/${laptop._id}`}>
               <div className=' border h-96 w-72 border-zinc-200  rounded-lg ml-6 hover:shadow-md hover:shadow-black '>
@@ -67,4 +67,4 @@ const LaptopsPreview = () => {
   );
 };
 
-export default LaptopsPreview;
+export default PhonePreview;
