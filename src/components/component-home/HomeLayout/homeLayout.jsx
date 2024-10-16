@@ -24,7 +24,7 @@ export default function HomeLayout() {
 
   return (
     <>   
-      <div className={`fixed top-0  bg-white shadow-lg z-50 border-b border-gray-400 transition-all duration-300 ${isScrolled ? 'h-20' : 'h-40'}`}>
+      <div className={`fixed top-0  bg-white shadow-lg z-50 border-b border-gray-400 transition-all duration-300 ${isScrolled ? 'h-28' : 'h-40'}`}>
         <header>
           <div className="flex">
             <SearchBox />

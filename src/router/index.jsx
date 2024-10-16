@@ -19,6 +19,7 @@ import AllPhone from '../pages/productPages/allPhone';
 import UserInfo from '../components/orderComponents/UserInfo';
 import SuccessPurchase from '../pages/Transaction/successPurchase';
 import CancelPurchase from '../pages/Transaction/cancelPurchase';
+import ProductsCategories from '../components/product/productCategories';
 
 
 export default function Index() {
@@ -49,7 +50,8 @@ export default function Index() {
                             <Route path='/Product/:id' element={<Product />} />
                         
                         <Route path='/all-laptops' element={<AllLaptops />} /> 
-                        <Route path='/all-phone' element={<AllPhone />} />
+                        <Route path='/all-phone' element={<AllPhone />} /> 
+                        <Route path='//products-categories/:categoryId' element={<ProductsCategories />} /> 
                        
                     </Route>
 

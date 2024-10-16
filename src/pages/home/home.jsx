@@ -6,6 +6,8 @@ import ProductByIds from "../../components/product/productsOnSale";
 import LaptopsPreview from "../productPages/laptopsPreview";
 import PhonePreview from "../productPages/phonePreview";
 import { CartContext } from "../../services/cartContext";
+import Categories from "../../components/component-home/categoriesnav/homeCategories";
+import Banner from "../../components/component-home/Advertising poster/banner";
 
 
 export default function Home() { 
@@ -28,9 +30,16 @@ export default function Home() {
     <div>
 
 
+
       <div className="mt-20">
         <HeaderHome />
-      </div> 
+      </div>  
+
+
+      <div className="mt-10">
+
+        <Categories/>
+       </div>
 
 
       <div className="mt-10">
@@ -45,9 +54,13 @@ export default function Home() {
       <div className="mt-8">
         <PopularProducts/>
       </div> 
-
       
-       <div>
+
+       <div className="mt-10">
+        <Banner/>
+       </div>
+      
+       <div className="mt-5">
        <LaptopsPreview/>
        </div>
         
@@ -56,7 +69,7 @@ export default function Home() {
           <PhonePreview/>
         </div> 
 
-
+       
        
       
 
