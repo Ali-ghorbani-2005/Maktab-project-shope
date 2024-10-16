@@ -237,117 +237,259 @@ const Product = () => {
   };
 
   return (
-    <div className="mt-48">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="mt-5 w-[400px] h-[430px] rounded-xl shadow-sm border shadow-gray-700 ml-5">
-          <div className="flex justify-center items-center">
-            <div className="bg-white w-[350px] mt-5 rounded-lg shadow-sm shadow-gray-700 h-28">
-              <div>
-                <p className="flex justify-end text-sm font-semibold text-gray-700">خرید بیمه برای محصول</p>
-                <div className="flex justify-end mt-5 mr-4">
-                  <button className="w-32 h-8 rounded-lg border-2 border-blue-500 text-blue-500 text-sm flex">
-                    <p className="text-[30px] ml-3">+</p>
-                    <p className="ml-3">بیمه میخواهم</p>
-                  </button>
-                </div>
-                <p className="flex text-sm text-gray-700 font-semibold ml-5">
-                  <p className="text-xs mt-0.5">تومان</p> 170000
-                </p>
+    // <div className="mt-48">
+    //   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    //     <div className="mt-5 w-[400px] h-[430px] rounded-xl shadow-sm border shadow-gray-700 ml-5">
+    //       <div className="flex justify-center items-center">
+    //         <div className="bg-white w-[350px] mt-5 rounded-lg shadow-sm shadow-gray-700 h-28">
+    //           <div>
+    //             <p className="flex justify-end text-sm font-semibold text-gray-700">خرید بیمه برای محصول</p>
+    //             <div className="flex justify-end mt-5 mr-4">
+    //               <button className="w-32 h-8 rounded-lg border-2 border-blue-500 text-blue-500 text-sm flex">
+    //                 <p className="text-[30px] ml-3">+</p>
+    //                 <p className="ml-3">بیمه میخواهم</p>
+    //               </button>
+    //             </div>
+    //             <p className="flex text-sm text-gray-700 font-semibold ml-5">
+    //               <p className="text-xs mt-0.5">تومان</p> 170000
+    //             </p>
 
-                <div className='flex justify-center items-center '>
-
-
-
-
-                </div>
-
-              </div>
-            </div>
-            {/* دکمه افزودن به سبد خرید */}
-
-          </div>
-
-          <div className=' bg-white w-[350px] ml-6 mt-5 rounded-lg shadow-sm shadow-gray-700  h-32'>
-            <div >
-              <p className='text-end mt-2 text-sm text-darkGold font-semibold mr-5'>موجود در انبار فروشنده ارسال 1 روز کاری</p>
-            </div>
-            <p className='text-sm flex justify-end font-semibold mt-5 mr-5'>  <p className='text-green-500'>عالی</p>:<p className='text-gray-700'>ارزیابی عملکرد</p>  </p>
-            <div className='flex justify-end mt-5'>
-              <p className='flex font-semibold text-sm mr-5 text-gray-700'> ماه گارانتی شرکتی  <p>18</p></p>
-            </div>
-          </div>
-
-          <div className='mt-5 flex ml-8'> 
-        <p className='text-gray-600 font-semibold mt-1'>تومان</p>
-         <p className="text-2xl  mb-6 ml-1"> {product.price}</p>
-         </div>
-
-          <div className="flex justify-center ">
-            <button onClick={handleAddToCart} className="bg-lightGreen font-semibold text-xl text-white py-3 px-28 rounded-lg hover:bg-green-500 transition duration-300">
-                 <p>  خرید </p>
-            </button>
-          </div>
-
-
-
-        </div> 
+    //             <div className='flex justify-center items-center '>
 
 
 
 
+    //             </div>
+
+    //           </div>
+    //         </div>
+    //         {/* دکمه افزودن به سبد خرید */}
+
+    //       </div>
+
+    //       <div className=' bg-white w-[350px] ml-6 mt-5 rounded-lg shadow-sm shadow-gray-700  h-32'>
+    //         <div >
+    //           <p className='text-end mt-2 text-sm text-darkGold font-semibold mr-5'>موجود در انبار فروشنده ارسال 1 روز کاری</p>
+    //         </div>
+    //         <p className='text-sm flex justify-end font-semibold mt-5 mr-5'>  <p className='text-green-500'>عالی</p>:<p className='text-gray-700'>ارزیابی عملکرد</p>  </p>
+    //         <div className='flex justify-end mt-5'>
+    //           <p className='flex font-semibold text-sm mr-5 text-gray-700'> ماه گارانتی شرکتی  <p>18</p></p>
+    //         </div>
+    //       </div>
+
+    //       <div className='mt-5 flex ml-8'> 
+    //     <p className='text-gray-600 font-semibold mt-1'>تومان</p>
+    //      <p className="text-2xl  mb-6 ml-1"> {product.price}</p>
+    //      </div>
+
+    //       <div className="flex justify-center ">
+    //         <button onClick={handleAddToCart} className="bg-lightGreen font-semibold text-xl text-white py-3 px-28 rounded-lg hover:bg-green-500 transition duration-300">
+    //              <p>  خرید </p>
+    //         </button>
+    //       </div>
+
+
+
+    //     </div> 
+
+
+
+
+    //     {/* اسلایدر تصاویر */}
+    //     <div className="relative">
+    //       <h1 className="text-3xl font-bold flex justify-end mr-5 text-gray-900 mb-4">
+    //         {product.name} مدل <p>{product.brand}</p>
+    //       </h1>
+    //       <div className="relative h-96 rounded-lg mr-72">
+    //         <img
+    //           src={`http://${product.images[currentImageIndex]}`}
+    //           alt={`${product.name} - تصویر ${currentImageIndex + 1}`}
+    //           className="w-72 object-cover"
+    //         />
+    //       </div>
+    //       <button
+    //         onClick={prevImage}
+    //         className="absolute top-1/2 -left-12 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75"
+    //       >
+    //         ◀
+    //       </button>
+    //       <button
+    //         onClick={nextImage}
+    //         className="absolute top-1/2 right-80 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75"
+    //       >
+    //         ▶
+    //       </button>
+    //       <div className="bottom-4 left-1/2 ml-32 -mt-10 flex space-x-2">
+    //         {product.images.map((_, index) => (
+    //           <span
+    //             key={index}
+    //             className={`w-3 h-3 rounded-full ${currentImageIndex === index ? 'bg-slate-400' : 'bg-gray-500'}`}
+    //           ></span>
+    //         ))}
+    //       </div>
+    //     </div>
+    //   </div> 
+
+
+
+    //   {/* توضیحات محصول */}
+    //   <div className="rounded-xl border-2 border-darkGold h-48 mt-6">
+    //     <p className="text-gray-700 mb-4 flex justify-end text-lg font-bold">توضیحات:</p>
+    //     <p className="font-semibold flex justify-end">{product.description}</p>
+    //   </div>
+
+
+    //   {/* مودال انتخاب تعداد */}
+    //   {showModal && (
+    //     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    //       <div className="bg-white p-6 rounded-lg shadow-lg w-80"> 
+    //         <button onClick={()=>setShowModal(false)}>
+    //           X
+    //         </button>
+    //         <h2 className="text-lg font-bold mb-4">انتخاب تعداد</h2>
+    //         <div className="flex items-center justify-between mb-4"> 
+    //           <button
+    //             onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+    //             className="px-3 py-1 bg-gray-300 rounded"
+    //           >
+    //             -
+    //           </button>
+    //           <span className="text-lg font-semibold">{quantity}</span>
+    //           <button
+    //             onClick={() => setQuantity(quantity + 1)}
+    //             className="px-3 py-1 bg-gray-300 rounded"
+    //           >
+    //             +
+    //           </button>
+    //         </div>
+    //         <button
+    //           onClick={handleConfirmOrder}
+    //           className="w-full bg-blue-500 text-white py-2 rounded"
+    //         >
+    //           افزودن به سبد خرید
+    //         </button>
+    //       </div>
+    //     </div>
+    //   )}
+    // </div>   
+
+
+    <div className="mt-48 mx-auto max-w-screen-xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* اسلایدر تصاویر */}
         <div className="relative">
-          <h1 className="text-3xl font-bold flex justify-end mr-5 text-gray-900 mb-4">
-            {product.name} مدل <p>{product.brand}</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4 text-right">
+            {product.name} مدل <span className="text-darkGold">{product.brand}</span>
           </h1>
-          <div className="relative h-96 rounded-lg mr-72">
+          {/* <div className="relative h-96 rounded-lg overflow-hidden">
             <img
               src={`http://${product.images[currentImageIndex]}`}
               alt={`${product.name} - تصویر ${currentImageIndex + 1}`}
-              className="w-72 object-cover"
+              className="w-52 h-full object-cover"
             />
-          </div>
-          <button
-            onClick={prevImage}
-            className="absolute top-1/2 -left-12 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75"
-          >
-            ◀
-          </button>
-          <button
-            onClick={nextImage}
-            className="absolute top-1/2 right-80 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75"
-          >
-            ▶
-          </button>
-          <div className="bottom-4 left-1/2 ml-32 -mt-10 flex space-x-2">
-            {product.images.map((_, index) => (
-              <span
-                key={index}
-                className={`w-3 h-3 rounded-full ${currentImageIndex === index ? 'bg-slate-400' : 'bg-gray-500'}`}
-              ></span>
-            ))}
+            <button
+              onClick={prevImage}
+              className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75"
+            >
+              ◀
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75"
+            >
+              ▶
+            </button>
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {product.images.map((_, index) => (
+                <span
+                  key={index}
+                  className={`w-3 h-3 rounded-full ${currentImageIndex === index ? 'bg-slate-400' : 'bg-gray-500'}`}
+                ></span>
+              ))}
+            </div>
+          </div> */}
+          <div className="relative h-96 rounded-lg overflow-hidden">
+            <img
+              src={`http://${product.images[currentImageIndex]}`}
+              alt={`${product.name} - تصویر ${currentImageIndex + 1}`}
+              className="w-[52%] ml-48 h-full object-cover"
+            />
+            <button
+              onClick={prevImage}
+              className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75"
+            >
+              ◀
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-opacity-75"
+            >
+              ▶
+            </button>
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {product.images.map((_, index) => (
+                <span
+                  key={index}
+                  className={`w-3 h-3 rounded-full ${currentImageIndex === index ? 'bg-slate-400' : 'bg-gray-500'}`}
+                ></span>
+              ))}
+            </div>
           </div>
         </div>
-      </div> 
 
+        {/* اطلاعات محصول */}
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <div className="mb-4">
+            <p className="text-sm font-semibold text-gray-700 text-right">خرید بیمه برای محصول</p>
+            <div className="flex justify-end mt-2">
+              <button className="w-32 h-8 rounded-lg border-2 border-blue-500 text-blue-500 text-sm flex items-center">
+                <span className="text-lg">+</span>
+                <span className="ml-2">بیمه میخواهم</span>
+              </button>
+            </div>
+            <p className="flex justify-end text-sm text-gray-700 font-semibold mt-2">
+              <span className="text-xs">تومان</span> 170000
+            </p>
+          </div>
 
+          <div className="mb-4">
+            <p className="text-end text-sm text-darkGold font-semibold">موجود در انبار فروشنده - ارسال 1 روز کاری</p>
+            <p className="text-sm flex justify-end font-semibold">
+              <span className="text-green-500">عالی</span>:<span className="text-gray-700">ارزیابی عملکرد</span>
+            </p>
+            <p className="flex justify-end font-semibold text-sm mt-2">
+              ماه گارانتی شرکتی: <span className="ml-1">18</span>
+            </p>
+          </div>
 
-      {/* توضیحات محصول */}
-      <div className="rounded-xl border-2 border-darkGold h-48 mt-6">
-        <p className="text-gray-700 mb-4 flex justify-end text-lg font-bold">توضیحات:</p>
-        <p className="font-semibold flex justify-end">{product.description}</p>
+          <div className="flex items-baseline justify-end mb-4">
+            <span className="text-gray-600 font-semibold">تومان</span>
+            <span className="text-2xl ml-1">{product.price}</span>
+          </div>
+
+          <div className="flex justify-center">
+            <button onClick={handleAddToCart} className="bg-lightGreen font-semibold text-xl text-white py-3 px-8 rounded-lg hover:bg-green-500 transition duration-300">
+              خرید
+            </button>
+          </div>
+        </div>
       </div>
 
+      {/* توضیحات محصول */}
+      <div className="rounded-xl border-2 border-darkGold p-4 mt-6">
+        <p className="text-gray-700 mb-2 text-lg font-bold text-right">توضیحات:</p>
+        <p className="font-semibold text-right">{product.description}</p>
+      </div>
 
       {/* مودال انتخاب تعداد */}
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-80"> 
-            <button onClick={()=>setShowModal(false)}>
+          <div className="bg-white p-6 rounded-lg shadow-lg w-80">
+            <button onClick={() => setShowModal(false)} className="absolute top-2 right-2 text-gray-600">
               X
             </button>
             <h2 className="text-lg font-bold mb-4">انتخاب تعداد</h2>
-            <div className="flex items-center justify-between mb-4"> 
+            <div className="flex items-center justify-between mb-4">
               <button
                 onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
                 className="px-3 py-1 bg-gray-300 rounded"
@@ -371,7 +513,7 @@ const Product = () => {
           </div>
         </div>
       )}
-    </div>  
+    </div>
 
 
     // <div className=" max-w-7xl mx-auto p-4 mt-48">

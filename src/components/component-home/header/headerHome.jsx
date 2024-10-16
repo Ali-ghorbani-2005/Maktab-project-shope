@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 
 export default function HeaderHome() {
   const images = [
-    '/imgs/home-Slider/banner_SlideBann-1.webp' , 
-    'imgs/home-Slider/banner_SlideBann-2.webp' , 
-    'imgs/home-Slider/banner_SlideBann-3.gif' , 
+    '/imgs/home-Slider/banner_SlideBann-1.webp',
+    'imgs/home-Slider/banner_SlideBann-2.webp',
+    'imgs/home-Slider/banner_SlideBann-3.gif',
     'imgs/home-Slider/banner_SlideBann-4.webp'
   ]
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -20,26 +20,41 @@ export default function HeaderHome() {
   return (
     <>
 
-     
 
-<div className="relative mt-40  h-64 overflow-hidden">
+
+      <div className="relative mt-40  h-64 overflow-hidden">
       {images.map((image, index) => (
         <div
           key={index}
-          className={`absolute top-0 left-0 w-full h-full transition-transform duration-1000 ease-in-out 
-          ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`absolute top-0 left-0 w-full h-full  transition-transform duration-1000 ease-in-out 
+          ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'} `}
         >
           <img
             src={image}
             alt={`Slide ${index}`}
-            className="w-full h-64 object-cover"
+            className="w-full sm:w-[2000] sm:h-56 h-64 object-cover"
           />
         </div>
       ))}
     </div>
-  
+      {/* <div className="relative mt-40 h-64 overflow-hidden">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute top-0 left-0 w-full h-full transition-transform duration-1000 ease-in-out 
+      ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
+          >
+            <img
+              src={image}
+              alt={`Slide ${index}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div> */}
 
-    
+
+
     </>
   )
 }

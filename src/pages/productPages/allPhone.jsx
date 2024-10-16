@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 const AllPhone = () => {
-    const [phone, setPhone] = useState([]);   
-   
+    const [phone, setPhone] = useState([]);
+
     useEffect(() => {
         const phone = async () => {
             try {
@@ -20,34 +20,56 @@ const AllPhone = () => {
     }, []);
     // if (loading) return <Lod />;
     return (
-        <div className="p-4">
-            <h2 className="text-xl font-bold">All Laptops</h2>
-            <div className="grid grid-cols-4 mr-14 mt-44">
-    
-                {phone.map((laptop) => (
-                    <div key={laptop._id} className="flex flex-wrap  p-4 ml-5">
-                       
-                            <div className=' border h-96 w-72 border-zinc-200  rounded-lg  ml-6 hover:shadow-sm hover:shadow-black '> 
-                            <Link to={`/product/${laptop._id}`}>
-                                <img src={`http://${laptop.images[0]}`} className='w-52' alt="" />
-                                <p className='text-2xl mt-3 font-bold'>{laptop.brand}</p>
-                                <p className='mt-2 text-slate-600 text-lg'>مدل{laptop.name}</p> 
-                                </Link>
-                                <p className='flex mt-5 text-xl'><p>تومان</p>{laptop.price}</p>
+        // <div className="p-4">
+        //     <h2 className="text-xl font-bold">All Laptops</h2>
+        //     <div className="grid grid-cols-4 mr-14 mt-44">
 
-                            </div>
-                        
+        //         {phone.map((laptop) => (
+        //             <div key={laptop._id} className="flex flex-wrap  p-4 ml-5">
 
-                    </div>
+        //                     <div className=' border h-96 w-72 border-zinc-200  rounded-lg  ml-6 hover:shadow-sm hover:shadow-black '> 
+        //                     <Link to={`/product/${laptop._id}`}>
+        //                         <img src={`http://${laptop.images[0]}`} className='w-52' alt="" />
+        //                         <p className='text-2xl mt-3 font-bold'>{laptop.brand}</p>
+        //                         <p className='mt-2 text-slate-600 text-lg'>مدل{laptop.name}</p> 
+        //                         </Link>
+        //                         <p className='flex mt-5 text-xl'><p>تومان</p>{laptop.price}</p>
 
-                ))}
-            </div> 
-        
+        //                     </div>
+
+
+        //             </div>
+
+        //         ))}
+        //     </div> 
+
+        // </div> 
+
+        <div className="p-4 mt-40">
+            <h2 className="text-2xl font-bold mb-6">تمام گوشی‌ها</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                {phone.length > 0 ? (
+                    phone.map((laptop) => (
+                        <div key={laptop._id} className="flex flex-col items-center p-4">
+                            <Link to={`/product/${laptop._id}`} className='border h-96 w-full border-zinc-200 rounded-lg hover:shadow-md transition-shadow duration-300'>
+                                <img src={`http://${laptop.images[0]}`} className='w-full h-48 object-cover rounded-t-lg' alt={laptop.name} />
+                                <div className='p-4'>
+                                    <p className='text-xl font-bold'>{laptop.brand}</p>
+                                    <p className='mt-1 text-slate-600 text-base'>مدل {laptop.name}</p>
+                                    <p className='flex mt-3 text-lg'><span>تومان</span> {laptop.price}</p>
+                                </div>
+                            </Link>
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-center col-span-full">محصولی برای نمایش موجود نیست.</p>
+                )}
+            </div>
         </div>
     );
 };
 
-export default AllPhone;  
+export default AllPhone;
 
 
 
@@ -143,7 +165,7 @@ export default AllPhone;
 
 
 
-         {/* {laptops.map((laptop) => (
+{/* {laptops.map((laptop) => (
           <div key={laptop._id} className="border p-4 rounded-lg">
             <img src={laptop.thumbnail} alt={laptop.name} className="w-full h-48 object-cover" />
             <h3 className="mt-2 text-lg font-semibold">{laptop.name}</h3>
