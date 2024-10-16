@@ -59,7 +59,7 @@ export default function AdminCartButtons() {
             </div> */}
 
 
-            <div className="flex items-center gap-6 -mt-14 ml-10">
+            <div className="flex items-center gap-6 ml-10 -mt-20 sm:-ml-2 md:ml-5">
                 {/* دکمه سبد خرید */}
                 <div className="relative">
                     {cartItems.length > 0 && (
@@ -75,7 +75,7 @@ export default function AdminCartButtons() {
                 </div>
 
                 {/* دکمه‌های ورود و ثبت‌نام */}
-                <div className="flex border-2 border-blue-500 rounded-lg overflow-hidden">
+                <div className="flex border-2 border-blue-500 rounded-lg overflow-hidden sm:-ml-4 md:ml-5">
                     <Link to='/register'>
                         <button className="text-blue-500 font-bold py-2 px-4 hover:bg-blue-500 hover:text-white transition duration-300">
                             ثبت نام
