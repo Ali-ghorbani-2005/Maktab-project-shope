@@ -482,11 +482,11 @@ const Product = () => {
       </div>
 
       {/* مودال انتخاب تعداد */}
-      {showModal && (
+      {/* {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-80">
             <button onClick={() => setShowModal(false)} className="absolute top-2 right-2 text-gray-600">
-              X
+              <p>بستن</p>
             </button>
             <h2 className="text-lg font-bold mb-4">انتخاب تعداد</h2>
             <div className="flex items-center justify-between mb-4">
@@ -512,7 +512,40 @@ const Product = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */} 
+
+      {/* مودال انتخاب تعداد */}
+{showModal && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="bg-white p-6 rounded-lg shadow-lg w-80 relative">
+      <button onClick={() => setShowModal(false)} className="absolute top-2 right-2 text-gray-600">
+        X
+      </button>
+      <h2 className="text-lg font-bold mb-4">انتخاب تعداد</h2>
+      <div className="flex items-center justify-between mb-4">
+        <button
+          onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+          className="px-3 py-1 bg-gray-300 rounded"
+        >
+          -
+        </button>
+        <span className="text-lg font-semibold">{quantity}</span>
+        <button
+          onClick={() => setQuantity(quantity + 1)}
+          className="px-3 py-1 bg-gray-300 rounded"
+        >
+          +
+        </button>
+      </div>
+      <button
+        onClick={handleConfirmOrder}
+        className="w-full bg-blue-500 text-white py-2 rounded"
+      >
+        افزودن به سبد خرید
+      </button>
+    </div>
+  </div>
+)}
     </div>
 
 

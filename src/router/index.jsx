@@ -52,12 +52,12 @@ export default function Index() {
                         <Route path='/all-laptops' element={<AllLaptops />} /> 
                         <Route path='/all-phone' element={<AllPhone />} /> 
                         <Route path='//products-categories/:categoryId' element={<ProductsCategories />} /> 
-                       
+                        <Route path='/user-info' element={<UserInfo />} />
                     </Route>
 
                     {/* Admin Login */}
                     <Route path='/admin-login' element={<AdmiLogin />} /> 
-                    <Route path='/user-info' element={<UserInfo />} />  
+                     
                     <Route path='/success-purchase' element={<SuccessPurchase />} />  
                     <Route path='/cancel-purchase' element={<CancelPurchase />} /> 
                 </Routes>
