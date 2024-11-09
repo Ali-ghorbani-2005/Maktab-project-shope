@@ -570,7 +570,9 @@ export default function AdminProduct() {
   const [editForm, setEditForm] = useState({
     name: '',
     image: '',
-    category: '',
+    category: '', 
+    brand:'' , 
+    quantity:'' ,
     subcategory: '',
     description: ''
   });
@@ -639,7 +641,9 @@ export default function AdminProduct() {
       image: product.thumbnail,
       category: product.category._id,
       description: product.description,
-      price: product.price
+      price: product.price , 
+      brand : product.brand ,
+      quantity: product.quantity
     });
     setIsEditModalOpen(true);
   };
