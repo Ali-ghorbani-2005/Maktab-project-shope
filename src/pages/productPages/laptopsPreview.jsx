@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchLaptops } from '../../services/subcategoriesServices';  // ایمپورت تابع
 import { useNavigate } from 'react-router-dom'; 
 import { Link } from 'react-router-dom';
+import { numberWithCommas } from '../../utils/dataConverter';
 
 const LaptopsPreview = () => {
   const [laptops, setLaptops] = useState([]);
@@ -25,46 +26,6 @@ const LaptopsPreview = () => {
   };
 
   return (
-//     <div className="p-4"> 
-//   <div className='border-2 rounded-lg'> 
-//   <div className="flex justify-between items-center">
-      
-//         <button
-//           onClick={handleViewAll}
-//           className=" ml-10 mt-5 flex text-white px-4 py-2 rounded"
-//         >
-//            <img src="imgs/site-icons/icons-arrow.png" className='w-10' alt="" /> 
-//         </button>  
-//         <h2 className="text-2xl mr-10 font-semibold">لپ‌تاپ‌ها </h2>
-
-//       </div>
-// <div className="-mt-10  mr-10">
-//       {laptops.length > 0 ? (
-//         <div className="grid grid-cols-4 mt-20 ">
-//           {laptops.map((laptop) => (
-//             <div key={laptop._id} className="flex flex-wrap  p-4 ml-5"> 
-//             <Link to={`/product/${laptop._id}`}>
-//               <div className=' border h-96 w-72 border-zinc-200  rounded-lg ml-6 hover:shadow-md hover:shadow-black '>
-//                 <img src={`http://${laptop.images[0]}`} className='w-52' alt="" />
-//                 <p className='text-2xl mt-3 font-bold'>{laptop.brand}</p>
-//                 <p className='mt-2 text-slate-600 text-lg'>مدل{laptop.name}</p>
-//                 <p className='flex mt-5 text-xl'><p>تومان</p>{laptop.price}</p>
-
-//               </div> 
-//               </Link>
-
-//             </div>
-
-//           ))}
-
-//         </div>
-//       ) : (
-//         <p>No products available for this subcategory</p>
-//       )}
-//     </div> 
-//     </div>
-//     </div> 
-
 <div className="p-4">
     <div className='border-2 rounded-lg'>
         <div className="flex items-center justify-between p-4">
@@ -83,12 +44,12 @@ const LaptopsPreview = () => {
                 laptops.map((laptop) => (
                     <div key={laptop._id} className="flex flex-col items-center">
                         <Link to={`/product/${laptop._id}`}>
-                            <div className='border h-96 w-full border-zinc-200 rounded-lg hover:shadow-md transition-shadow duration-300'>
-                                <img src={`http://${laptop.images[0]}`} className='w-full h-48 object-cover rounded-t-lg' alt={laptop.name} />
+                            <div className='border h-96 w-full border-zinc-200 rounded-lg hover:shadow-md  hover:shadow-black transition-shadow duration-300'>
+                                <img src={`http://${laptop.images[0]}`} className='w-[200px] h-52 object-cover rounded-t-lg' alt={laptop.name} />
                                 <div className='p-4'>
                                     <p className='text-xl font-bold'>{laptop.brand}</p>
                                     <p className='mt-1 text-slate-600 text-base'>مدل {laptop.name}</p>
-                                    <p className='flex mt-3 text-lg'><span>تومان</span> {laptop.price}</p>
+                                    <p className='flex mt-3 text-lg'><span className='pr-2'>تومان</span> {numberWithCommas(laptop.price)}</p>
                                 </div>
                             </div>
                         </Link>
