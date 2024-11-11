@@ -14,6 +14,11 @@ export const login = async (username, password) => {
       const data = await response.json();
       const accessToken = data.token.accessToken;
 
+      const user = data?.data?.user._id
+      const userRole = data?.data?.user.role
+      localStorage.setItem('user', user)
+      localStorage.setItem('role', userRole)
+
       if (accessToken) {
         return { success: true, token: accessToken }; // بازگشت توکن
       } else {

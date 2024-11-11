@@ -21,7 +21,7 @@ export default function AdvertisingProduct() {
     </div> */}
 
 
-      <div className="flex justify-center items-center gap-6 flex-wrap mt-52">
+      <div className="flex justify-center items-center gap-6 flex-wrap ">
         <div className="w-72">
           <button>
             <img src="imgs/Advertising/Advertising-1.png" className="rounded-2xl hover:shadow-lg hover:shadow-black transition duration-300" alt="Advertising 1" />
