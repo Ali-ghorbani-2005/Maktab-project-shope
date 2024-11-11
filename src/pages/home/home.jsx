@@ -11,19 +11,7 @@ import Banner from "../../components/component-home/Advertising poster/banner";
 
 
 export default function Home() { 
-  const { cartItems, clearCart } = useContext(CartContext); 
-
-
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const status = queryParams.get('status');
-    
-    if (status === 'success') {
-      // پاک کردن سبد خرید در صورت موفقیت آمیز بودن سفارش
-      clearCart();
-    
-    }
-  }, [clearCart]);
+ 
 
 
   return (

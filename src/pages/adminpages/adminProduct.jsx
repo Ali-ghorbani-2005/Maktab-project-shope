@@ -569,8 +569,10 @@ export default function AdminProduct() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editForm, setEditForm] = useState({
     name: '',
-    image: '',
+    images: [],
     category: '',
+    brand: '',
+    quantity: '',
     subcategory: '',
     description: ''
   });
@@ -636,10 +638,12 @@ export default function AdminProduct() {
     setSelectedProduct(product._id);
     setEditForm({
       name: product.name,
-      image: product.thumbnail,
+      images: product.images,
       category: product.category._id,
       description: product.description,
-      price: product.price
+      price: product.price,
+      brand: product.brand,
+      quantity: product.quantity
     });
     setIsEditModalOpen(true);
   };
@@ -683,31 +687,7 @@ export default function AdminProduct() {
     } catch (error) {
       console.error('Failed to add product');
     }
-  }; 
-
-
-  // const handleAddProduct = async (formData) => {
-  //   try {
-  //     await addProduct(formData);
-  //     setSuccessMessage('محصول با موفقیت اضافه شد!'); // نمایش پیام موفقیت
-  //     setProducts([...products, formData]); // اضافه کردن محصول به لیست
-  //     setModalOpen(false); // بستن مودال
-  //     // خالی کردن فیلدهای فرم
-  //     setEditForm({
-  //       name: '',
-  //       image: '',
-  //       category: '',
-  //       subcategory: '',
-  //       description: ''
-  //     });
-  //     setTimeout(() => {
-  //       setSuccessMessage(''); // مخفی کردن پیام بعد از 3 ثانیه
-  //     }, 3000);
-  //   } catch (error) {
-  //     console.error('Failed to add product');
-  //   }
-  // };
-
+  };
   if (loading) return <Lod />;
   if (error) return <p>{error}</p>;
 
@@ -742,36 +722,37 @@ export default function AdminProduct() {
         <table className="w-full">
           <thead className="bg-gray-200">
             <tr className="border-b border-gray-400">
-              <th className="border-b border-gray-400"></th>
-              <th className="text-gray-600 text-xl border-b border-gray-400">دسته بندی</th>
-              <th className="text-gray-600 text-xl border-b border-gray-400">نام محصول</th>
-              <th className="text-gray-600 text-xl border-b border-gray-400">تصویر محصول</th>
+              <th className=""></th>
+              <th className="text-gray-600 text-xl ">دسته بندی</th>
+              <th className="text-gray-600 text-xl ">نام محصول</th>
+              <th className="text-gray-600 text-xl ">تصویر محصول</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product._id} className="hover:bg-gray-100 transition-colors">
-                <td className="text-center border-b border-gray-400 flex justify-center">
-                  <div className="mt-14">
-                    <button
-                      className="w-7  rounded-lg text-white bg-red-500 hover:bg-red-600 mx-1"
-                      onClick={() => handleDeleteClick(product._id)}
-                    >
-                      <img src="imgs/site-icons/remove.png" alt="Delete" className="w-7" />
-                    </button>
-                    <button
-                      className="w-7 rounded-lg text-white bg-blue-300 hover:bg-blue-400 mx-1"
-                      onClick={() => handleEditClick(product)}
-                    >
-                      <img src="imgs/site-icons/edit.png" alt="Edit" className="w-7" />
-                    </button>
-                  </div>
+              <tr key={product._id} className="hover:bg-gray-100 transition-colors text-center h-24">
+                <td className="flex items-center pt-8 ">
+
+                  <button
+                    className="w-7  rounded-lg text-white bg-red-500 hover:bg-red-600 mx-1"
+                    onClick={() => handleDeleteClick(product._id)}
+                  >
+                    <img src="imgs/site-icons/remove.png" alt="Delete" className="w-7" />
+                  </button>
+                  <button
+                    className="w-7 rounded-lg text-white bg-blue-300 hover:bg-blue-400 mx-1"
+                    onClick={() => handleEditClick(product)}
+                  >
+                    <img src="imgs/site-icons/edit.png" alt="Edit" className="w-7" />
+                  </button>
+
+
                 </td>
-                <td className="text-center border-b border-gray-400">
+                <td className="">
                   {product.category.name}/{product.subcategory.name}
                 </td>
-                <td className="text-center border-b border-gray-400">{product.name}</td>
-                <td className="text-center border-b border-gray-400">
+                <td className="">{product.name}</td>
+                <td className="">
                   <img src={`http://${product.images[0]}`} alt={product.name} className="w-16 h-16 object-cover mx-auto" />
                 </td>
               </tr>
