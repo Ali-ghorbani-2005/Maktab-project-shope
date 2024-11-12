@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 export default function AdminOrder() {
   const role = localStorage.getItem('role');  
   const navigate = useNavigate()
-  if(role==='ADMIN'){
+  if(role!=='ADMIN'){
     navigate('/home')
   }
   const [orders, setOrders] = useState([]); // ذخیره سفارش‌ها

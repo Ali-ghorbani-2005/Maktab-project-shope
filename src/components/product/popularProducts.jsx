@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchProductsByIds } from '../../services/productService';
 import { Link } from 'react-router-dom';
+import { numberWithCommas } from '../../utils/dataConverter';
 
 export default function PopularProducts() {
 
@@ -42,7 +43,7 @@ export default function PopularProducts() {
                                             <img src={`http://${product.images[0]}`} className='w-full h-48 object-cover rounded-lg' alt={product.name} />
                                             <p className='text-2xl mt-3 font-bold'>{product.brand}</p>
                                             <p className='mt-2 text-slate-600 text-lg'>مدل {product.name}</p>
-                                            <p className='flex mt-5 text-xl'><span>تومان</span> {product.price}</p>
+                                            <p className='flex mt-5 text-xl'><span className='pr-2'>تومان</span> {numberWithCommas(product.price)}</p>
                                         </Link>
                                     </div>
                                 ) : (

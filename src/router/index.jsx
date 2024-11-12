@@ -20,6 +20,7 @@ import UserInfo from '../components/orderComponents/UserInfo';
 import SuccessPurchase from '../pages/Transaction/successPurchase';
 import CancelPurchase from '../pages/Transaction/cancelPurchase';
 import ProductsCategories from '../components/product/productCategories';
+import Registration from '../pages/Registration/Registration';
 
 
 export default function Index() {
@@ -56,7 +57,8 @@ export default function Index() {
                     </Route>
 
                     {/* Admin Login */}
-                    <Route path='/admin-login' element={<AdmiLogin />} /> 
+                    <Route path='/admin-login' element={<AdmiLogin />} />  
+                    <Route path='/register' element={<Registration/>} />
                      
                     <Route path='/success-purchase' element={<SuccessPurchase />} />  
                     <Route path='/cancel-purchase' element={<CancelPurchase />} /> 
