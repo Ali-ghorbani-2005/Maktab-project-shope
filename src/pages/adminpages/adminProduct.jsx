@@ -140,7 +140,8 @@ export default function AdminProduct() {
     } catch (error) {
       console.error('Failed to add product');
     }
-  };
+  };  
+
   if (loading) return <Lod />;
   if (error) return <p>{error}</p>;
 
@@ -266,7 +267,20 @@ export default function AdminProduct() {
 
 
 
-
+// const handleAddProduct = async (formData) => {
+  //   try {
+  //     await addProduct(formData);
+  //     setSuccessMessage('محصول با موفقیت اضافه شد!'); // نمایش پیام موفقیت
+  //     // بارگذاری مجدد محصولات
+  //     const data = await fetchProducts(currentPage);
+  //     setProducts(data.data.products);
+  //     setTimeout(() => {
+  //       setSuccessMessage(''); // مخفی کردن پیام بعد از 3 ثانیه
+  //     }, 3000);
+  //   } catch (error) {
+  //     console.error('Failed to add product');
+  //   }
+  // };
 
 
 
