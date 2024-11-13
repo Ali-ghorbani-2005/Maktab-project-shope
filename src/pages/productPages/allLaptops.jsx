@@ -1,62 +1,7 @@
-// import React, { useEffect, useState } from 'react';
-// import { fetchAllLaptops } from '../../services/subcategoriesServices';  // ایمپورت تابع 
-// import { Link } from 'react-router-dom';
-
-// const AllLaptops = () => {
-//   const [laptops, setLaptops] = useState([]);
-
-//   useEffect(() => {
-//     const loadLaptops = async () => {
-//       try {
-//         const data = await fetchAllLaptops();  // دریافت تمام لپ‌تاپ‌ها
-//         setLaptops(data);
-//       } catch (error) {
-//         console.error("Error loading all laptops:", error);
-//       }
-//     };
-
-//     loadLaptops();
-//   }, []);
-
-//   return (
-//     <div className="p-4">
-//       <h2 className="text-xl font-bold">All Laptops</h2>
-//       <div className="grid grid-cols-4 mr-14 mt-44">
-
-
-
-
-//         {laptops.map((laptop) => (
-//           <div key={laptop._id} className="flex flex-wrap  p-4 ml-5">
-//             <Link to={`/product/${laptop._id}`}>
-//               <div className=' border h-96 w-72 border-zinc-200  rounded-lg  ml-6 hover:shadow-sm hover:shadow-black '>
-//                 <img src={`http://${laptop.images[0]}`} className='w-52' alt="" />
-//                 <p className='text-2xl mt-3 font-bold'>{laptop.brand}</p>
-//                 <p className='mt-2 text-slate-600 text-lg'>مدل{laptop.name}</p>
-//                 <p className='flex mt-5 text-xl'><p>تومان</p>{laptop.price}</p>
-
-//               </div>
-//             </Link>
-
-//           </div>
-
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AllLaptops;  
-
-
-
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import { fetchAllLaptops } from '../../services/subcategoriesServices';  // ایمپورت تابع 
 import { Link } from 'react-router-dom';
+import { numberWithCommas } from '../../utils/dataConverter';
 
 const AllLaptops = () => {
   const [laptops, setLaptops] = useState([]);
@@ -86,8 +31,8 @@ const AllLaptops = () => {
 
   return (
     
-    <div className="p-4 mt-40">
-    <h2 className="text-2xl font-bold mb-6">تمام لپ‌تاپ‌ها</h2>
+    <div className="p-4 mt-36">
+    <h2 className="text-2xl flex justify-end font-bold mb-6"> لپ‌ تاپ </h2>
     
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {currentProducts.length > 0 ? (
@@ -99,7 +44,7 @@ const AllLaptops = () => {
                             <div className='p-4'>
                                 <p className='text-xl font-bold'>{laptop.brand}</p>
                                 <p className='mt-1 text-slate-600 text-base'>مدل {laptop.name}</p>
-                                <p className='flex mt-3 text-lg'><span>تومان</span> {laptop.price}</p>
+                                <p className='flex mt-3 text-lg'><span className='pr-2'>تومان</span> {numberWithCommas(laptop.price)}</p>
                             </div>
                         </div>
                     </Link>

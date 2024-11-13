@@ -37,24 +37,6 @@ export default function HeaderHome() {
         </div>
       ))}
     </div>
-      {/* <div className="relative mt-40 h-64 overflow-hidden">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute top-0 left-0 w-full h-full transition-transform duration-1000 ease-in-out 
-      ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
-          >
-            <img
-              src={image}
-              alt={`Slide ${index}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
-      </div> */}
-
-
-
     </>
   )
 }

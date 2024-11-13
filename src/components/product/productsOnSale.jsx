@@ -29,7 +29,7 @@ const ProductByIds = () => {
         <>
             <div className='flex justify-center items-center'>
                 <div className='bg-slate-100 border border-neutral-400 w-full md:w-[1300px] rounded-2xl h-auto p-6'>
-                    <div className='bg-red-500 mt-3 h-14 md:w-[1260px] sm:w-[600px] flex justify-center items-center rounded-xl'>
+                    <div className='bg-red-500 -mt-1 h-14 md:w-[1260px] sm:w-[600px] flex justify-center items-center rounded-xl'>
                         <div className='pulse-effect'>
                             <div className='border-2 w-24 h-8 border-white flex justify-center items-center rounded-md'>
                                 <p className='flex text-2xl text-white'>
