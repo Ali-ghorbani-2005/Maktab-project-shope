@@ -152,23 +152,6 @@ const Categories = () => {
                 console.log(`Image for ${category.slugname}: ${imagePath}`);
 
                 return (
-                    //   <div
-                    //     key={category._id}
-                    //     className="m-4 p-4 border-2  border-red-500 hover:border-[3px]   rounded-full cursor-pointer flex items-center justify-center"
-                    //     onClick={() => handleCategoryClick(category._id)}
-                    //     style={{
-                    //       width: '100px',
-                    //       height: '100px',
-                    //       borderRadius: '50%',
-                    //       backgroundColor: '#fff',
-                    //       backgroundImage: `url(${imagePath})`, // استفاده از تصویر
-                    //       backgroundSize: 'cover', // اندازه تصویر به صورت کامل
-                    //       backgroundPosition: 'center', // مرکز تصویر
-                    //     }}
-                    //   >
-                    //     <span className="text-center text-lg" style={{ color: 'white' }}>{category.name}</span>
-                    //   </div> 
-
                     <div
                         key={category._id}
                         className="m-4 flex flex-col items-center cursor-pointer"
