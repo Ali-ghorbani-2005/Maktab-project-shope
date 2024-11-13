@@ -57,6 +57,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchAllLaptops } from '../../services/subcategoriesServices';  // ایمپورت تابع 
 import { Link } from 'react-router-dom';
+import { numberWithCommas } from '../../utils/dataConverter';
 
 const AllLaptops = () => {
   const [laptops, setLaptops] = useState([]);
@@ -86,8 +87,8 @@ const AllLaptops = () => {
 
   return (
     
-    <div className="p-4 mt-40">
-    <h2 className="text-2xl font-bold mb-6">تمام لپ‌تاپ‌ها</h2>
+    <div className="p-4 mt-36">
+    <h2 className="text-2xl flex justify-end font-bold mb-6"> لپ‌ تاپ </h2>
     
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {currentProducts.length > 0 ? (
@@ -99,7 +100,7 @@ const AllLaptops = () => {
                             <div className='p-4'>
                                 <p className='text-xl font-bold'>{laptop.brand}</p>
                                 <p className='mt-1 text-slate-600 text-base'>مدل {laptop.name}</p>
-                                <p className='flex mt-3 text-lg'><span>تومان</span> {laptop.price}</p>
+                                <p className='flex mt-3 text-lg'><span className='pr-2'>تومان</span> {numberWithCommas(laptop.price)}</p>
                             </div>
                         </div>
                     </Link>

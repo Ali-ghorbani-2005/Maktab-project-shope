@@ -36,7 +36,7 @@ export default function Registration() {
       <div className="flex flex-col items-center mt-5">
         <img className="w-56" src="imgs/logo/logo.jpg" alt="Logo" />
 
-        <p className="text-2xl font-bold mt-5">ورود</p>
+        <p className="text-2xl font-bold mt-5">ثبت نام </p>
 
         <form className="mt-5 w-full max-w-md" onSubmit={handleSubmit}>
           {/* Firstname Input */}
@@ -192,7 +192,7 @@ export default function Registration() {
         <div className="flex justify-center items-center mt-5">
           <button
             className="text-blue-500 font-bold hover:text-blue-600 transition duration-200"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/home')}
           >
             بازگشت به سایت
           </button>
