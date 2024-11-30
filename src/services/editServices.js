@@ -66,4 +66,26 @@ export const editProduct = async (editProductId, updatedFields) => {
       console.error("Error message:", error.message);
     }
   }
+}; 
+
+
+
+
+// services/categoryService.js
+
+
+export const fetchCategories = async () => {
+  try {
+    const response = await axios.get('http://localhost:8000/api/categories', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    throw error; // برای مدیریت خطاها در کامپوننت
+  }
 };

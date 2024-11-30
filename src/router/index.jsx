@@ -15,6 +15,13 @@ import HomeLayout from '../components/component-home/HomeLayout/homeLayout';
 import AllLaptops from '../pages/productPages/allLaptops';
 import { CartProvider } from '../services/cartContext';
 import FinalizeOrderPage from '../components/orderComponents/FinalizeOrderPage';
+import AllPhone from '../pages/productPages/allPhone';
+import UserInfo from '../components/orderComponents/UserInfo';
+import SuccessPurchase from '../pages/Transaction/successPurchase';
+import CancelPurchase from '../pages/Transaction/cancelPurchase';
+import ProductsCategories from '../components/product/productCategories';
+import Registration from '../pages/Registration/Registration';
+
 
 export default function Index() {
     return (
@@ -43,12 +50,18 @@ export default function Index() {
                             <Route path='/Orders' element={<Orders />} />
                             <Route path='/Product/:id' element={<Product />} />
                         
-                        <Route path='/all-laptops' element={<AllLaptops />} />
-
+                        <Route path='/all-laptops' element={<AllLaptops />} /> 
+                        <Route path='/all-phone' element={<AllPhone />} /> 
+                        <Route path='//products-categories/:categoryId' element={<ProductsCategories />} /> 
+                        <Route path='/user-info' element={<UserInfo />} />
                     </Route>
 
                     {/* Admin Login */}
-                    <Route path='/admin-login' element={<AdmiLogin />} />
+                    <Route path='/admin-login' element={<AdmiLogin />} />  
+                    <Route path='/register' element={<Registration/>} />
+                     
+                    <Route path='/success-purchase' element={<SuccessPurchase />} />  
+                    <Route path='/cancel-purchase' element={<CancelPurchase />} /> 
                 </Routes>
             </BrowserRouter>  
             

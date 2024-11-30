@@ -81,33 +81,115 @@ export default function AdminInventory() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="bg-white w-[900px] rounded-2xl">
-        <div>
-          <p className="text-3xl ml-2 font-bold border-b-2 border-gray-400">Product inventory</p>
-        </div>
-        <table className="w-[870px] ml-3">
-          <thead className="h-10">
+    // <div className="flex flex-col justify-center items-center">
+    //   <div className="bg-white w-[900px] rounded-2xl">
+    //     <div>
+    //       <p className="text-3xl ml-2 font-bold border-b-2 border-gray-400">Product inventory</p>
+    //     </div>
+    //     <table className="w-[870px] ml-3">
+    //       <thead className="h-10">
+    //         <tr className="border-b border-gray-400">
+    //           <th className="border-b border-gray-400 text-gray-300 text-xl">موجودی</th>
+    //           <th className="border-b border-gray-400 text-gray-300 text-xl">قیمت</th>
+    //           <th className="border-b border-gray-400 text-gray-300 text-xl">نام محصول</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {products.map((product) => (
+    //           <tr key={product._id}>
+    //             <td className="text-center border-b border-gray-400">
+    //               {editProductIds.includes(product._id) && editedValues[product._id]?.quantity !== undefined ? (
+    //                 <input 
+    //                 type="text"
+    //                   name="quantity"
+    //                   value={editedValues[product._id]?.quantity || ''}
+    //                   onChange={(e) => handleInputChange(e, product._id)}
+    //                   className="border border-gray-300 rounded p-1"
+    //                 />
+    //               ) : (
+    //                 <span onClick={() => handleEditClick(product._id, 'quantity')}>
+    //                   {product.quantity}
+    //                 </span>
+    //               )}
+    //             </td>
+    //             <td className="text-center border-b border-gray-400">
+    //               {editProductIds.includes(product._id) && editedValues[product._id]?.price !== undefined ? (
+    //                 <input
+    //                   type="text"
+    //                   name="price"
+    //                   value={editedValues[product._id]?.price || ''}
+    //                   onChange={(e) => handleInputChange(e, product._id)}
+    //                   className="border border-gray-300 rounded p-1"
+    //                 />
+    //               ) : (
+    //                 <span onClick={() => handleEditClick(product._id, 'price')}>
+    //                   {product.price}
+    //                 </span>
+    //               )}
+    //             </td>
+    //             <td className="text-right border-b border-gray-400 text-xl">{product.name}</td>
+    //           </tr>
+    //         ))}
+    //       </tbody>
+    //     </table>
+    //     {editProductIds.length > 0 && (
+    //       <div className="flex justify-center mt-4">
+    //         <button
+    //           onClick={handleSaveAll}
+    //           className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2"
+    //         >
+    //           {editProductIds.length > 1 ? 'ذخیره همه' : 'ذخیره'}
+    //         </button>
+    //         <button
+    //           onClick={handleCancelAll}
+    //           className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+    //         >
+    //           {editProductIds.length > 1 ? 'انصراف همه' : 'انصراف'}
+    //         </button>
+    //       </div>
+    //     )}
+    //     <div className="flex mt-4 justify-center items-center">
+    //       {[...Array(totalPages)].map((_, index) => (
+    //         <button
+    //           key={index + 1}
+    //           onClick={() => setCurrentPage(index + 1)}
+    //           className={`px-2 py-1 mx-1 ${currentPage === index + 1 ? "bg-blue-500 rounded-full text-white" : "bg-gray-300"} hover:bg-blue-400`}
+    //         >
+    //           {index + 1}
+    //         </button>
+    //       ))}
+    //     </div>
+    //   </div>
+    // </div> 
+
+    <div className="flex flex-col justify-center items-center p-4">
+      <div className="bg-white w-full max-w-3xl rounded-2xl shadow-lg p-6">
+        <p className="text-3xl font-bold border-b-2 border-gray-400 pb-2">موجودی کالاها</p>
+        <table className="w-full mt-4">
+          <thead className="bg-gray-200">
             <tr className="border-b border-gray-400">
-              <th className="border-b border-gray-400 text-gray-300 text-xl">موجودی</th>
-              <th className="border-b border-gray-400 text-gray-300 text-xl">قیمت</th>
-              <th className="border-b border-gray-400 text-gray-300 text-xl">نام محصول</th>
+              <th className="border-b border-gray-400 text-gray-600 text-xl">موجودی</th>
+              <th className="border-b border-gray-400 text-gray-600 text-xl">قیمت</th>
+              <th className="border-b border-gray-400 text-gray-600 text-xl">نام محصول</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product._id}>
+              <tr key={product._id} className="hover:bg-gray-100 transition-colors">
                 <td className="text-center border-b border-gray-400">
                   {editProductIds.includes(product._id) && editedValues[product._id]?.quantity !== undefined ? (
-                    <input 
-                    type="text"
+                    <input
+                      type="text"
                       name="quantity"
                       value={editedValues[product._id]?.quantity || ''}
                       onChange={(e) => handleInputChange(e, product._id)}
-                      className="border border-gray-300 rounded p-1"
+                      className="border border-gray-300 rounded p-1 focus:border-blue-500 focus:outline-none"
                     />
                   ) : (
-                    <span onClick={() => handleEditClick(product._id, 'quantity')}>
+                    <span
+                      onClick={() => handleEditClick(product._id, 'quantity')}
+                      className="cursor-pointer hover:text-blue-600"
+                    >
                       {product.quantity}
                     </span>
                   )}
@@ -119,10 +201,13 @@ export default function AdminInventory() {
                       name="price"
                       value={editedValues[product._id]?.price || ''}
                       onChange={(e) => handleInputChange(e, product._id)}
-                      className="border border-gray-300 rounded p-1"
+                      className="border border-gray-300 rounded p-1 focus:border-blue-500 focus:outline-none"
                     />
                   ) : (
-                    <span onClick={() => handleEditClick(product._id, 'price')}>
+                    <span
+                      onClick={() => handleEditClick(product._id, 'price')}
+                      className="cursor-pointer hover:text-blue-600"
+                    >
                       {product.price}
                     </span>
                   )}
@@ -132,22 +217,24 @@ export default function AdminInventory() {
             ))}
           </tbody>
         </table>
+
         {editProductIds.length > 0 && (
           <div className="flex justify-center mt-4">
             <button
               onClick={handleSaveAll}
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2"
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2 transition-colors duration-200"
             >
               {editProductIds.length > 1 ? 'ذخیره همه' : 'ذخیره'}
             </button>
             <button
               onClick={handleCancelAll}
-              className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+              className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition-colors duration-200"
             >
               {editProductIds.length > 1 ? 'انصراف همه' : 'انصراف'}
             </button>
           </div>
         )}
+
         <div className="flex mt-4 justify-center items-center">
           {[...Array(totalPages)].map((_, index) => (
             <button
@@ -161,6 +248,7 @@ export default function AdminInventory() {
         </div>
       </div>
     </div>
+
   );
 }
 

@@ -1,0 +1,171 @@
+/* .countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  } */
+  
+  /* .countdown-circle {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%; 
+    border: 10px solid #4CAF50; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: countdownAnimation 5s forwards; 
+  } */
+  
+  /* .countdown-text {
+    font-size: 3rem; 
+    font-weight: bold;
+    color: #4CAF50; 
+    position: absolute; 
+  }
+  
+  @keyframes countdownAnimation {
+    0% {
+      border-width: 10px;
+    }
+    100% {
+      border-width: 0; 
+    }
+  } */ 
+
+
+
+  .countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px; /* فاصله بین دایره و متن */
+  }
+  
+  .countdown-circle {
+    width: 150px; /* اندازه دایره */
+    height: 150px; /* اندازه دایره */
+    border-radius: 50%; /* گرد کردن دایره */
+    border: 10px solid #4CAF50; /* رنگ و ضخامت اولیه خط دایره */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: countdownAnimation 5s forwards; /* انیمیشن برای کاهش ضخامت */
+    background-color: rgba(76, 175, 80, 0.1); /* رنگ پس زمینه دایره */
+  }
+  
+  .countdown-text {
+    font-size: 3rem; /* اندازه متن شمارش */
+    font-weight: bold;
+    color: #4CAF50; /* رنگ متن */
+    position: absolute; /* قرار دادن متن در مرکز دایره */
+  }
+  
+  @keyframes countdownAnimation {
+    0% {
+      border-width: 10px; /* ضخامت اولیه */
+    }
+    100% {
+      border-width: 0; /* کاهش ضخامت به صفر */
+    }
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .bg-gray-100 {
+    background-color: #f7fafc; /* رنگ پس زمینه */
+  }
+  
+  .bg-white {
+    background-color: #ffffff; /* رنگ پس زمینه برای کارت */
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* سایه برای کارت */
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem; /* گرد کردن گوشه‌ها */
+  }
+  
+  .p-4 { /* تغییر padding */
+    padding: 1rem; /* کاهش فاصله داخلی */
+  }
+  
+  .min-h-screen {
+    min-height: 100vh; /* حداقل ارتفاع صفحه */
+  } 
+
+
+
+  
+  .countdown-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px; /* فاصله بین دایره و متن */
+  }
+  
+  .countdown-circle2 {
+    width: 150px; /* اندازه دایره */
+    height: 150px; /* اندازه دایره */
+    border-radius: 50%; /* گرد کردن دایره */
+    border: 10px solid #d11a1a; /* رنگ و ضخامت اولیه خط دایره */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: countdownAnimation 5s forwards; /* انیمیشن برای کاهش ضخامت */
+    background-color: rgba(76, 175, 80, 0.1); /* رنگ پس زمینه دایره */
+  }
+  
+  .countdown-text2 {
+    font-size: 3rem; /* اندازه متن شمارش */
+    font-weight: bold;
+    color: #d11a1a; /* رنگ متن */
+    position: absolute; /* قرار دادن متن در مرکز دایره */
+  }
+  
+  @keyframes countdownAnimation {
+    0% {
+      border-width: 10px; /* ضخامت اولیه */
+    }
+    100% {
+      border-width: 0; /* کاهش ضخامت به صفر */
+    }
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .bg-gray-100 {
+    background-color: #f7fafc; /* رنگ پس زمینه */
+  }
+  
+  .bg-white {
+    background-color: #ffffff; /* رنگ پس زمینه برای کارت */
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* سایه برای کارت */
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem; /* گرد کردن گوشه‌ها */
+  }
+  
+  .p-4 { /* تغییر padding */
+    padding: 1rem; /* کاهش فاصله داخلی */
+  }
+  
+  .min-h-screen {
+    min-height: 100vh; /* حداقل ارتفاع صفحه */
+  }
+  
+  

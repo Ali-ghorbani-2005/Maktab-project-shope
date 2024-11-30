@@ -154,7 +154,59 @@ export const submitProductData = async (formData) => {
   } catch (error) {
     throw new Error('Failed to submit product data');
   }
-};
+}; 
 
+
+
+
+
+
+
+
+
+
+
+
+export const fetchAllProducts = async () => {
+  const token = localStorage.getItem('token'); // گرفتن توکن از localStorage
+  try {
+    const response = await axios.get('http://localhost:8000/api/products', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data.data.products; // دریافت تمام محصولات
+  } catch (error) {
+    console.error("Error fetching all products:", error);
+    throw error;
+  }
+}; 
+
+
+
+
+
+const PRODUCT_URL = "http://localhost:8000/api/products";
+
+// تابعی برای دریافت محصولات با توجه به شماره صفحه
+export const fetchProducts = async (page = 1) => {
+  const token = localStorage.getItem('token'); // گرفتن توکن از localStorage
+  try {
+      const response = await axios.get(`${PRODUCT_URL}?page=${page}`, {
+          headers: {
+              Authorization: `Bearer ${token}`,
+          },
+      });
+      console.log(response.data); // بررسی داده‌های پاسخ سرور در کنسول
+
+      return {
+          products: response.data.products,  // دریافت محصولات
+          totalPages: response.data.total_pages, // دریافت تعداد کل صفحات
+      };
+  } catch (error) {
+      console.error("Error fetching products:", error);
+      throw error;
+  }
+};
 
 

@@ -44,7 +44,7 @@ export const CartProvider = ({ children }) => {
   // پاک کردن کل سبد خرید
   const clearCart = () => {
     setCartItems([]); // سبد خرید خالی می‌شود
-    localStorage.removeItem('cart'); // پاک کردن localStorage
+    localStorage.removeItem('cart' , JSON.stringify([])); // پاک کردن localStorage
   };
 
   return (

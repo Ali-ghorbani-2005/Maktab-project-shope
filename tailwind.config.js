@@ -9,7 +9,10 @@ export default {
       colors:{
         darkGold:"#B8860B" ,
          lightGreen: '#008000'
-      }
+      } , 
+      screens: {
+        'mobile': '412px', // breakpoint سفارشی برای 412px
+      },
     },
   },
   plugins: [],
